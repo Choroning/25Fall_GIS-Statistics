@@ -24,9 +24,10 @@ This repository organizes and stores sample R code written for university lectur
 
 This repository contains code examples developed for a university-level statistics course using R, including:
 
-- Lecture demonstration codes
-- Assignment solutions
-- Additional practice exercises
+- **Concepts.md** files for each chapter with comprehensive explanations of statistical methods and R programming
+- Improved R code files with **Doxygen-style headers** documenting purpose, usage, and structure
+- Lecture demonstration codes and assignment solutions
+- A **data/** directory containing sample datasets (CSV, TXT, and US Census shapefiles) used in exercises
 
 <br><a name="course-information"></a>
 ## 📚 Course Information
