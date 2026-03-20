@@ -1,4 +1,4 @@
-# @file    RegressionAnalysis.R
+# @file    Lab_RegressionAnalysis.R
 # @brief   Multiple linear regression analysis with geographic data,
 #          including choropleth mapping of US literacy rates and
 #          model evaluation metrics

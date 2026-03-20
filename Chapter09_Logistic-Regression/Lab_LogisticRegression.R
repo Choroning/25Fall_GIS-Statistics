@@ -1,4 +1,4 @@
-# @file    LogisticRegression.R
+# @file    Lab_LogisticRegression.R
 # @brief   Logistic regression examples in R: model fitting with glm(),
 #          prediction, confusion matrix, ROC curve, and multinomial extension
 # @author  Cheolwon Park

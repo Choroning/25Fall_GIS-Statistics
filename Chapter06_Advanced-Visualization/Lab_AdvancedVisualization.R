@@ -1,4 +1,4 @@
-# @file    AdvancedVisualization.R
+# @file    Lab_AdvancedVisualization.R
 # @brief   Advanced ggplot2 visualizations including grouped charts,
 #          distribution plots, faceting, GIS maps, and time-based charts
 # @author  Cheolwon Park

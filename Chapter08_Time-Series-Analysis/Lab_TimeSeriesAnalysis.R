@@ -1,4 +1,4 @@
-# @file    TimeSeriesAnalysis.R
+# @file    Lab_TimeSeriesAnalysis.R
 # @brief   Introduction to time series analysis in R, including date/time
 #          objects, ts objects, decomposition, ARIMA modeling, and forecasting
 # @author  Cheolwon Park
