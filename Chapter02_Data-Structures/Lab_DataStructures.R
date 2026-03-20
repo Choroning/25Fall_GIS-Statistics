@@ -1,4 +1,4 @@
-# @file    DataStructures.R
+# @file    Lab_DataStructures.R
 # @brief   Demonstrates R data structures: vectors, matrices, arrays, lists,
 #          data frames, and factors with practical examples
 # @author  Cheolwon Park

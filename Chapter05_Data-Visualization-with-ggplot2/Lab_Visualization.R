@@ -1,4 +1,4 @@
-# @file    Visualization.R
+# @file    Lab_Visualization.R
 # @brief   Data visualization with ggplot2 and data manipulation with dplyr
 #          using nycflights13 and mtcars datasets
 # @author  Cheolwon Park

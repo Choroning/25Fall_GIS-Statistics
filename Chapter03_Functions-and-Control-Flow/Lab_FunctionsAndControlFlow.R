@@ -1,4 +1,4 @@
-# @file    FunctionsAndControlFlow.R
+# @file    Lab_FunctionsAndControlFlow.R
 # @brief   Demonstrates variables, functions, output functions, packages,
 #          tibbles, conditional statements, and for loops in R
 # @author  Cheolwon Park

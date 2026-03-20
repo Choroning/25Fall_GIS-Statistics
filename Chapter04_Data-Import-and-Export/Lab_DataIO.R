@@ -1,4 +1,4 @@
-# @file    DataIO.R
+# @file    Lab_DataIO.R
 # @brief   Demonstrates manual data entry and importing external data
 #          from CSV and text files in R
 # @author  Cheolwon Park
