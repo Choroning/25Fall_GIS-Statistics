@@ -52,7 +52,7 @@ dim(ex_data)      # Dimensions (rows x columns)
 # Read tab-delimited text files
 data_txt1 <- read.table("data/data_ex-1.txt", header = TRUE)
 data_txt2 <- read.table("data/data_ex-2.txt", header = TRUE)
-data_col  <- read.table("data/data_ex_col.txt", header = TRUE)
+data_col  <- read.table("data/data_ex_col.txt", header = FALSE, col.names = c("ID", "SEX", "AGE", "AREA"))
 
 # Verify imported data
 str(data_txt1)

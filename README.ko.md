@@ -64,11 +64,48 @@
 
 ```plaintext
 25Fall_GIS-Statistics
+├── Chapter01_Introduction
+│   └── Concepts.md
+├── Chapter02_Data-Structures
+│   ├── Concepts.md
+│   └── DataStructures.R
+├── Chapter03_Functions-and-Control-Flow
+│   ├── Concepts.md
+│   └── FunctionsAndControlFlow.R
+├── Chapter04_Data-Import-and-Export
+│   ├── Concepts.md
+│   └── DataIO.R
+├── Chapter05_Data-Visualization-with-ggplot2
+│   ├── Concepts.md
+│   └── Visualization.R
+├── Chapter06_Advanced-Visualization
+│   ├── AdvancedVisualization.R
+│   └── Concepts.md
+├── Chapter07_Regression-Analysis
+│   ├── Concepts.md
+│   └── RegressionAnalysis.R
+├── Chapter08_Time-Series-Analysis
+│   ├── Concepts.md
+│   └── TimeSeriesAnalysis.R
+├── Chapter09_Logistic-Regression
+│   ├── Concepts.md
+│   └── LogisticRegression.R
+├── data
+│   ├── cb_2024_us_state_5m.cpg
+│   ├── cb_2024_us_state_5m.dbf
+│   ├── cb_2024_us_state_5m.prj
+│   ├── cb_2024_us_state_5m.shp
+│   ├── cb_2024_us_state_5m.shx
+│   ├── data_ex-1.txt
+│   ├── data_ex-2.txt
+│   ├── data_ex.csv
+│   ├── data_ex_col.txt
+│   └── us_literacy_rates_by_state_2025.csv
 ├── LICENSE
 ├── README.ko.md
 └── README.md
 
-0개의 디렉토리, 3개의 파일
+10개의 디렉토리, 25개의 파일
 ```
 
 <br><a name="license"></a>

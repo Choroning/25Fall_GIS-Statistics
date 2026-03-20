@@ -151,7 +151,7 @@ Different date formats require format specifications:
 | `%S` | Second | 35 |
 
 ```r
-# Japanese format (default): YYYY-MM-DD
+# ISO 8601 format (default): YYYY-MM-DD
 as.Date("2017-01-20")
 
 # US format: MM/DD/YYYY
@@ -212,7 +212,7 @@ library(ggplot2)
 library(scales)
 
 ggplot(economics, aes(x = date, y = psavert)) +
-  geom_line(color = "indianred3", size = 1) +
+  geom_line(color = "indianred3", linewidth = 1) +
   geom_smooth() +
   scale_x_date(date_breaks = "5 years", labels = date_format("%b-%y")) +
   labs(title = "Personal Savings Rate",

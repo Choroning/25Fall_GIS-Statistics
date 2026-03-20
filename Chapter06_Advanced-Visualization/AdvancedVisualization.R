@@ -164,7 +164,7 @@ ggplot(Salaries, aes(x = salary)) +
 # (7) Faceted scatter plot by discipline with fit lines
 ggplot(Salaries, aes(x = yrs.since.phd, y = salary, color = sex)) +
   geom_point(size = 2, alpha = 0.5) +
-  geom_smooth(method = "lm", se = FALSE, size = 1.5) +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 1.5) +
   facet_wrap(~factor(discipline,
                      labels = c("Theoretical", "Applied")),
              ncol = 1) +
@@ -240,8 +240,8 @@ plotdata <- gapminder %>%
                   "united states"    = "united states of america",
                   "congo, dem. rep." = "democratic republic of the congo",
                   "congo, rep."      = "republic of congo",
-                  "korea, dem. rep." = "south korea",
-                  "korea. rep."      = "north korea",
+                  "korea, dem. rep." = "north korea",
+                  "korea, rep."      = "south korea",
                   "tanzania"         = "united republic of tanzania",
                   "serbia"           = "republic of serbia",
                   "slovak republic"  = "slovakia",
@@ -292,7 +292,7 @@ library(ggplot2)
 library(scales)
 
 ggplot(economics, aes(x = date, y = psavert)) +
-  geom_line(color = "indianred3", size = 1) +
+  geom_line(color = "indianred3", linewidth = 1) +
   geom_smooth() +
   scale_x_date(date_breaks = "5 years", labels = date_format("%b-%y")) +
   labs(title = "Personal Savings Rate",

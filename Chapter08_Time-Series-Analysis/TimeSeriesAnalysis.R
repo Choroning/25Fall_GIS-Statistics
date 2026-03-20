@@ -82,7 +82,7 @@ identical(time_str, time_posix_ct1)  # FALSE
 # --- 1.5 Date Format Conversion ---
 
 # Different regions use different date formats
-# Japanese format (YYYY-MM-DD) - R's default
+# ISO 8601 format (YYYY-MM-DD) - R's default
 as.Date("2017-01-20")
 
 # US format (MM/DD/YYYY)
