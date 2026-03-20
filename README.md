@@ -57,8 +57,8 @@ This repository contains code examples developed for a university-level statisti
 
 | Tool | Company |  OS  | Notes |
 |:-----|:-------:|:----:|:------|
-|IntelliJ IDEA|JetBrains s.r.o.|macOS|most used IDE|
-|Eclipse|Eclipse Foundation|macOS|    |
+|RStudio|Posit PBC|macOS|most used IDE|
+|Visual Studio Code|Microsoft|macOS|with R extension|
 
 <br><a name="repository-structure"></a>
 ## 🗂 Repository Structure
