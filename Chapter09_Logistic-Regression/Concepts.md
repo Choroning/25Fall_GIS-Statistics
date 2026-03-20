@@ -1,4 +1,4 @@
-# Chapter 09 -- Logistic Regression
+# Chapter 09 — Logistic Regression
 
 > **Last Updated:** 2026-03-21
 

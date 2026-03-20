@@ -1,4 +1,4 @@
-# Chapter 07 -- Regression Analysis
+# Chapter 07 — Regression Analysis
 
 > **Last Updated:** 2026-03-21
 

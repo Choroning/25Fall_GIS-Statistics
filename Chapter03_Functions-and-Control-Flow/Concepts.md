@@ -1,4 +1,4 @@
-# Chapter 03 -- Functions and Control Flow
+# Chapter 03 — Functions and Control Flow
 
 > **Last Updated:** 2026-03-21
 

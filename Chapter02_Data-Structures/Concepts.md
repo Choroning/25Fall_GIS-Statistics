@@ -1,4 +1,4 @@
-# Chapter 02 -- Data Structures in R
+# Chapter 02 — Data Structures in R
 
 > **Last Updated:** 2026-03-21
 

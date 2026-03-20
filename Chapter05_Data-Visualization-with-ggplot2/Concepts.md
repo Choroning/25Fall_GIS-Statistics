@@ -1,4 +1,4 @@
-# Chapter 05 -- Data Visualization with ggplot2
+# Chapter 05 — Data Visualization with ggplot2
 
 > **Last Updated:** 2026-03-21
 

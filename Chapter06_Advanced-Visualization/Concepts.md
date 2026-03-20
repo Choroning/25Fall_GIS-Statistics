@@ -1,4 +1,4 @@
-# Chapter 06 -- Advanced Visualization
+# Chapter 06 — Advanced Visualization
 
 > **Last Updated:** 2026-03-21
 

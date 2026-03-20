@@ -1,4 +1,4 @@
-# Chapter 08 -- Time Series Analysis
+# Chapter 08 — Time Series Analysis
 
 > **Last Updated:** 2026-03-21
 
