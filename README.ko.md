@@ -69,28 +69,28 @@
 │   └── Concepts.md
 ├── Chapter02_Data-Structures
 │   ├── Concepts.md
-│   └── DataStructures.R
+│   └── Lab_DataStructures.R
 ├── Chapter03_Functions-and-Control-Flow
 │   ├── Concepts.md
-│   └── FunctionsAndControlFlow.R
+│   └── Lab_FunctionsAndControlFlow.R
 ├── Chapter04_Data-Import-and-Export
 │   ├── Concepts.md
-│   └── DataIO.R
+│   └── Lab_DataIO.R
 ├── Chapter05_Data-Visualization-with-ggplot2
 │   ├── Concepts.md
-│   └── Visualization.R
+│   └── Lab_Visualization.R
 ├── Chapter06_Advanced-Visualization
-│   ├── AdvancedVisualization.R
-│   └── Concepts.md
+│   ├── Concepts.md
+│   └── Lab_AdvancedVisualization.R
 ├── Chapter07_Regression-Analysis
 │   ├── Concepts.md
-│   └── RegressionAnalysis.R
+│   └── Lab_RegressionAnalysis.R
 ├── Chapter08_Time-Series-Analysis
 │   ├── Concepts.md
-│   └── TimeSeriesAnalysis.R
+│   └── Lab_TimeSeriesAnalysis.R
 ├── Chapter09_Logistic-Regression
 │   ├── Concepts.md
-│   └── LogisticRegression.R
+│   └── Lab_LogisticRegression.R
 ├── data
 │   ├── cb_2024_us_state_5m.cpg
 │   ├── cb_2024_us_state_5m.dbf
@@ -106,7 +106,7 @@
 ├── README.ko.md
 └── README.md
 
-10개의 디렉토리, 25개의 파일
+10개의 디렉토리, 30개의 파일
 ```
 
 <br><a name="license"></a>
