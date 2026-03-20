@@ -57,7 +57,7 @@
 
 | 도구 | 회사 |  운영체제  | 비고 |
 |:-----|:-------:|:----:|:------|
-|IntelliJ IDEA|JetBrains s.r.o.|macOS|가장 많이 사용한 IDE|
+|RStudio|Posit PBC|macOS|가장 많이 사용한 IDE|
 |Visual Studio Code|Microsoft|macOS|R 확장 프로그램 사용|
 
 <br><a name="repository-structure"></a>
