@@ -42,7 +42,7 @@ A **time series** is a sequence of data points collected or recorded at successi
 - **Cyclic variation**: Oscillations without a fixed period (e.g., business cycles)
 - **Noise/Irregularity**: Random, unpredictable fluctuations
 
-> **Key Point:** "All models are wrong, but some are useful." -- George E.P. Box. This aphorism is particularly relevant in time series analysis, where models approximate reality but can still provide valuable forecasts.
+> **Key Point:** "All models are wrong, but some are useful." — George E.P. Box. This aphorism is particularly relevant in time series analysis, where models approximate reality but can still provide valuable forecasts.
 
 ---
 

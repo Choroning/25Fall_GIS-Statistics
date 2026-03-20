@@ -59,7 +59,7 @@ x + 2               # 3, 4, 5 (element-wise addition)
 x * 3               # 3, 6, 9 (element-wise multiplication)
 ```
 
-> **Key Point:** R operations on vectors are **vectorized** -- they automatically apply to each element without needing explicit loops.
+> **Key Point:** R operations on vectors are **vectorized** — they automatically apply to each element without needing explicit loops.
 
 ---
 
@@ -240,7 +240,7 @@ x1 <- data.frame(
 class(x1)  # "data.frame"
 ```
 
-> **Key Point:** Data frames are the workhorse of data analysis in R. Each column is a variable, each row is an observation -- matching the standard tidy data format.
+> **Key Point:** Data frames are the workhorse of data analysis in R. Each column is a variable, each row is an observation — matching the standard tidy data format.
 
 ---
 
@@ -300,7 +300,7 @@ table(blood)
 # Note: "a" and "o" are excluded because they don't match any level
 ```
 
-> **Key Point:** Factors store data internally as integers with associated level labels. They cannot be used in arithmetic operations directly -- you must convert them to numeric first with `as.numeric()`.
+> **Key Point:** Factors store data internally as integers with associated level labels. They cannot be used in arithmetic operations directly — you must convert them to numeric first with `as.numeric()`.
 
 ---
 

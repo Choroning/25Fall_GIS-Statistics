@@ -57,7 +57,7 @@ The `dplyr` package provides five core functions for data manipulation:
 | `mutate()` | Create new columns | `mutate(data, speed = distance/time)` |
 | `summarise()` | Aggregate data | `summarise(data, avg = mean(x))` |
 
-### 2.2 filter() -- Row Selection
+### 2.2 filter() — Row Selection
 
 ```r
 library(tidyverse)
@@ -77,7 +77,7 @@ filter(mtcars, cyl == 4)
 filter(mtcars, cyl >= 6 & mpg > 20)
 ```
 
-### 2.3 arrange() -- Sorting
+### 2.3 arrange() — Sorting
 
 ```r
 arrange(flights, year, month, day)         # Ascending order
@@ -87,7 +87,7 @@ head(arrange(mtcars, wt))                  # Sort by weight (ascending)
 head(arrange(mtcars, mpg, desc(wt)))       # Sort by mpg, then desc weight
 ```
 
-### 2.4 select() -- Column Selection
+### 2.4 select() — Column Selection
 
 ```r
 select(flights, year, month, day)          # Select specific columns
@@ -98,7 +98,7 @@ select(flights, -(year:day))               # Exclude range of columns
 select(flights, ends_with("delay"))        # Columns ending with "delay"
 ```
 
-### 2.5 mutate() -- Create New Columns
+### 2.5 mutate() — Create New Columns
 
 ```r
 flights_sml <- select(flights,

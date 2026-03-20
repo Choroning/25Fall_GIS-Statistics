@@ -142,8 +142,8 @@ The `summary()` output includes:
 | **Std. Error** | Standard error of the estimate |
 | **t value** | Test statistic: $t_i = \hat{\beta}_i / se(\hat{\beta}_i)$ |
 | **Pr(>\|t\|)** | p-value for two-sided hypothesis test |
-| **Multiple R-squared** | $R^2$ -- proportion of variance explained |
-| **Adjusted R-squared** | $R^2_{adj}$ -- adjusted for number of predictors |
+| **Multiple R-squared** | $R^2$ — proportion of variance explained |
+| **Adjusted R-squared** | $R^2_{adj}$ — adjusted for number of predictors |
 | **F-statistic** | Overall significance test of the model |
 
 ### 4.2 Significance Codes

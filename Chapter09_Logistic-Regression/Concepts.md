@@ -54,7 +54,7 @@ Where $z = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_p X_p$ is the li
 
 | Property | Description |
 |----------|-------------|
-| Range | $(0, 1)$ -- always outputs a valid probability |
+| Range | $(0, 1)$ — always outputs a valid probability |
 | Monotonicity | Strictly increasing |
 | Symmetry | $\sigma(-z) = 1 - \sigma(z)$ |
 | Midpoint | $\sigma(0) = 0.5$ |
@@ -204,10 +204,10 @@ The **Receiver Operating Characteristic (ROC)** curve plots the True Positive Ra
 
 | AUC | Model Quality |
 |-----|---------------|
-| 0.9 -- 1.0 | Excellent |
-| 0.8 -- 0.9 | Good |
-| 0.7 -- 0.8 | Fair |
-| 0.6 -- 0.7 | Poor |
+| 0.9–1.0 | Excellent |
+| 0.8–0.9 | Good |
+| 0.7–0.8 | Fair |
+| 0.6–0.7 | Poor |
 | 0.5 | No discrimination (random) |
 
 ### 6.4 ROC Curve in R
