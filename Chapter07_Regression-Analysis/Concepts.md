@@ -246,7 +246,7 @@ step(lm(Price ~ 1, data = train.df),
 
 ### 7.1 US Literacy Rate Choropleth with Regression
 
-The HW2 assignment combines geographic visualization with statistical analysis:
+The Assignment 2 assignment combines geographic visualization with statistical analysis:
 
 ```r
 library(tidyverse)
