@@ -1,4 +1,4 @@
-# Chapter 01 -- Introduction to R and GIS Statistics
+# Chapter 01 — Introduction to R and GIS Statistics
 
 > **Last Updated:** 2026-03-21
 
