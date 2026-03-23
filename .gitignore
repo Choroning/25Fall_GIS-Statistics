@@ -13,3 +13,6 @@ Thumbs.db
 .Rhistory
 .RData
 .Rproj.user/
+
+# Local only
+src/
