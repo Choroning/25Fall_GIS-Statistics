@@ -1,6 +1,15 @@
 # Chapter 07 — Regression Analysis
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+>
+> Kang & Eom, Learn R Data Analysis on Your Own (Hanbit Media) Ch 7
+
+> **Prerequisites**: [Programming Language] R programming (Ch 1-6). [Statistics] Basic descriptive statistics.
+>
+> **Learning Objectives**:
+> 1. Perform simple and multiple linear regression in R
+> 2. Interpret regression coefficients and R-squared values
+> 3. Diagnose regression assumptions and identify outliers
 
 ---
 
@@ -16,6 +25,8 @@
 8. [Summary](#summary)
 
 ---
+
+<br>
 
 ## 1. Introduction to Regression
 
@@ -37,6 +48,8 @@ The goal is to:
 | Polynomial | Continuous | Non-linear terms | Growth ~ Time + Time^2 |
 
 ---
+
+<br>
 
 ## 2. Simple Linear Regression
 
@@ -80,6 +93,8 @@ summary(model)
 > **Key Point:** The `lm()` function in R uses the formula notation `y ~ x` where `y` is the response variable and `x` is the predictor. The `~` symbol means "is modeled as a function of."
 
 ---
+
+<br>
 
 ## 3. Multiple Linear Regression
 
@@ -130,6 +145,8 @@ summary(car.lm)
 
 ---
 
+<br>
+
 ## 4. Estimating the Regression Equation
 
 ### 4.1 Interpreting the Output
@@ -171,6 +188,8 @@ $$R^2_{adj} = 1 - \frac{(1 - R^2)(n - 1)}{n - p - 1}$$
 
 ---
 
+<br>
+
 ## 5. Model Evaluation Metrics
 
 ### 5.1 Prediction and Residuals
@@ -207,6 +226,8 @@ accuracy(car.lm.pred, valid.df$Price)
 
 ---
 
+<br>
+
 ## 6. Variable Selection
 
 ### 6.1 Why Select Variables?
@@ -241,6 +262,8 @@ step(lm(Price ~ 1, data = train.df),
 ```
 
 ---
+
+<br>
 
 ## 7. Regression with Geographic Data in R
 
@@ -281,6 +304,8 @@ ggplot(continentalUS, aes(geometry = geometry, fill = Rate)) +
 | `geom_sf()` | ggplot2 geometry for spatial data |
 
 ---
+
+<br>
 
 ## Summary
 

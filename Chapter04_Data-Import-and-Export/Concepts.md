@@ -1,6 +1,15 @@
 # Chapter 04 — Data Import and Export
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+>
+> Kang & Eom, Learn R Data Analysis on Your Own (Hanbit Media) Ch 4
+
+> **Prerequisites**: [Programming Language] R functions (Ch 1-3).
+>
+> **Learning Objectives**:
+> 1. Import data from CSV, Excel, and other formats into R
+> 2. Clean and preprocess imported datasets
+> 3. Export processed data to various file formats
 
 ---
 
@@ -15,6 +24,8 @@
 7. [Summary](#summary)
 
 ---
+
+<br>
 
 ## 1. Manual Data Entry
 
@@ -32,6 +43,8 @@ View(DATA)   # Open in spreadsheet viewer
 > **Key Point:** Manual data entry is useful for small datasets or for creating test data, but for real-world analysis, data is typically imported from external files.
 
 ---
+
+<br>
 
 ## 2. Reading External Data
 
@@ -62,6 +75,8 @@ help(read.table)
 ```
 
 ---
+
+<br>
 
 ## 3. Reading CSV Files
 
@@ -100,6 +115,8 @@ read.csv("data/data_ex.csv", header = TRUE)
 
 ---
 
+<br>
+
 ## 4. Reading Text Files
 
 ### 4.1 Reading Tab-Delimited Files
@@ -120,6 +137,8 @@ data_col <- read.table("data/data_ex_col.txt", header = TRUE)
 ```
 
 ---
+
+<br>
 
 ## 5. Working Directories
 
@@ -148,6 +167,8 @@ data <- read.csv("data/data_ex.csv", header = TRUE)
   ```
 
 ---
+
+<br>
 
 ## 6. Data Exploration After Import
 
@@ -181,6 +202,8 @@ View(data)       # Spreadsheet viewer in RStudio
 | Wrong separator | Verify with `readLines(file, n = 5)` to inspect raw content |
 
 ---
+
+<br>
 
 ## Summary
 

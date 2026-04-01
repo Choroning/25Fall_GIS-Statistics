@@ -1,6 +1,15 @@
 # Chapter 03 — Functions and Control Flow
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+>
+> Kang & Eom, Learn R Data Analysis on Your Own (Hanbit Media) Ch 3
+
+> **Prerequisites**: [Programming Language] R data structures (Ch 1-2).
+>
+> **Learning Objectives**:
+> 1. Write custom functions in R with proper parameter handling
+> 2. Apply control flow structures (if/else, for, while, apply family)
+> 3. Use built-in R functions effectively for data manipulation
 
 ---
 
@@ -17,6 +26,8 @@
 9. [Summary](#summary)
 
 ---
+
+<br>
 
 ## 1. Variables and Functions
 
@@ -40,6 +51,8 @@ Sys.Date()              # Get current system date
 > **Key Point:** Functions like `sum()`, `mean()`, `min()`, `max()` are part of R's `base` package and are always available without loading additional libraries.
 
 ---
+
+<br>
 
 ## 2. Output Functions
 
@@ -67,6 +80,8 @@ cat("Value:", x, "\n") # Supports newline characters
 > **Key Point:** Use `print()` for formatted output of single objects. Use `cat()` when you need to combine multiple values or include custom formatting with `\n` (newline).
 
 ---
+
+<br>
 
 ## 3. User-Defined Functions
 
@@ -132,6 +147,8 @@ Three key steps to creating a function:
 
 ---
 
+<br>
+
 ## 4. Packages
 
 ### 4.1 Installing and Loading Packages
@@ -158,6 +175,8 @@ require(graphics)
 | `nycflights13` | Practice dataset (NYC flights) |
 
 ---
+
+<br>
 
 ## 5. Tibbles
 
@@ -204,6 +223,8 @@ min(a2, na.rm = TRUE)     # 2 (na.rm = TRUE ignores NA values)
 
 ---
 
+<br>
+
 ## 6. Operators
 
 ### 6.1 Arithmetic Operators
@@ -249,6 +270,8 @@ a > 3    # FALSE TRUE TRUE (element-wise comparison)
 
 ---
 
+<br>
+
 ## 7. Conditional Statements
 
 ### 7.1 if-else Syntax
@@ -293,6 +316,8 @@ show(roots)
 
 ---
 
+<br>
+
 ## 8. Loops
 
 ### 8.1 For Loop
@@ -330,6 +355,8 @@ while (counter <= 5) {
 ```
 
 ---
+
+<br>
 
 ## Summary
 

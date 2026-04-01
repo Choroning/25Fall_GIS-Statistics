@@ -1,6 +1,15 @@
 # Chapter 05 — Data Visualization with ggplot2
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+>
+> Kang & Eom, Learn R Data Analysis on Your Own (Hanbit Media) Ch 5
+
+> **Prerequisites**: [Programming Language] R programming (Ch 1-4).
+>
+> **Learning Objectives**:
+> 1. Create statistical plots using ggplot2 grammar of graphics
+> 2. Customize aesthetics, scales, and themes
+> 3. Build layered visualizations with multiple geoms
 
 ---
 
@@ -16,6 +25,8 @@
 8. [Summary](#summary)
 
 ---
+
+<br>
 
 ## 1. Introduction to ggplot2
 
@@ -42,6 +53,8 @@ ggplot(data, aes(x = variable1, y = variable2)) +
 > **Key Point:** ggplot2 builds plots layer by layer using the `+` operator. The `ggplot()` call creates the canvas, and `geom_*()` functions add visual elements.
 
 ---
+
+<br>
 
 ## 2. Data Manipulation with dplyr
 
@@ -143,6 +156,8 @@ summarise(mtcars,
 
 ---
 
+<br>
+
 ## 3. Basic Plot Types
 
 ### 3.1 Scatter Plot (`geom_point()`)
@@ -207,6 +222,8 @@ ggplot(mtcars, aes(x = factor(cyl))) +
 
 ---
 
+<br>
+
 ## 4. Aesthetic Mappings
 
 ### 4.1 Color Mapping
@@ -237,6 +254,8 @@ ggplot(data = mpg) +
 
 ---
 
+<br>
+
 ## 5. Faceting
 
 ### 5.1 facet_wrap()
@@ -250,6 +269,8 @@ ggplot(data = mpg) +
 ```
 
 ---
+
+<br>
 
 ## 6. Reference Lines and Annotations
 
@@ -284,6 +305,8 @@ ggplot(airquality, aes(x = Day, y = Temp)) +
 
 ---
 
+<br>
+
 ## 7. Joining Data
 
 ### 7.1 left_join()
@@ -312,6 +335,8 @@ weather %>%
 ```
 
 ---
+
+<br>
 
 ## Summary
 

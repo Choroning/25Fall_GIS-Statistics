@@ -1,6 +1,15 @@
 # Chapter 08 — Time Series Analysis
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+>
+> Kang & Eom, Learn R Data Analysis on Your Own (Hanbit Media) Ch 8
+
+> **Prerequisites**: [Programming Language] R programming (Ch 1-7). [Statistics] Regression analysis (Ch 7).
+>
+> **Learning Objectives**:
+> 1. Decompose time series into trend, seasonal, and residual components
+> 2. Apply ARIMA models for time series forecasting
+> 3. Evaluate forecast accuracy using appropriate metrics
 
 ---
 
@@ -17,6 +26,8 @@
 9. [Summary](#summary)
 
 ---
+
+<br>
 
 ## 1. Introduction to Time Series
 
@@ -45,6 +56,8 @@ A **time series** is a sequence of data points collected or recorded at successi
 > **Key Point:** "All models are wrong, but some are useful." — George E.P. Box. This aphorism is particularly relevant in time series analysis, where models approximate reality but can still provide valuable forecasts.
 
 ---
+
+<br>
 
 ## 2. Characteristics of Time Series Data
 
@@ -79,6 +92,8 @@ A time series is **stationary** if its statistical properties (mean, variance, a
 Most time series models require stationarity. Non-stationary series can be made stationary through **differencing**.
 
 ---
+
+<br>
 
 ## 3. Date and Time Objects in R
 
@@ -173,6 +188,8 @@ as.Date("20/01/2017", format = "%d/%m/%Y")
 
 ---
 
+<br>
+
 ## 4. Time Series Objects in R
 
 ### 4.1 Creating ts Objects
@@ -202,6 +219,8 @@ str(economics)
 ```
 
 ---
+
+<br>
 
 ## 5. Descriptive Techniques
 
@@ -244,6 +263,8 @@ pacf(ts_data)        # Plot PACF
 
 ---
 
+<br>
+
 ## 6. Decomposition
 
 ### 6.1 Additive vs. Multiplicative
@@ -266,6 +287,8 @@ plot(stl_result)
 ```
 
 ---
+
+<br>
 
 ## 7. ARIMA Models
 
@@ -310,6 +333,8 @@ checkresiduals(auto_model)
 
 ---
 
+<br>
+
 ## 8. Forecasting
 
 ### 8.1 Making Forecasts
@@ -349,6 +374,8 @@ accuracy(fc, test)
 | *Analysis of Financial Time Series* | Ruey S. Tsay | Financial applications |
 
 ---
+
+<br>
 
 ## Summary
 

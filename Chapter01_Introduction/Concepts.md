@@ -1,6 +1,15 @@
 # Chapter 01 — Introduction to R and GIS Statistics
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+>
+> Kang & Eom, Learn R Data Analysis on Your Own (Hanbit Media) Ch 1
+
+> **Prerequisites**: [Programming Language] No prior R knowledge required.
+>
+> **Learning Objectives**:
+> 1. Set up R and RStudio environment
+> 2. Understand basic R syntax and data types
+> 3. Execute simple R commands and scripts
 
 ---
 
@@ -14,6 +23,8 @@
 6. [Summary](#summary)
 
 ---
+
+<br>
 
 ## 1. What is R?
 
@@ -38,6 +49,8 @@ R provides several advantages for GIS-related statistical analysis:
 > **Key Point:** R bridges the gap between traditional GIS software and advanced statistical methods, making it ideal for spatial data analysis.
 
 ---
+
+<br>
 
 ## 2. R and RStudio Setup
 
@@ -81,6 +94,8 @@ help(data.frame) # Help for data.frame function
 > **Key Point:** The `help()` function shows which package a function belongs to (e.g., `mean {base}` means `mean()` is in the `base` package).
 
 ---
+
+<br>
 
 ## 3. R as a Statistical Programming Language
 
@@ -147,6 +162,8 @@ typeof(1:10)        # "integer"
 
 ---
 
+<br>
+
 ## 4. GIS and Statistics
 
 ### 4.1 What is GIS?
@@ -180,6 +197,8 @@ This course covers several statistical methods commonly used with geographic dat
 
 ---
 
+<br>
+
 ## 5. Course Overview
 
 ### 5.1 Course Structure
@@ -205,6 +224,8 @@ This course covers several statistical methods commonly used with geographic dat
 - **Time Series Analysis and Its Applications** by Shumway & Stoffer
 
 ---
+
+<br>
 
 ## Summary
 
