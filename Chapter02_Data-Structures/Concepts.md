@@ -1,6 +1,15 @@
 # Chapter 02 — Data Structures in R
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+>
+> Kang & Eom, Learn R Data Analysis on Your Own (Hanbit Media) Ch 2
+
+> **Prerequisites**: [Programming Language] R basics (Ch 1).
+>
+> **Learning Objectives**:
+> 1. Create and manipulate vectors, lists, and data frames
+> 2. Apply indexing and subsetting operations
+> 3. Convert between different R data structures
 
 ---
 
@@ -16,6 +25,8 @@
 8. [Summary](#summary)
 
 ---
+
+<br>
 
 ## 1. Vectors
 
@@ -62,6 +73,8 @@ x * 3               # 3, 6, 9 (element-wise multiplication)
 > **Key Point:** R operations on vectors are **vectorized** — they automatically apply to each element without needing explicit loops.
 
 ---
+
+<br>
 
 ## 2. Matrices
 
@@ -110,6 +123,8 @@ is.matrix(as.matrix(1:10)) # TRUE
 
 ---
 
+<br>
+
 ## 3. Arrays
 
 ### 3.1 Creating Arrays
@@ -137,6 +152,8 @@ is.matrix(array(1:6, c(2,3))) # TRUE (2D arrays are matrices)
 ```
 
 ---
+
+<br>
 
 ## 4. Lists
 
@@ -192,6 +209,8 @@ x4$f1       # Access the first element by name
 
 ---
 
+<br>
+
 ## 5. Data Frames
 
 ### 5.1 Creating Data Frames
@@ -243,6 +262,8 @@ class(x1)  # "data.frame"
 > **Key Point:** Data frames are the workhorse of data analysis in R. Each column is a variable, each row is an observation — matching the standard tidy data format.
 
 ---
+
+<br>
 
 ## 6. Factors
 
@@ -304,6 +325,8 @@ table(blood)
 
 ---
 
+<br>
+
 ## 7. Type Checking and Conversion
 
 ### 7.1 Checking Types
@@ -344,6 +367,8 @@ economics      # US economic time series data
 ```
 
 ---
+
+<br>
 
 ## Summary
 

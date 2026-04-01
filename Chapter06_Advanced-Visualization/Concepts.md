@@ -1,6 +1,15 @@
 # Chapter 06 — Advanced Visualization
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+>
+> Kang & Eom, Learn R Data Analysis on Your Own (Hanbit Media) Ch 6
+
+> **Prerequisites**: [Programming Language] R and ggplot2 basics (Ch 1-5).
+>
+> **Learning Objectives**:
+> 1. Create interactive visualizations with plotly and leaflet
+> 2. Build multi-panel plots using faceting
+> 3. Design publication-quality figures with custom annotations
 
 ---
 
@@ -18,6 +27,8 @@
 
 ---
 
+<br>
+
 ## 1. Grouped Bar Charts
 
 ### 1.1 Side-by-Side Bar Chart
@@ -34,6 +45,8 @@ ggplot(mpg, aes(x = class, fill = drv)) +
 This shows the distribution of drive types (front, rear, 4WD) within each vehicle class.
 
 ---
+
+<br>
 
 ## 2. Scatter Plots with Advanced Aesthetics
 
@@ -65,6 +78,8 @@ ggplot(Salaries,
 
 ---
 
+<br>
+
 ## 3. Line Plots
 
 ### 3.1 Time Series Line Plot
@@ -86,6 +101,8 @@ ggplot(plotdata, aes(x = year, y = lifeExp)) +
 > **Key Point:** Combining `geom_line()` and `geom_point()` creates an effective visualization that shows both the trend and individual data points.
 
 ---
+
+<br>
 
 ## 4. Distribution Plots
 
@@ -141,6 +158,8 @@ ggplot(Salaries,
 
 ---
 
+<br>
+
 ## 5. Grouping and Multi-Variable Visualization
 
 ### 5.1 Color Mapping by Group
@@ -187,6 +206,8 @@ ggplot(Salaries,
 ```
 
 ---
+
+<br>
 
 ## 6. Faceting for Multi-Panel Plots
 
@@ -236,6 +257,8 @@ ggplot(plotdata, aes(x = year, y = lifeExp)) +
 ```
 
 ---
+
+<br>
 
 ## 7. GIS Visualization
 
@@ -292,6 +315,8 @@ ggplot(continentalUS, aes(geometry = geometry, fill = Rate)) +
 ```
 
 ---
+
+<br>
 
 ## 8. Time-Based Visualization
 
@@ -367,6 +392,8 @@ ggplot(uspopage, aes(x = Year, y = Thousands/1000,
 ```
 
 ---
+
+<br>
 
 ## Summary
 

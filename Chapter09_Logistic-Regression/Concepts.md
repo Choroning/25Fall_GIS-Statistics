@@ -1,6 +1,15 @@
 # Chapter 09 — Logistic Regression
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+>
+> Kang & Eom, Learn R Data Analysis on Your Own (Hanbit Media) Ch 9
+
+> **Prerequisites**: [Programming Language] R programming (Ch 1-8). [Statistics] Regression analysis (Ch 7).
+>
+> **Learning Objectives**:
+> 1. Apply logistic regression for binary classification
+> 2. Interpret odds ratios and log-odds coefficients
+> 3. Evaluate classification models using confusion matrices and ROC curves
 
 ---
 
@@ -16,6 +25,8 @@
 8. [Summary](#summary)
 
 ---
+
+<br>
 
 ## 1. Motivation: Classification vs Regression
 
@@ -39,6 +50,8 @@ Linear regression predicts a continuous response variable $Y \in (-\infty, +\inf
 Logistic regression bridges the gap: it uses a **regression framework** to solve a **classification problem** by modeling the probability that $Y$ belongs to a particular class.
 
 ---
+
+<br>
 
 ## 2. The Logistic Function (Sigmoid)
 
@@ -70,6 +83,8 @@ This ensures the predicted probability is always between 0 and 1, regardless of 
 
 ---
 
+<br>
+
 ## 3. Odds and Log-Odds
 
 ### 3.1 Odds
@@ -94,6 +109,8 @@ This is the key transformation: while $P$ is bounded between 0 and 1, the log-od
 $$X \xrightarrow{\text{linear combination}} z = \beta_0 + \beta X \xrightarrow{\text{sigmoid}} P = \sigma(z) \xrightarrow{\text{threshold}} \hat{Y} \in \{0, 1\}$$
 
 ---
+
+<br>
 
 ## 4. Maximum Likelihood Estimation
 
@@ -132,6 +149,8 @@ summary(model)
 
 ---
 
+<br>
+
 ## 5. Model Interpretation
 
 ### 5.1 Interpreting Coefficients
@@ -166,6 +185,8 @@ exp(confint(model))
 ```
 
 ---
+
+<br>
 
 ## 6. Model Evaluation
 
@@ -221,6 +242,8 @@ auc(roc_obj)
 
 ---
 
+<br>
+
 ## 7. Multinomial Logistic Regression
 
 ### 7.1 Extension to Multi-Class
@@ -253,6 +276,8 @@ predict(multi_model, newdata = iris[1:5, ], type = "probs")
 > **Key Point:** The `multinom()` function from the `nnet` package fits multinomial logistic regression. Each non-reference class gets its own set of coefficients.
 
 ---
+
+<br>
 
 ## Summary
 
