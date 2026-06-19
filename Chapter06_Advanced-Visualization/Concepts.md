@@ -1,8 +1,8 @@
 # Chapter 06 — Advanced Visualization
 
-> **Last Updated:** 2026-04-01
+> **Last Updated:** 2026-06-19
 >
-> Kang & Eom, Learn R Data Analysis on Your Own (Hanbit Media) Ch 6
+> Learn R Data Analysis on Your Own, Kang & Eom (Hanbit Media) - Ch 6
 
 > **Prerequisites**: [Programming Language] R and ggplot2 basics (Ch 1-5).
 >

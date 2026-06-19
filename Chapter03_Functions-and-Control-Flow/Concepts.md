@@ -1,8 +1,8 @@
 # Chapter 03 — Functions and Control Flow
 
-> **Last Updated:** 2026-04-01
+> **Last Updated:** 2026-06-19
 >
-> Kang & Eom, Learn R Data Analysis on Your Own (Hanbit Media) Ch 3
+> Learn R Data Analysis on Your Own, Kang & Eom (Hanbit Media) - Ch 3
 
 > **Prerequisites**: [Programming Language] R data structures (Ch 1-2).
 >
