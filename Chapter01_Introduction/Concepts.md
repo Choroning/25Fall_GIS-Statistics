@@ -1,8 +1,8 @@
 # Chapter 01 — Introduction to R and GIS Statistics
 
-> **Last Updated:** 2026-04-01
+> **Last Updated:** 2026-06-19
 >
-> Kang & Eom, Learn R Data Analysis on Your Own (Hanbit Media) Ch 1
+> Learn R Data Analysis on Your Own, Kang & Eom (Hanbit Media) - Ch 1
 
 > **Prerequisites**: [Programming Language] No prior R knowledge required.
 >

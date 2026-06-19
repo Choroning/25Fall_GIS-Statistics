@@ -1,8 +1,8 @@
 # Chapter 02 — Data Structures in R
 
-> **Last Updated:** 2026-04-01
+> **Last Updated:** 2026-06-19
 >
-> Kang & Eom, Learn R Data Analysis on Your Own (Hanbit Media) Ch 2
+> Learn R Data Analysis on Your Own, Kang & Eom (Hanbit Media) - Ch 2
 
 > **Prerequisites**: [Programming Language] R basics (Ch 1).
 >

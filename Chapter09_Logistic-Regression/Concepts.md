@@ -1,8 +1,8 @@
 # Chapter 09 — Logistic Regression
 
-> **Last Updated:** 2026-04-01
+> **Last Updated:** 2026-06-19
 >
-> Kang & Eom, Learn R Data Analysis on Your Own (Hanbit Media) Ch 9
+> Learn R Data Analysis on Your Own, Kang & Eom (Hanbit Media) - Ch 9
 
 > **Prerequisites**: [Programming Language] R programming (Ch 1-8). [Statistics] Regression analysis (Ch 7).
 >
