@@ -22,11 +22,11 @@ library(ggplot2)
 # 1. GEOGRAPHIC DATA VISUALIZATION
 # =============================================================================
 
-# --- 1.1 Load US state shapefile ---
-USMap <- st_read("data/cb_2024_us_state_5m.shp")
+# --- 1.1 Load US state shapefile (data files are in the HW02 folder) ---
+USMap <- st_read("../HW02_Advanced-Visualization/data/cb_2024_us_state_5m.shp")
 
 # --- 1.2 Load literacy rates data ---
-litRates <- read.csv("data/us_literacy_rates_by_state_2025.csv")
+litRates <- read.csv("../HW02_Advanced-Visualization/data/us_literacy_rates_by_state_2025.csv")
 str(litRates)
 head(litRates)
 

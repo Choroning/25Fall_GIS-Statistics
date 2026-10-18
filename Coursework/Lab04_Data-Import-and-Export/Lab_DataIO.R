@@ -34,7 +34,7 @@ help(read.table)
 # =============================================================================
 
 # Read a CSV file (header = TRUE means first row contains column names)
-# Use relative path from project root directory
+# Paths are relative to this folder, so set it as the working directory
 ex_data <- read.csv("data/data_ex.csv", header = TRUE)
 View(ex_data)
 

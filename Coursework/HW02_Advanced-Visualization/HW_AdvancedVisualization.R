@@ -1,4 +1,4 @@
-# @file    Lab_AdvancedVisualization.R
+# @file    HW_AdvancedVisualization.R
 # @brief   Advanced ggplot2 visualizations including grouped charts,
 #          distribution plots, faceting, GIS maps, and time-based charts
 # @author  Cheolwon Park
@@ -79,7 +79,7 @@ ggplot(mpg,
        aes(x = cty, y = class, fill = class)) +
   geom_density_ridges() +
   theme_ridges() +
-  labs(title = "Highway mileage by auto class") +
+  labs(title = "City mileage by auto class") +
   theme(legend.position = "none")
 
 

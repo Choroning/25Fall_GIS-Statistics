@@ -1,29 +1,50 @@
-# Chapter 03 — Functions and Control Flow
+# Chapter 3 — Functions and Control Flow
 
-> **Last Updated:** 2026-06-19
->
-> Learn R Data Analysis on Your Own, Kang & Eom (Hanbit Media) - Ch 3
+[Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Prerequisites**: [Programming Language] R data structures (Ch 1-2).
+> **Last Updated:** 2026-10-18
 >
-> **Learning Objectives**:
+> 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 3
+
+> **Learning Objectives:**
 > 1. Write custom functions in R with proper parameter handling
-> 2. Apply control flow structures (if/else, for, while, apply family)
+> 2. Apply control flow structures (if/else, for, while)
 > 3. Use built-in R functions effectively for data manipulation
 
 ---
 
 ## Table of Contents
 
-1. [Variables and Functions](#1-variables-and-functions)
-2. [Output Functions](#2-output-functions)
-3. [User-Defined Functions](#3-user-defined-functions)
-4. [Packages](#4-packages)
-5. [Tibbles](#5-tibbles)
-6. [Operators](#6-operators)
-7. [Conditional Statements](#7-conditional-statements)
-8. [Loops](#8-loops)
-9. [Summary](#summary)
+- [1. Variables and Functions](#1-variables-and-functions)
+  - [1.1 Basic Variable Assignment](#11-basic-variable-assignment)
+  - [1.2 Built-in Functions](#12-built-in-functions)
+- [2. Output Functions](#2-output-functions)
+  - [2.1 print() vs. cat()](#21-print-vs-cat)
+- [3. User-Defined Functions](#3-user-defined-functions)
+  - [3.1 Function Syntax](#31-function-syntax)
+  - [3.2 Example: Multiplication Function](#32-example-multiplication-function)
+  - [3.3 Example: Rescale Function](#33-example-rescale-function)
+  - [3.4 When to Write a Function](#34-when-to-write-a-function)
+- [4. Packages](#4-packages)
+  - [4.1 Installing and Loading Packages](#41-installing-and-loading-packages)
+  - [4.2 Common Packages Used in This Course](#42-common-packages-used-in-this-course)
+- [5. Tibbles](#5-tibbles)
+  - [5.1 Tibble vs. Data Frame](#51-tibble-vs-data-frame)
+  - [5.2 Manual Normalization (Without Functions)](#52-manual-normalization-without-functions)
+  - [5.3 Handling NA Values](#53-handling-na-values)
+- [6. Operators](#6-operators)
+  - [6.1 Arithmetic Operators](#61-arithmetic-operators)
+  - [6.2 Relational (Comparison) Operators](#62-relational-comparison-operators)
+  - [6.3 Logical Operators](#63-logical-operators)
+  - [6.4 Vectorized Comparisons](#64-vectorized-comparisons)
+- [7. Conditional Statements](#7-conditional-statements)
+  - [7.1 if-else Syntax](#71-if-else-syntax)
+  - [7.2 Example: Quadratic Formula Solver](#72-example-quadratic-formula-solver)
+- [8. Loops](#8-loops)
+  - [8.1 For Loop](#81-for-loop)
+  - [8.2 While Loop](#82-while-loop)
+- [Summary](#summary)
+- [Self-Check Questions](#self-check-questions)
 
 ---
 
@@ -40,7 +61,7 @@ y <- "HI"      # Assign character value
 
 ### 1.2 Built-in Functions
 
-R provides many built-in functions for common operations:
+R provides many built-in functions for common operations.
 
 ```r
 print("Hello World")   # Output a value to the console
@@ -63,6 +84,8 @@ Sys.Date()              # Get current system date
 | `print()` | Outputs one object at a time, includes type formatting |
 | `cat()` | Concatenates and outputs multiple objects, plain text |
 
+*Table 1. Behavior of print() and cat()*
+
 ```r
 x <- c(1, 2, 3)
 y <- "a"
@@ -77,6 +100,8 @@ cat(x, y)             # 1 2 3 a (plain text, no formatting)
 cat("Value:", x, "\n") # Supports newline characters
 ```
 
+`print(x, y)` raises an error because the second argument of `print()` is interpreted not as an object to print but as the number of significant digits (`digits`).
+
 > **Key Point:** Use `print()` for formatted output of single objects. Use `cat()` when you need to combine multiple values or include custom formatting with `\n` (newline).
 
 ---
@@ -87,12 +112,12 @@ cat("Value:", x, "\n") # Supports newline characters
 
 ### 3.1 Function Syntax
 
-A user-defined function has four components:
+A user-defined function has four components.
 
-1. **Function name**: stored in R environment, used to call the function
-2. **Parameters**: input variables passed when the function is called
-3. **Function body**: the code that implements the function's logic
-4. **Return value**: the result produced by the function
+1. **Function name:** It is stored in the R environment and used to call the function.
+2. **Parameters:** They are the input variables passed when the function is called.
+3. **Function body:** It is the code that implements the logic of the function.
+4. **Return value:** It is the result produced by the function.
 
 ```r
 # General syntax
@@ -119,7 +144,7 @@ a                    # 90
 
 ### 3.3 Example: Rescale Function
 
-A practical example that normalizes values to the [0, 1] range:
+The following practical example normalizes values to the [0, 1] range.
 
 ```r
 rescale <- function(x) {
@@ -132,16 +157,20 @@ rescale(c(0, 5, 10))               # 0.0 0.5 1.0
 rescale(c(0, 5, 10, NA, NA))       # 0.0 0.5 1.0 NA NA
 ```
 
+`range()` returns a vector of length 2 that holds the minimum and the maximum, and it ignores `NA` when `na.rm = TRUE`. `rescale()` has no `return()`, but an R function returns the value of the last evaluated expression, so the result of `(x - rng[1]) / (rng[2] - rng[1])` becomes the return value.
+
+> **Caution:** If all values are equal, `rng[2] - rng[1]` is 0 and the function computes 0 / 0, so `rescale(c(5, 5, 5))` returns `NaN NaN NaN`.
+
 ### 3.4 When to Write a Function
 
-According to the "Rule of Three" (from *R for Data Science*):
+On when to write a function, *R for Data Science* gives the following rule of thumb, often called the **Rule of Three**.
 
-> You should consider writing a function whenever you've copied and pasted a block of code more than twice.
+In the words of the book, "You should consider writing a function whenever you've copied and pasted a block of code more than twice."
 
-Three key steps to creating a function:
-1. Pick a descriptive **name** for the function
-2. List the **arguments** (inputs) inside `function()`
-3. Place the working code in the **body** (the `{ }` block)
+The three key steps to creating a function are as follows.
+1. Pick a descriptive **name** for the function.
+2. List the **arguments** (inputs) inside `function()`.
+3. Place the working code in the **body** (the `{ }` block).
 
 > **Key Point:** It is easier to start with working code and then turn it into a function, rather than creating a function first and then trying to make it work.
 
@@ -174,6 +203,8 @@ require(graphics)
 | `dplyr` | Data manipulation |
 | `nycflights13` | Practice dataset (NYC flights) |
 
+*Table 2. Common packages and their purposes*
+
 ---
 
 <br>
@@ -182,7 +213,7 @@ require(graphics)
 
 ### 5.1 Tibble vs. Data Frame
 
-Tibbles are a modern reimagining of data frames from the `tibble` package. They are part of the `tidyverse` ecosystem.
+A **tibble** is a modern reimagining of the data frame from the `tibble` package, and it is part of the `tidyverse` ecosystem.
 
 ```r
 # Create a tibble with random normal data
@@ -195,9 +226,11 @@ df <- tibble::tibble(
 df
 ```
 
+`rnorm(10)` generates 10 random numbers from the standard normal distribution, so `df` is a tibble with 10 rows and 4 columns.
+
 ### 5.2 Manual Normalization (Without Functions)
 
-Repetitive code that motivates the need for functions:
+The following repetitive code motivates the need for functions.
 
 ```r
 # Normalize each column to [0, 1] range (verbose approach)
@@ -208,7 +241,7 @@ df$b <- (df$b - min(df$b, na.rm = TRUE)) /
 # ... repeated for each column
 ```
 
-This repetitive pattern is exactly why we should create a `rescale()` function.
+This repetitive pattern is exactly the reason to create a `rescale()` function.
 
 ### 5.3 Handling NA Values
 
@@ -219,7 +252,9 @@ min(a2)                   # NA (any operation with NA returns NA)
 min(a2, na.rm = TRUE)     # 2 (na.rm = TRUE ignores NA values)
 ```
 
-> **Key Point:** Always use `na.rm = TRUE` when calculating summary statistics on data that may contain missing values (`NA`).
+Most operations that involve `NA` return `NA`, but operations whose result does not depend on the actual value of `NA`, such as `NA^0` (result 1) and `TRUE | NA` (result `TRUE`), are exceptions.
+
+> **Key Point:** To calculate summary statistics while excluding missing values (`NA`) from data that may contain them, set `na.rm = TRUE`.
 
 ---
 
@@ -239,6 +274,8 @@ min(a2, na.rm = TRUE)     # 2 (na.rm = TRUE ignores NA values)
 | `%%` | Modulo (remainder) | `20 %% 7` -> `6` |
 | `^` or `**` | Exponentiation | `6 ^ 2` -> `36` |
 
+*Table 3. Arithmetic operators*
+
 ### 6.2 Relational (Comparison) Operators
 
 | Operator | Meaning | Example | Result |
@@ -251,7 +288,13 @@ min(a2, na.rm = TRUE)     # 2 (na.rm = TRUE ignores NA values)
 | `!=` | Not equal to | `5 != 5` | `FALSE` |
 | `!` | Logical NOT | `!5` | `FALSE` |
 
+*Table 4. Relational operators and the logical negation operator*
+
+The last row of Table 4, `!`, is a logical operator rather than a relational operator. R treats any nonzero number as `TRUE`, so `!5` is `FALSE`.
+
 ### 6.3 Logical Operators
+
+`&` and `|` compute AND and OR between the elements at the same position of two logical vectors.
 
 ```r
 x <- 1:3
@@ -312,7 +355,20 @@ if (discrim > 0) {
 show(roots)
 ```
 
-> **Key Point:** In R, the opening brace `{` must be on the same line as the `if`/`else` keyword. The `else` must also be on the same line as the closing brace `}` of the previous block.
+```mermaid
+flowchart TD
+    A["discrim = a1^2 - 4*a2*a0"] --> B{"discrim > 0 ?"}
+    B -->|TRUE| C["Two distinct real roots"]
+    B -->|FALSE| D{"discrim == 0 ?"}
+    D -->|TRUE| E["Double root -a1 / (2*a2)"]
+    D -->|FALSE| F["No real roots (empty vector)"]
+```
+
+*Figure 1. if-else branches by the sign of the discriminant*
+
+With the coefficients above, the discriminant is $4^2 - 4 \cdot 1 \cdot 0 = 16 > 0$, so the first branch runs and computes the two roots 0 and -4, and `show(roots)` prints `[1]  0 -4`.
+
+> **Key Point:** At the top level of the console or a script, `else` must be on the same line as the closing brace `}` of the previous block. If a line ends at `}`, R treats the `if` statement as complete and reports the `else` on the next line as a syntax error. In an `if` statement inside a braced block, such as a function body, `else` on the next line also works, and placing the opening brace `{` on the same line as `if` or `else` is a common style convention rather than a syntax requirement.
 
 ---
 
@@ -334,7 +390,7 @@ for (x in x_list) {
 ```
 
 **Output:**
-```
+```text
 The current loop element is  1
 The cumulative total is  1
 The current loop element is  3
@@ -343,6 +399,8 @@ The cumulative total is  4
 The current loop element is  9
 The cumulative total is  25
 ```
+
+The `...` in the output omits the iterations for the elements 5 and 7. `cat()` inserts one space between its arguments, so together with the space at the end of the string, two spaces appear before each number.
 
 ### 8.2 While Loop
 
@@ -354,20 +412,80 @@ while (counter <= 5) {
 }
 ```
 
+`while` repeats its body as long as the condition is `TRUE`, so the code above prints five lines from `Counter: 1` to `Counter: 5`. If the body did not increase `counter`, the condition would stay `TRUE` and the loop would never end.
+
 ---
 
 <br>
 
 ## Summary
 
-| Concept | Key Point |
+| Concept | Key Summary |
 |---------|-----------|
-| `print()` vs `cat()` | `print()` for single formatted objects; `cat()` for concatenated plain text |
-| User-defined functions | Name + parameters + body + return value; write when code is repeated 3+ times |
-| Packages | `install.packages()` to install; `library()` to load |
-| Tibbles | Modern data frames; part of tidyverse |
-| NA handling | Use `na.rm = TRUE` in summary functions |
-| Operators | Arithmetic (`+`, `%%`), relational (`>`, `==`), logical (`&`, `\|`) |
-| if-else | Conditional execution; brace placement matters |
-| for loop | Iterate over elements of a vector or list |
-| `rescale()` | Example of DRY principle: write functions to avoid repetitive code |
+| `print()` vs `cat()` | `print()` prints a single object with formatting, and `cat()` concatenates several values into plain text. |
+| User-defined functions | A user-defined function consists of a name, parameters, a body, and a return value, and it is worth writing when the same code is repeated three or more times. |
+| Packages | A package is installed with `install.packages()` and loaded with `library()`. |
+| Tibbles | A tibble is a modern data frame that belongs to the tidyverse. |
+| NA handling | Setting `na.rm = TRUE` in summary functions excludes missing values from the calculation. |
+| Operators | R has arithmetic (`+`, `%%`), relational (`>`, `==`), and logical (`&`, `\|`) operators. |
+| if-else | if-else chooses the code to run by a condition, and at the top level `else` must be on the same line as `}`. |
+| for loop | A for loop takes the elements of a vector or list one by one and repeats its body. |
+| `rescale()` | `rescale()` is an example of the DRY (Don't Repeat Yourself) principle, which wraps repetitive code in a function. |
+
+---
+
+<br>
+
+## Self-Check Questions
+
+1. **Tracing a function:** For `rescale()` in Section 3.3, give the line that `rescale(c(2, 4, 10))` prints to the console and its return value. Also give the result of `rescale(c(5, 5, 5))` and the reason.
+
+   <details>
+   <summary>Answer</summary>
+
+   The range is 2 to 10, so `The range is  2 10` is printed first. Subtracting 2 from each value and dividing by 10 - 2 = 8 gives 0 / 8 = 0, 2 / 8 = 0.25, and 8 / 8 = 1, so the return value is 0.00, 0.25, 1.00. For `rescale(c(5, 5, 5))`, the minimum and maximum are both 5, so the denominator is 0 and the function computes 0 / 0, which returns `NaN NaN NaN`.
+
+   </details>
+
+2. **Handling missing values:** For `a <- c(3, NA, 7, 1)`, give the results of `max(a)`, `max(a, na.rm = TRUE)`, and `sum(a, na.rm = TRUE)`.
+
+   <details>
+   <summary>Answer</summary>
+
+   `max(a)` is `NA` because the maximum cannot be determined when `NA` is present. With `na.rm = TRUE`, the calculation uses 3, 7, 1 without `NA`, so `max()` is 7 and `sum()` is 3 + 7 + 1 = 11.
+
+   </details>
+
+3. **Operators:** Give the results of `10 %/% 3`, `10 %% 3`, and `(1:4 > 2) & (4:1 > 1)`.
+
+   <details>
+   <summary>Answer</summary>
+
+   Since 10 = 3 × 3 + 1, `10 %/% 3` is 3 and `10 %% 3` is 1. `1:4 > 2` is `FALSE FALSE TRUE TRUE` and `4:1 > 1` is `TRUE TRUE TRUE FALSE`, so the element-wise AND is `FALSE FALSE TRUE FALSE`.
+
+   </details>
+
+4. **Conditional statements:** In the code of Section 7.2, what does `roots` become if the coefficients are changed to `a2 <- 1`, `a1 <- -5`, and `a0 <- 6`? What about `a2 <- 1`, `a1 <- 2`, and `a0 <- 1`?
+
+   <details>
+   <summary>Answer</summary>
+
+   In the first case, the discriminant is $(-5)^2 - 4 \cdot 1 \cdot 6 = 1 > 0$, so the first branch runs, and the two roots are (5 + 1) / 2 = 3 and (5 - 1) / 2 = 2, so `roots` is `c(3, 2)`. In the second case, the discriminant is $2^2 - 4 \cdot 1 \cdot 1 = 0$, so the `else if` branch runs, and `roots` is -2 / 2 = -1.
+
+   </details>
+
+5. **Tracing a loop:** Give the value of `s` and the number of times the body runs after the following code is executed.
+
+   ```r
+   s <- 0
+   for (i in seq(2, 10, by = 4)) {
+     s <- s + i
+   }
+   ```
+
+   <details>
+   <summary>Answer</summary>
+
+   `seq(2, 10, by = 4)` is 2, 6, 10, so the body runs 3 times, and `s` is 2 + 6 + 10 = 18.
+
+   </details>

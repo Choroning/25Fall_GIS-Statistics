@@ -1,12 +1,12 @@
-# Chapter 02 — Data Structures in R
+# Chapter 2 — Data Structures in R
 
-> **Last Updated:** 2026-06-19
->
-> Learn R Data Analysis on Your Own, Kang & Eom (Hanbit Media) - Ch 2
+[Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Prerequisites**: [Programming Language] R basics (Ch 1).
+> **Last Updated:** 2026-10-18
 >
-> **Learning Objectives**:
+> 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 2
+
+> **Learning Objectives:**
 > 1. Create and manipulate vectors, lists, and data frames
 > 2. Apply indexing and subsetting operations
 > 3. Convert between different R data structures
@@ -15,14 +15,39 @@
 
 ## Table of Contents
 
-1. [Vectors](#1-vectors)
-2. [Matrices](#2-matrices)
-3. [Arrays](#3-arrays)
-4. [Lists](#4-lists)
-5. [Data Frames](#5-data-frames)
-6. [Factors](#6-factors)
-7. [Type Checking and Conversion](#7-type-checking-and-conversion)
-8. [Summary](#summary)
+- [1. Vectors](#1-vectors)
+  - [1.1 Creating Vectors](#11-creating-vectors)
+  - [1.2 Vector Properties](#12-vector-properties)
+  - [1.3 Vector Operations](#13-vector-operations)
+- [2. Matrices](#2-matrices)
+  - [2.1 Creating Matrices](#21-creating-matrices)
+  - [2.2 Matrix Indexing](#22-matrix-indexing)
+  - [2.3 Checking and Converting to Matrix](#23-checking-and-converting-to-matrix)
+- [3. Arrays](#3-arrays)
+  - [3.1 Creating Arrays](#31-creating-arrays)
+  - [3.2 Array vs. Matrix](#32-array-vs-matrix)
+- [4. Lists](#4-lists)
+  - [4.1 Creating Lists](#41-creating-lists)
+  - [4.2 Named Lists](#42-named-lists)
+  - [4.3 Mixed-Type Storage](#43-mixed-type-storage)
+  - [4.4 Nested Lists](#44-nested-lists)
+- [5. Data Frames](#5-data-frames)
+  - [5.1 Creating Data Frames](#51-creating-data-frames)
+  - [5.2 Inspecting Data Frames](#52-inspecting-data-frames)
+  - [5.3 Accessing Columns](#53-accessing-columns)
+  - [5.4 Alternative: data.frame() Inline Construction](#54-alternative-dataframe-inline-construction)
+- [6. Factors](#6-factors)
+  - [6.1 What are Factors?](#61-what-are-factors)
+  - [6.2 Factors vs. Character Vectors](#62-factors-vs-character-vectors)
+  - [6.3 Factor Behavior with Arithmetic](#63-factor-behavior-with-arithmetic)
+  - [6.4 Case Sensitivity in Factors](#64-case-sensitivity-in-factors)
+- [7. Type Checking and Conversion](#7-type-checking-and-conversion)
+  - [7.1 Checking Types](#71-checking-types)
+  - [7.2 Type Conversion Functions](#72-type-conversion-functions)
+  - [7.3 Built-in Datasets](#73-built-in-datasets)
+- [8. Comparison of Data Structures](#8-comparison-of-data-structures)
+- [Summary](#summary)
+- [Self-Check Questions](#self-check-questions)
 
 ---
 
@@ -70,7 +95,7 @@ x + 2               # 3, 4, 5 (element-wise addition)
 x * 3               # 3, 6, 9 (element-wise multiplication)
 ```
 
-> **Key Point:** R operations on vectors are **vectorized** — they automatically apply to each element without needing explicit loops.
+> **Key Point:** R operations on vectors are **vectorized**, so they automatically apply to each element without needing explicit loops.
 
 ---
 
@@ -119,7 +144,7 @@ is.matrix(a2)              # TRUE
 is.matrix(as.matrix(1:10)) # TRUE
 ```
 
-> **Key Point:** By default, R fills matrices column-by-column (column-major order). Use `byrow = TRUE` to fill row-by-row.
+> **Key Point:** By default, R fills matrices column by column (column-major order). Use `byrow = TRUE` to fill row by row.
 
 ---
 
@@ -129,7 +154,7 @@ is.matrix(as.matrix(1:10)) # TRUE
 
 ### 3.1 Creating Arrays
 
-Arrays extend matrices to more than two dimensions.
+Arrays generalize matrices to any number of dimensions, and a two-dimensional array is a matrix.
 
 ```r
 y <- c(1, 2, 3, 4, 5, 6)
@@ -138,10 +163,24 @@ y <- c(1, 2, 3, 4, 5, 6)
 array(y, dim = c(2, 2, 3))
 ```
 
-The `dim` argument specifies the dimensions:
-- First value: number of rows
-- Second value: number of columns
-- Third value: number of layers (depth)
+The `dim` argument specifies the dimensions.
+- The first value is the number of rows.
+- The second value is the number of columns.
+- The third value is the number of layers (depth).
+
+The array above has 2 × 2 × 3 = 12 cells, but `y` has only 6 elements, so R reuses `y` from the beginning to fill the remaining cells. This is called **recycling**. Each layer is filled in column-major order, like a matrix.
+
+```text
+          Layer 1        Layer 2        Layer 3
+         col1 col2      col1 col2      col1 col2
+        ┌────┬────┐    ┌────┬────┐    ┌────┬────┐
+ row 1  │  1 │  3 │    │  5 │  1 │    │  3 │  5 │
+        ├────┼────┤    ├────┼────┤    ├────┼────┤
+ row 2  │  2 │  4 │    │  6 │  2 │    │  4 │  6 │
+        └────┴────┘    └────┴────┘    └────┴────┘
+```
+
+*Figure 1. Three layers of a 2 × 2 × 3 array filled by recycling six elements*
 
 ### 3.2 Array vs. Matrix
 
@@ -177,6 +216,8 @@ str(list1)
 ```
 
 ### 4.2 Named Lists
+
+`cars` is a data frame built into R (Section 7.3), and `cars[,1]` and `cars[,2]` are its speed (`speed`) and stopping distance (`dist`) columns.
 
 ```r
 pts <- list(x = cars[,1], y = cars[,2])
@@ -259,7 +300,7 @@ x1 <- data.frame(
 class(x1)  # "data.frame"
 ```
 
-> **Key Point:** Data frames are the workhorse of data analysis in R. Each column is a variable, each row is an observation — matching the standard tidy data format.
+> **Key Point:** Data frames are the workhorse of data analysis in R. Each column is a variable and each row is an observation, which matches the standard tidy data format.
 
 ---
 
@@ -321,7 +362,9 @@ table(blood)
 # Note: "a" and "o" are excluded because they don't match any level
 ```
 
-> **Key Point:** Factors store data internally as integers with associated level labels. They cannot be used in arithmetic operations directly — you must convert them to numeric first with `as.numeric()`.
+Values that are not in the list of levels become `NA`, and `table()` does not count `NA` by default, so they are left out of the frequency table.
+
+> **Key Point:** Factors store data internally as integer codes with associated level labels. They cannot be used in arithmetic operations directly, so they must first be converted to numeric. Here `as.numeric()` returns the internal integer codes rather than the level labels, so use `as.numeric(as.character(x))` when the numbers that the labels represent are needed. In the example of Section 6.3, the levels are 1, 2, and 3, so the two results coincide.
 
 ---
 
@@ -354,9 +397,11 @@ class(factor("A"))         # "factor"
 | `as.matrix()` | Matrix |
 | `as.data.frame()` | Data frame |
 
+*Table 1. Type conversion functions and their target types*
+
 ### 7.3 Built-in Datasets
 
-R includes many built-in datasets for practice:
+R includes many built-in datasets for practice.
 
 ```r
 data()         # List all available datasets
@@ -366,11 +411,15 @@ airquality     # Air quality measurements in New York
 economics      # US economic time series data
 ```
 
+> **Caution:** `economics` is not part of base R but a dataset in the `ggplot2` package, so it is available only after the package is loaded with `library(ggplot2)`.
+
 ---
 
 <br>
 
-## Summary
+## 8. Comparison of Data Structures
+
+Table 2 compares the six data structures covered above by dimensions, allowed types, and key function.
 
 | Data Structure | Dimensions | Types Allowed | Key Function |
 |---------------|------------|---------------|--------------|
@@ -381,11 +430,70 @@ economics      # US economic time series data
 | Data Frame | 2D | Different types per column | `data.frame()` |
 | Factor | 1D | Categorical levels | `factor()` |
 
-| Concept | Key Point |
+*Table 2. Dimensions, allowed types, and key functions of R data structures*
+
+---
+
+<br>
+
+## Summary
+
+| Concept | Key Summary |
 |---------|-----------|
-| Vectors | Fundamental 1D structure; all elements same type |
-| Matrices | 2D; default fill is column-major (use `byrow = TRUE` for row-major) |
-| Lists | Only structure that can hold mixed types and lengths |
-| Data Frames | Tabular data (rows = observations, columns = variables) |
-| Factors | Categorical data with fixed levels; not directly usable in arithmetic |
-| `$` Operator | Access named elements in data frames and lists |
+| Vectors | A vector is the fundamental 1D structure of R, and all of its elements have the same type. |
+| Matrices | A matrix is a 2D structure that is filled in column-major order by default and in row-major order with `byrow = TRUE`. |
+| Lists | A list is the only structure that can hold elements of mixed types and lengths together. |
+| Data Frames | A data frame holds tabular data in which rows are observations and columns are variables. |
+| Factors | A factor holds categorical data with fixed levels and cannot be used directly in arithmetic. |
+| `$` Operator | The `$` operator accesses named elements in data frames and lists. |
+
+---
+
+<br>
+
+## Self-Check Questions
+
+1. **Matrix fill order:** Give the elements of row 2 of `matrix(1:6, nrow = 3)` and of `matrix(1:6, nrow = 3, byrow = TRUE)`.
+
+   <details>
+   <summary>Answer</summary>
+
+   Filling in column-major order makes the first column of the 3 × 2 matrix 1, 2, 3 and the second column 4, 5, 6, so row 2 is 2, 5. With `byrow = TRUE`, the rows are filled with (1, 2), (3, 4), and (5, 6), so row 2 is 3, 4.
+
+   </details>
+
+2. **Array elements:** Find the value of element `[1, 2, 2]` of `array(1:6, dim = c(2, 2, 3))`.
+
+   <details>
+   <summary>Answer</summary>
+
+   Layer 1 receives 1, 2, 3, 4 in column-major order, and layer 2 receives 5, 6 followed by 1, 2 recycled from the beginning. The cells of layer 2 are filled in the order [1, 1], [2, 1], [1, 2], [2, 2], so `[1, 2, 2]` is the third value of that layer, 1 (Figure 1).
+
+   </details>
+
+3. **Converting a factor to numbers:** For `f <- factor(c(10, 20, 10, 30))`, find the results of `mean(as.numeric(f))` and `mean(as.numeric(as.character(f)))`.
+
+   <details>
+   <summary>Answer</summary>
+
+   The levels are `"10"`, `"20"`, and `"30"`, and the internal codes are 1, 2, 1, 3. `as.numeric(f)` returns the codes, so the mean is (1 + 2 + 1 + 3) / 4 = 1.75. `as.character(f)` returns the labels `"10"`, `"20"`, `"10"`, `"30"`, which become 10, 20, 10, 30 as numbers, so the mean is 70 / 4 = 17.5.
+
+   </details>
+
+4. **Data frame access:** For `dataframe_ex` in Section 5.1, give the results of `dataframe_ex[2, 3]`, `mean(dataframe_ex$AGE)`, and `nrow(dataframe_ex)`.
+
+   <details>
+   <summary>Answer</summary>
+
+   Column 3 is AGE, so `dataframe_ex[2, 3]` is the age in the second row, 40. AGE is 50, 40, 28, 50, 27 with a sum of 195, so the mean is 195 / 5 = 39. There are five rows, so `nrow()` is 5.
+
+   </details>
+
+5. **Choosing a structure:** Which data structure should be used to hold a numeric vector of length 3 and a character vector of length 5 in one object? Explain why a data frame cannot be used, and give the `length()` of the object.
+
+   <details>
+   <summary>Answer</summary>
+
+   A list should be used. A data frame allows a different type in each column, but all columns must have the same length, so `data.frame(1:3, c("a", "b", "c", "d", "e"))` raises an error because the numbers of rows, 3 and 5, differ. The `length()` of `list(1:3, c("a", "b", "c", "d", "e"))` is the number of elements, 2.
+
+   </details>
