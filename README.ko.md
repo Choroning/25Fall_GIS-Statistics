@@ -3,9 +3,9 @@
 ![Last Commit](https://img.shields.io/github/last-commit/Choroning/25Fall_GIS-Statistics)
 ![Languages](https://img.shields.io/github/languages/top/Choroning/25Fall_GIS-Statistics)
 
-이 레포지토리는 대학 강의 및 과제를 위해 작성된 R 예제 및 실습 코드를 체계적으로 정리하고 보관합니다.
+이 레포지토리는 글로벌정보사회와 통계의 창의적 기능 과목의 이중 언어 강의 노트와 수업 결과물을 정리한 아카이브입니다.
 
-*작성자: 박철원 (고려대학교(세종), 컴퓨터융합소프트웨어학과) - 2025년 기준 2학년*
+*작성자: 박철원 (고려대학교(세종), 컴퓨터소프트웨어학과) - 2025년 기준 2학년*
 <br><br>
 
 ## 📑 목차
@@ -22,12 +22,14 @@
 <br><a name="about-this-repository"></a>
 ## 📝 레포지토리 소개
 
-이 레포지토리에는 대학 수준의 R을 활용한 통계 과목을 위해 작성된 코드가 포함되어 있습니다:
+- `Lecture-Notes/`에는 장별 강의 노트(`Ch01`\~`Ch09`)가 있습니다.
+- `Coursework/`에는 장별 R 실습 코드(`Lab##`)와 2차 과제 코드(`HW02`)가 있으며, 샘플 데이터셋은 각 항목의 `data/`에 있습니다.
+- 모든 강의 노트는 영어(`.md`)와 한국어(`.ko.md`) 파일이 짝을 이룹니다.
+- R 코드 파일에는 **Doxygen 스타일 헤더**가 있습니다.
 
-- 각 챕터별 통계 기법 및 R 프로그래밍을 종합적으로 정리한 **Concepts.md** 파일
-- 목적, 사용법, 구조를 문서화한 **Doxygen 스타일 헤더** 가 포함된 개선된 R 코드 파일
-- 강의 시연 코드 및 과제 솔루션
-- 실습에 사용된 샘플 데이터셋(CSV, TXT, US Census shapefile)이 포함된 **data/** 디렉토리
+> **🤖 AI 에이전트 활용**
+> 이 과목은 과제에서 생성형 AI의 결과를 그대로 베끼는 것을 감점했습니다.
+> [Claude Code](https://claude.ai/download)를 노트 정리와 번역, 레포지토리 정리에 활용했습니다.
 
 <br><a name="course-information"></a>
 ## 📚 강의 정보
@@ -39,19 +41,16 @@
 |:----------:|:-------|:----:|:------:|:----------------|
 |`GSQR026-00`|글로벌정보사회와통계의창의적기능|핵심교양|김희영 교수|세종교양교육원|
 
-- **📖 참고 자료**
+### 과목 개요
 
-| 유형 | 내용 |
-|:----:|:---------|
-|교재|혼자 공부하는 R 데이터 분석(강전희, 엄동란, 한빛미디어)|
-|기타|교수자 제공 강의자료|
+통계학을 처음 접하는 학생을 위한 핵심교양 과목으로, R로 데이터를 요약하고 그래프를 만들며 통계 분석을 익힌다. 교수자, 수업 일정, 평가, 수업 운영 규정, 진도는 [강의 정보 문서](Course-Information.ko.md)에 정리했다.
 
 <br><a name="prerequisites"></a>
 ## ✅ 사전 요구사항
 
 - 통계 개념에 대한 기본적인 이해
 - R 인터프리터 설치
-- 커맨드 라인 툴 또는 IDE 사용에 익숙함
+- 커맨드 라인 도구나 IDE 사용에 익숙함
 
 - **💻 개발 환경**
 
@@ -65,53 +64,23 @@
 
 ```plaintext
 25Fall_GIS-Statistics
-├── Chapter01_Introduction
-│   └── Concepts.md
-├── Chapter02_Data-Structures
-│   ├── Concepts.md
-│   └── Lab_DataStructures.R
-├── Chapter03_Functions-and-Control-Flow
-│   ├── Concepts.md
-│   └── Lab_FunctionsAndControlFlow.R
-├── Chapter04_Data-Import-and-Export
-│   ├── Concepts.md
-│   └── Lab_DataIO.R
-├── Chapter05_Data-Visualization-with-ggplot2
-│   ├── Concepts.md
-│   └── Lab_Visualization.R
-├── Chapter06_Advanced-Visualization
-│   ├── Concepts.md
-│   └── Lab_AdvancedVisualization.R
-├── Chapter07_Regression-Analysis
-│   ├── Concepts.md
-│   └── Lab_RegressionAnalysis.R
-├── Chapter08_Time-Series-Analysis
-│   ├── Concepts.md
-│   └── Lab_TimeSeriesAnalysis.R
-├── Chapter09_Logistic-Regression
-│   ├── Concepts.md
-│   └── Lab_LogisticRegression.R
-├── data
-│   ├── cb_2024_us_state_5m.cpg
-│   ├── cb_2024_us_state_5m.dbf
-│   ├── cb_2024_us_state_5m.prj
-│   ├── cb_2024_us_state_5m.shp
-│   ├── cb_2024_us_state_5m.shx
-│   ├── data_ex-1.txt
-│   ├── data_ex-2.txt
-│   ├── data_ex.csv
-│   ├── data_ex_col.txt
-│   └── us_literacy_rates_by_state_2025.csv
-├── LICENSE
+├── Lecture-Notes               장별 강의 노트
+├── Coursework                  장별 실습 R 코드와 과제 코드
+├── Course-Information.ko.md    수업 운영 정보
+├── Course-Information.md
+├── LICENSE                     문서 라이선스 (CC BY-NC-SA 4.0)
+├── LICENSE-CODE                코드 라이선스 (PolyForm Noncommercial 1.0.0)
 ├── README.ko.md
 └── README.md
-
-10개의 디렉토리, 30개의 파일
 ```
+
+데이터 불러오기 실습용 CSV와 TXT 파일(`data_ex.csv`, `data_ex-1.txt`, `data_ex-2.txt`, `data_ex_col.txt`)은 `Coursework/Lab04_Data-Import-and-Export/data/`에, 미국 인구조사국의 주 경계 shapefile(`cb_2024_us_state_5m.*`)과 주별 문해율 CSV(`us_literacy_rates_by_state_2025.csv`)는 `Coursework/HW02_Advanced-Visualization/data/`에 있습니다. `Lab07`의 지도 코드는 `HW02`의 데이터를 읽습니다.
+
+단원 목록은 [`Lecture-Notes` 색인](Lecture-Notes/README.ko.md)에, 실습 코드와 과제 코드는 [`Coursework` 색인](Coursework/README.ko.md)에 있습니다.
 
 <br><a name="license"></a>
 ## 🤝 라이선스
 
-이 레포지토리는 [MIT License](LICENSE) 하에 배포됩니다.
+이 레포지토리의 문서(강의 노트, 해설, 요약지)는 [CC BY-NC-SA 4.0](LICENSE), 코드는 [PolyForm Noncommercial 1.0.0](LICENSE-CODE)에 따라 배포됩니다. 강의자료와 교재에서 가져온 그림과 예제 코드, 강의가 배포한 과제 원본과 템플릿 코드는 원저작자에게 권리가 있으며 이 라이선스의 대상이 아닙니다.
 
 ---
