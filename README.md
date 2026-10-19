@@ -22,16 +22,14 @@ This repository archives bilingual lecture notes and coursework for the Global I
 <br><a name="about-this-repository"></a>
 ## 📝 About This Repository
 
-This repository contains the lecture notes and R code of a university-level general education statistics course that uses R for data analysis, visualization, and statistical modeling.
-
-- `Lecture-Notes/` holds lecture notes with comprehensive explanations of the statistical methods and R programming of each chapter. The lecture slides follow the textbook chapters, so the units are also numbered by chapter (`Ch##`). `Ch01`-`Ch05` cover the slides for textbook Chapters 1-6, `Ch06` covers Chapters 5-8 of *Modern Data Visualization with R* from Report 2, and `Ch07`-`Ch09` cover regression analysis, time series analysis, and logistic regression, which were taught from slides outside the textbook.
-- Every lecture note comes as an English file (`.md`) and a Korean file (`.ko.md`) with the same structure.
-- `Coursework/` holds R code that organizes the lecture demonstration code and assignment solutions by chapter. The lab code is in `Lab02`-`Lab05` and `Lab07`-`Lab09`, `HW02` is the visualization code written for Report 2, and Report 1, a paper summary report, is not included in this repository.
-- The improved R code files carry **Doxygen-style headers** that document their purpose, usage, and structure.
-- The sample datasets used in the exercises (CSV, TXT, and US Census shapefiles) are in the `data/` folder of the `Coursework` item that uses them. The R code reads the data through paths relative to the folder of the code file, so run it with that folder as the working directory.
+- `Lecture-Notes/` holds a lecture note for each chapter (`Ch01`-`Ch09`).
+- `Coursework/` holds the chapter R lab code (`Lab##`) and the code of Assignment 2 (`HW02`), with sample datasets in each item's `data/`.
+- Every lecture note comes as an English (`.md`) and Korean (`.ko.md`) pair.
+- The R code files carry **Doxygen-style headers**.
 
 > **🤖 AI Agent Usage**
-> The grading criteria of both reports deducted 3 points for copying generative AI output as is. [Claude Code](https://claude.ai/download) was used to organize and translate the lecture notes and to restructure the repository.
+> This course deducted points for copying generative AI output as is in assignments.
+> [Claude Code](https://claude.ai/download) was used to organize and translate the notes and to restructure the repository.
 
 <br><a name="course-information"></a>
 ## 📚 Course Information
@@ -45,15 +43,14 @@ This repository contains the lecture notes and R code of a university-level gene
 
 ### Course Overview
 
-A core liberal arts course for students new to statistics that teaches statistical analysis and graphing with R, summarizing real data and drawing graphs step by step alongside R exercises. Following the textbook *혼자 공부하는 R 데이터 분석* by Jeonhee Kang and Dongran Eom, it covers R data structures and programming, data import and processing, and visualization with ggplot2, and the lecture slides and reports add map visualization, regression analysis, time series analysis, and logistic regression. Excerpts from the designated books *AIQ* (Korean edition *수학의 쓸모*), *Factfulness*, and *Math on Trial* are read together in class. The instructor, schedule and class format, assessment, course policies, weekly plan and progress, and references are in the [course information document](Course-Information.md).
+A core general studies course for students new to statistics, in which students summarize data, draw graphs, and learn statistical analysis with R. The instructors, schedule, assessment, course policies, and progress are in the [course information document](Course-Information.md).
 
 <br><a name="prerequisites"></a>
 ## ✅ Prerequisites
 
-- There is no designated prerequisite course or enrollment requirement.
-- A basic understanding of statistics concepts is required.
-- An R interpreter must be installed.
-- Familiarity with command-line tools or an IDE is required.
+- Basic understanding of statistics concepts
+- R interpreter installed
+- Familiarity with command-line tools or an IDE
 
 - **💻 Development Environment**
 
