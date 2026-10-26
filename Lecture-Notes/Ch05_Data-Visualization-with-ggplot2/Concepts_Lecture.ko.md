@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-18
+> **최종 수정일:** 2026-10-26
 >
 > 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 5, 6
 
@@ -402,6 +402,8 @@ weather %>%
 ```
 
 `planes`의 `tailnum`은 결과가 0행이므로 기본 키이다. `weather`의 (`year`, `month`, `day`, `hour`, `origin`)은 서머타임이 끝난 2013-11-03 1시에 세 공항에서 2행씩 기록되어 3개의 조합이 중복되므로 엄밀한 기본 키가 아니다. 중복된 키로 결합하면 짝이 맞는 행이 키가 중복된 수만큼 복제된다.
+
+> **[데이터베이스]** 관계형 데이터베이스에서 기본 키(primary key)는 테이블의 각 행을 하나로 식별하는 열이나 열의 조합이고, 다른 테이블의 기본 키를 가리키는 열은 외래 키(foreign key)이다. `flights`의 `carrier`는 `airlines`의 기본 키 `carrier`를 가리키는 외래 키에 해당하며, `left_join()`은 SQL의 `LEFT OUTER JOIN`처럼 왼쪽 테이블의 모든 행을 남기고 짝이 없는 행의 오른쪽 열을 `NULL`(R에서는 `NA`)로 채운다.
 
 ---
 

@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-18
+> **Last Updated:** 2026-10-26
 >
 > 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 4
 
@@ -120,7 +120,7 @@ read.csv(
   file,                    # File path (absolute or relative)
   header = TRUE,           # First row is column names
   sep = ",",               # Separator (comma for CSV)
-  stringsAsFactors = FALSE # Don't convert strings to factors
+  stringsAsFactors = FALSE # Do not convert strings to factors
 )
 ```
 

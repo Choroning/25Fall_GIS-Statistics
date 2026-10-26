@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-18
+> **Last Updated:** 2026-10-26
 
 > **Learning Objectives:**
 > 1. Create and convert R date and time classes and `ts` objects
@@ -43,7 +43,7 @@
 - [8. Forecasting](#8-forecasting)
   - [8.1 Making Forecasts](#81-making-forecasts)
   - [8.2 Forecast Accuracy](#82-forecast-accuracy)
-  - [8.3 Recommended References](#83-recommended-references)
+  - [8.3 Recommended Books](#83-recommended-books)
 - [Summary](#summary)
 - [Self-Check Questions](#self-check-questions)
 
@@ -156,7 +156,7 @@ class(time_lt)          # "POSIXlt" "POSIXt"
 
 ```r
 # POSIXct: stored as a single numeric value (seconds since origin)
-unclass(time_ct)        # e.g., 1663317362
+unclass(time_ct)        # e.g., 1764653400
 
 # POSIXlt: stored as a named list
 unclass(time_lt)$sec    # seconds
@@ -284,6 +284,8 @@ The ACF measures the correlation between a time series and its lagged values. Fo
 
 $$\rho(h) = \frac{Cov(X_t, X_{t+h})}{Var(X_t)}$$
 
+> **[Probability and Statistics]** The covariance of two random variables, $Cov(X, Y) = E[(X - \mu_X)(Y - \mu_Y)]$, measures how much the two variables deviate from their own means together, and the correlation coefficient, which divides it by the product of the two standard deviations, lies between -1 and 1. Autocorrelation is the correlation coefficient obtained by treating the two time points $X_t$ and $X_{t+h}$ of the same series as two random variables, and in a stationary series $Var(X_t) = Var(X_{t+h})$, so the product of the two standard deviations becomes the denominator $Var(X_t)$ of the formula above.
+
 ```r
 acf(ts_data)         # Plot ACF
 acf(ts_data, plot = FALSE)  # Get numeric values
@@ -352,7 +354,7 @@ Parameters:
 
 ### 7.2 Box-Jenkins Method
 
-The classical approach to building ARIMA models:
+The classical approach to building an ARIMA model consists of the following four steps.
 
 1. **Identification**: Determine p, d, q using ACF/PACF plots.
 2. **Estimation**: Estimate the model parameters.
@@ -426,7 +428,7 @@ accuracy(fc, test)
 
 Because time order matters in a time series, the data is not split at random; `window()` takes the earlier part as the training set and the later part as the test set. `accuracy()` reports ME, RMSE, MAE, MPE, and MAPE from Chapter 7, plus MASE and others, separately for the training set and the test set.
 
-### 8.3 Recommended References
+### 8.3 Recommended Books
 
 | Book | Author | Focus |
 |------|--------|-------|

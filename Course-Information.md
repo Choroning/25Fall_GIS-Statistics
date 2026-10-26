@@ -2,7 +2,7 @@
 
 [Repository Guide](README.md) | [English](Course-Information.md) | [한국어](Course-Information.ko.md)
 
-> **Last Updated:** 2026-10-18
+> **Last Updated:** 2026-10-26
 
 ## Table of Contents
 
@@ -114,22 +114,22 @@
 
 | Week | Class Dates (Tue, Wed) | Planned Topic | Lecture Decks Covered |
 |:-----|:-----|:-----|:-----|
-| 1 | 9/2, 9/3 | Big Data and R (textbook Ch 1) | Global_Intro_20250902<br>Global_Chap1_20250902<br>Global_Fact_20250903 |
-| 2 | 9/9, 9/10 | Building the Basics for Data Analysis (textbook Ch 2) | Global_Chap2_20250909 |
-| 3 | 9/16, 9/17 | Building the Basics for Data Analysis (textbook Ch 2) | - |
-| 4 | 9/23, 9/24 | Learning R Programming (textbook Ch 3) | Report 1 |
-| 5 | 9/30, 10/1 | Learning R Programming | Global_Chap3_20250916 |
-| 6 | 10/7, 10/8 | Handling Data (textbook Ch 4) | Chuseok holidays, no class |
-| 7 | 10/14, 10/15 | Handling Data, Processing Data (textbook Ch 4, 5) | Global_Chap4_20251014 |
-| 8 | 10/21, 10/22 | Midterm exam | Global_Chap3,4_시험범위만-편집<br>Midterm exam |
-| 9 | 10/28, 10/29 | Processing Data (textbook Ch 5) | Global_Chap5_20251028 |
-| 10 | 11/4, 11/5 | Data Visualization (textbook Ch 6) | Global_법정에 선 수학자_20251105<br>Report 2 |
-| 11 | 11/11, 11/12 | Data Visualization | Global_Chap6_20251111<br>Global_Chap6_Supplementary_20251111<br>Global_법정에 선 수학자_20251112 |
-| 12 | 11/18, 11/19 | Building Skills Through Projects (textbook Ch 7) | Recommend book_Students_global |
-| 13 | 11/25, 11/26 | Building Skills Through Projects (textbook Ch 7) | Announce_20251125 |
-| 14 | 12/2, 12/3 | Building Skills Through Projects (textbook Ch 7) | Global_Reg_20251202<br>Global_TSA_20251202 |
-| 15 | 12/9, 12/10 | Special topics | Agresti_LogisticRegression |
-| 16 | 12/16, 12/17 | Final exam | Final exam |
+| W01 | 9/2, 9/3 | Big Data and R (textbook Ch 1) | Global_Intro_20250902<br>Global_Chap1_20250902<br>Global_Fact_20250903 |
+| W02 | 9/9, 9/10 | Building the Basics for Data Analysis (textbook Ch 2) | Global_Chap2_20250909 |
+| W03 | 9/16, 9/17 | Building the Basics for Data Analysis (textbook Ch 2) | - |
+| W04 | 9/23, 9/24 | Learning R Programming (textbook Ch 3) | Report 1 |
+| W05 | 9/30, 10/1 | Learning R Programming | Global_Chap3_20250916 |
+| W06 | 10/7, 10/8 | Handling Data (textbook Ch 4) | Chuseok holidays, no class |
+| W07 | 10/14, 10/15 | Handling Data, Processing Data (textbook Ch 4, 5) | Global_Chap4_20251014 |
+| W08 | 10/21, 10/22 | Midterm exam | Global_Chap3,4_시험범위만-편집<br>Midterm exam |
+| W09 | 10/28, 10/29 | Processing Data (textbook Ch 5) | Global_Chap5_20251028 |
+| W10 | 11/4, 11/5 | Data Visualization (textbook Ch 6) | Global_법정에 선 수학자_20251105<br>Report 2 |
+| W11 | 11/11, 11/12 | Data Visualization | Global_Chap6_20251111<br>Global_Chap6_Supplementary_20251111<br>Global_법정에 선 수학자_20251112 |
+| W12 | 11/18, 11/19 | Building Skills Through Projects (textbook Ch 7) | Recommend book_Students_global |
+| W13 | 11/25, 11/26 | Building Skills Through Projects (textbook Ch 7) | Announce_20251125 |
+| W14 | 12/2, 12/3 | Building Skills Through Projects (textbook Ch 7) | Global_Reg_20251202<br>Global_TSA_20251202 |
+| W15 | 12/9, 12/10 | Special topics | Agresti_LogisticRegression |
+| W16 | 12/16, 12/17 | Final exam | Final exam |
 
 - The planned topics follow the weekly plan in the syllabus, and the parentheses give the textbook chapter covered that week. The syllabus set the core competencies of weeks 1-7 as creativity and global communication and those of weeks 9-15 as expertise and foresight, and planned lectures and lab exercises as the activities of all of weeks 1-15.
 - Report 1 was announced in week 4 (9/23), and Report 2 in week 10. The contents and grading criteria of both reports are in [Section 3](#3-assessment).

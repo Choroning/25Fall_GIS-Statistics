@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-18
+> **Last Updated:** 2026-10-26
 >
 > 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 2
 
@@ -136,7 +136,7 @@ a[, 2]      # Entire second column
 
 ```r
 a1 <- 1:10
-is.matrix(a1)              # FALSE (it's a vector)
+is.matrix(a1)              # FALSE (it is a vector)
 
 a2 <- as.matrix(1:10)
 is.matrix(a2)              # TRUE
@@ -145,6 +145,8 @@ is.matrix(as.matrix(1:10)) # TRUE
 ```
 
 > **Key Point:** By default, R fills matrices column by column (column-major order). Use `byrow = TRUE` to fill row by row.
+
+> **[Computer Programming]** Two-dimensional arrays in C and C++ are stored in memory in row-major order, so the elements of the same row lie next to each other. An R matrix is a vector of elements with a dimension (`dim`) attribute, and that vector is stored in column-major order, so the elements of the same column lie next to each other. `matrix()` fills by column by default because it follows this storage order. In addition, C indices start at 0 while R indices start at 1, so the element written `a[0][1]` in C is `a[1, 2]` in R.
 
 ---
 
@@ -359,7 +361,7 @@ blood <- factor(
 table(blood)
 # A  B AB  O
 # 1  1  1  1
-# Note: "a" and "o" are excluded because they don't match any level
+# Note: "a" and "o" are excluded because they do not match any level
 ```
 
 Values that are not in the list of levels become `NA`, and `table()` does not count `NA` by default, so they are left out of the frequency table.

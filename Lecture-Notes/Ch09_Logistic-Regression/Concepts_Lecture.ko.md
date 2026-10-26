@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-18
+> **최종 수정일:** 2026-10-26
 
 > **학습 목표:**
 > 1. 이진 분류를 위해 로지스틱 회귀를 적용할 수 있다
@@ -58,7 +58,7 @@
 
 - 예측값이 $[0, 1]$ 범위 **밖**으로 벗어날 수 있어 확률로 해석할 수 없다.
 - 선형 모형은 예측 변수의 효과가 일정하다고 가정하는데, 이는 경계가 있는 결과에는 비현실적이다.
-- 잔차가 이분산적이고 비정규적이어서 OLS 가정을 위반한다.
+- 잔차가 이분산적이고 비정규적이어서 7장 5.3절에서 다룬 보통의 최소제곱법(OLS) 회귀의 가정을 위반한다.
 
 ### 1.2 분류 문제의 설정
 
@@ -184,6 +184,8 @@ $$\ell(\beta) = \sum_{i=1}^{n} \left[ y_i \log(p_i) + (1 - y_i) \log(1 - p_i) \r
 
 최대 우도 추정(MLE)은 $\ell(\beta)$를 **최대화**하는 $\hat{\beta}$를 구한다. 이는 **Newton-Raphson** 또는 **반복 가중 최소제곱(IRLS)** 등의 알고리즘을 사용하여 반복적으로 풀이한다.
 
+> **[미적분학]** 함수가 극댓값을 갖는 점에서는 각 변수에 대한 편미분이 0이므로, MLE $\hat{\beta}$는 $\partial \ell / \partial \beta_j = 0$을 만족한다. 표 2의 도함수 $\sigma'(z) = \sigma(z)(1 - \sigma(z))$와 연쇄 법칙을 쓰면 $\partial \ell / \partial \beta_j = \sum_{i=1}^{n} (y_i - p_i) x_{ij}$이다. 여기서 $x_{ij}$는 $i$번째 관측값의 $j$번째 예측 변수 값이고, 절편에 대해서는 $x_{i0} = 1$이다. $p_i$가 계수에 대해 비선형이므로 이 방정식은 7장의 최소제곱법과 달리 닫힌 형태로 풀리지 않고, Newton-Raphson처럼 기울기와 2차 도함수를 이용하는 반복 알고리즘으로 푼다. 로그 우도는 계수에 대해 위로 볼록한 함수이므로 기울기가 0인 점이 곧 최댓값이다.
+
 ### 4.4 R에서의 구현
 
 ```r
@@ -228,7 +230,7 @@ $$\text{OR}_k = e^{\beta_k}$$
 ### 5.3 R에서의 오즈비 계산
 
 ```r
-# 95% 신뢰구간과 함께 오즈비 구하기
+# 95% 신뢰 구간과 함께 오즈비 구하기
 exp(coef(model))
 exp(confint(model))
 ```
@@ -265,7 +267,7 @@ $$\hat{Y} = \begin{cases} 1 & \text{if } P(Y=1 \mid X) \geq 0.5 \\ 0 & \text{oth
 | 지표 | 수식 | 설명 |
 |------|------|------|
 | **정확도(Accuracy)** | $\frac{TP + TN}{TP + TN + FP + FN}$ | 전체 정답 비율 |
-| **민감도(Sensitivity, Recall)** | $\frac{TP}{TP + FN}$ | 참 양성 비율 |
+| **민감도 또는 재현율(Sensitivity, Recall)** | $\frac{TP}{TP + FN}$ | 참 양성 비율 |
 | **특이도(Specificity)** | $\frac{TN}{TN + FP}$ | 참 음성 비율 |
 | **정밀도(Precision)** | $\frac{TP}{TP + FP}$ | 양성 예측 정확도 |
 | **F1 점수** | $\frac{2 \cdot \text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}$ | 정밀도와 재현율의 조화 평균 |
@@ -274,7 +276,7 @@ $$\hat{Y} = \begin{cases} 1 & \text{if } P(Y=1 \mid X) \geq 0.5 \\ 0 & \text{oth
 
 ### 6.3 ROC 곡선과 AUC
 
-**수신자 조작 특성(ROC)** 곡선은 다양한 임계값에서 참 양성 비율(민감도)과 거짓 양성 비율(1 - 특이도)을 도시한다.
+**수신자 조작 특성(ROC)** 곡선은 다양한 임계값에서 참 양성 비율(TPR, 민감도)과 거짓 양성 비율(FPR, 1 - 특이도)을 도시한다.
 
 - 완벽한 분류기는 좌상단 모서리(TPR = 1, FPR = 0)를 지난다.
 - 무작위 분류기는 대각선을 따른다.
@@ -334,7 +336,7 @@ summary(multi_model)
 predict(multi_model, newdata = iris[1:5, ], type = "probs")
 ```
 
-> **핵심:** `nnet` 패키지의 `multinom()` 함수는 다항 로지스틱 회귀를 적합한다. 참조 범주가 아닌 각 클래스는 자체적인 계수 세트를 갖는다. `multinom()`은 반응 변수 요인의 첫 번째 수준(iris에서는 setosa)을 참조 범주로 삼는다.
+> **핵심:** `nnet` 패키지의 `multinom()` 함수는 다항 로지스틱 회귀를 적합한다. 참조 범주가 아닌 각 클래스는 자체적인 계수 세트를 갖는다. `multinom()`은 반응 변수 팩터의 첫 번째 수준(iris에서는 setosa)을 참조 범주로 삼는다.
 
 ---
 
@@ -402,6 +404,6 @@ predict(multi_model, newdata = iris[1:5, ], type = "probs")
    <details>
    <summary>정답</summary>
 
-   참조 범주를 뺀 $K - 1 = 2$개 클래스마다 절편과 예측 변수 4개의 계수를 추정하므로 $2 \times (4 + 1) = 10$개이다. `multinom()`은 요인의 첫 번째 수준인 setosa를 참조 범주로 삼고, versicolor와 virginica의 계수를 보고한다.
+   참조 범주를 뺀 $K - 1 = 2$개 클래스마다 절편과 예측 변수 4개의 계수를 추정하므로 $2 \times (4 + 1) = 10$개이다. `multinom()`은 팩터의 첫 번째 수준인 setosa를 참조 범주로 삼고, versicolor와 virginica의 계수를 보고한다.
 
    </details>

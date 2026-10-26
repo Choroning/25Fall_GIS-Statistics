@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-18
+> **Last Updated:** 2026-10-26
 >
 > 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 3
 
@@ -27,7 +27,7 @@
   - [3.4 When to Write a Function](#34-when-to-write-a-function)
 - [4. Packages](#4-packages)
   - [4.1 Installing and Loading Packages](#41-installing-and-loading-packages)
-  - [4.2 Common Packages Used in This Course](#42-common-packages-used-in-this-course)
+  - [4.2 Common Packages](#42-common-packages)
 - [5. Tibbles](#5-tibbles)
   - [5.1 Tibble vs. Data Frame](#51-tibble-vs-data-frame)
   - [5.2 Manual Normalization (Without Functions)](#52-manual-normalization-without-functions)
@@ -193,7 +193,7 @@ library(tibble)
 require(graphics)
 ```
 
-### 4.2 Common Packages Used in This Course
+### 4.2 Common Packages
 
 | Package | Purpose |
 |---------|---------|
