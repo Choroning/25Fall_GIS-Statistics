@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-18
+> **Last Updated:** 2026-10-26
 >
 > 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 5, 6
 
@@ -402,6 +402,8 @@ weather %>%
 ```
 
 `tailnum` in `planes` gives 0 rows, so it is a primary key. In `weather`, (`year`, `month`, `day`, `hour`, `origin`) has 3 duplicated combinations, because two rows were recorded at each of the three airports at 1 a.m. on 2013-11-03, when daylight saving time ended, so it is not strictly a primary key. Joining on a duplicated key copies each matching row as many times as the key is duplicated.
+
+> **[Databases]** In a relational database, a primary key is a column or a combination of columns that identifies each row of a table uniquely, and a column that refers to the primary key of another table is a foreign key. `carrier` in `flights` acts as a foreign key that refers to the primary key `carrier` of `airlines`, and `left_join()`, like `LEFT OUTER JOIN` in SQL, keeps every row of the left table and fills the right-table columns of unmatched rows with `NULL` (`NA` in R).
 
 ---
 

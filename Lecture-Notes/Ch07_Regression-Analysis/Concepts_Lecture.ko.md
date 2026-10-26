@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-18
+> **최종 수정일:** 2026-10-26
 
 > **학습 목표:**
 > 1. R에서 단순 선형 회귀와 다중 선형 회귀를 수행할 수 있다
@@ -104,6 +104,8 @@ $$RSS = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$
 $$\hat{\beta}_1 = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^{n}(x_i - \bar{x})^2}$$
 
 $$\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}$$
+
+> **[미적분학]** 위 닫힌 형태의 해는 RSS를 두 계수 $\beta_0$, $\beta_1$의 함수로 보고 두 편미분을 0으로 놓아 얻는다. $\partial RSS / \partial \beta_0 = -2\sum(y_i - \beta_0 - \beta_1 x_i) = 0$을 풀면 $\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}$가 되고, 이를 $\partial RSS / \partial \beta_1 = -2\sum x_i(y_i - \beta_0 - \beta_1 x_i) = 0$에 대입하면 $\hat{\beta}_1$이 나온다. RSS는 두 계수에 대해 아래로 볼록한 2차 함수이므로, 두 편미분이 모두 0인 이 점에서 최솟값을 갖는다.
 
 ### 2.3 R에서의 구현
 
@@ -346,13 +348,13 @@ step(lm(Price ~ 1, data = train.df),
 
 ### 7.1 미국 문해율 단계구분도와 회귀 분석
 
-지리적 시각화와 통계적 분석을 결합하는 예로, 미국 주 경계 shapefile에 주별 문해율 데이터를 결합하여 **단계구분도**(choropleth map)를 그린다. 단계구분도는 지역별 값을 색의 농도로 나타낸 지도이다:
+지리적 시각화와 통계적 분석을 결합하는 예로, 미국 주 경계 셰이프파일에 주별 문해율 데이터를 결합하여 **단계구분도**(choropleth map)를 그린다. 단계구분도는 지역별 값을 색의 농도로 나타낸 지도이다:
 
 ```r
 library(tidyverse)
 library(sf)
 
-# 미국 주 shapefile 로드
+# 미국 주 셰이프파일 로드
 USMap <- st_read("data/cb_2024_us_state_5m.shp")
 
 # 문해율 데이터 로드
@@ -370,16 +372,16 @@ ggplot(continentalUS, aes(geometry = geometry, fill = Rate)) +
   coord_sf()
 ```
 
-`left_join()`은 shapefile의 주 이름 열 `NAME`과 CSV의 `State` 열이 같은 행끼리 문해율을 붙이고, `filter()`는 본토에서 떨어진 하와이, 알래스카, 푸에르토리코와 문해율이 없는 행을 제외한다. 결합한 sf 객체는 데이터 프레임이므로 `lm(Rate ~ 예측 변수, data = continentalUS)`처럼 회귀 분석에도 그대로 쓸 수 있다.
+`left_join()`은 셰이프파일의 주 이름 열 `NAME`과 CSV의 `State` 열이 같은 행끼리 문해율을 붙이고, `filter()`는 본토에서 떨어진 하와이, 알래스카, 푸에르토리코와 문해율이 없는 행을 제외한다. 이 결합과 필터 과정은 6장 7.3절과 같다. 결합한 sf 객체는 데이터 프레임이므로 `lm(Rate ~ 예측 변수, data = continentalUS)`처럼 회귀 분석에도 그대로 쓸 수 있다.
 
 ### 7.2 공간 데이터 개념
 
 | 개념 | 설명 |
 |------|------|
-| Shapefile | 지리적 피처를 저장하는 벡터 형식(.shp, .dbf, .shx, .prj) |
-| CRS | 좌표 참조 시스템(예: WGS84의 경우 EPSG:4326) |
+| 셰이프파일(Shapefile) | 지리적 피처를 저장하는 벡터 형식(.shp, .dbf, .shx, .prj) |
+| CRS | 좌표 참조 시스템(예: WGS 84의 경우 EPSG:4326) |
 | `sf` | R에서 공간 데이터를 다루는 Simple Features 패키지 |
-| `st_read()` | Shapefile을 R의 sf 객체로 읽어들임 |
+| `st_read()` | 셰이프파일을 R의 sf 객체로 읽어들임 |
 | `geom_sf()` | 공간 데이터를 위한 ggplot2 지오메트리 |
 
 *표 7. R의 공간 데이터 주요 개념*

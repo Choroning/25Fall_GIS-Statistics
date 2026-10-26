@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-18
+> **Last Updated:** 2026-10-26
 
 > **Learning Objectives:**
 > 1. Perform simple and multiple linear regression in R
@@ -104,6 +104,8 @@ The closed-form solutions are:
 $$\hat{\beta}_1 = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^{n}(x_i - \bar{x})^2}$$
 
 $$\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}$$
+
+> **[Calculus]** The closed-form solution above is obtained by treating RSS as a function of the two coefficients $\beta_0$ and $\beta_1$ and setting both partial derivatives to zero. Solving $\partial RSS / \partial \beta_0 = -2\sum(y_i - \beta_0 - \beta_1 x_i) = 0$ gives $\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}$, and substituting it into $\partial RSS / \partial \beta_1 = -2\sum x_i(y_i - \beta_0 - \beta_1 x_i) = 0$ yields $\hat{\beta}_1$. RSS is a convex quadratic function of the two coefficients, so it attains its minimum at this point, where both partial derivatives are zero.
 
 ### 2.3 Implementation in R
 
@@ -370,14 +372,14 @@ ggplot(continentalUS, aes(geometry = geometry, fill = Rate)) +
   coord_sf()
 ```
 
-`left_join()` attaches the literacy rate to each row whose state name column `NAME` in the shapefile matches the `State` column of the CSV, and `filter()` removes Hawaii, Alaska, and Puerto Rico, which lie apart from the mainland, along with rows without a literacy rate. The joined sf object is a data frame, so it can be used directly for regression, as in `lm(Rate ~ predictor, data = continentalUS)`.
+`left_join()` attaches the literacy rate to each row whose state name column `NAME` in the shapefile matches the `State` column of the CSV, and `filter()` removes Hawaii, Alaska, and Puerto Rico, which lie apart from the mainland, along with rows without a literacy rate. This join and filter are the same as in Chapter 6, Section 7.3. The joined sf object is a data frame, so it can be used directly for regression, as in `lm(Rate ~ predictor, data = continentalUS)`.
 
 ### 7.2 Spatial Data Concepts
 
 | Concept | Description |
 |---------|-------------|
 | Shapefile | Vector format storing geographic features (.shp, .dbf, .shx, .prj) |
-| CRS | Coordinate Reference System (e.g., EPSG:4326 for WGS84) |
+| CRS | Coordinate Reference System (e.g., EPSG:4326 for WGS 84) |
 | `sf` | Simple Features package for spatial data in R |
 | `st_read()` | Read shapefile into R as an sf object |
 | `geom_sf()` | ggplot2 geometry for spatial data |

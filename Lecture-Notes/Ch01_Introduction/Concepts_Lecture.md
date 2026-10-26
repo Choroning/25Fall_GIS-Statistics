@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-18
+> **Last Updated:** 2026-10-26
 >
 > 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 1
 
@@ -208,13 +208,13 @@ A Geographic Information System (GIS) is a framework for gathering, managing, an
 
 ### 4.2 Statistical Methods in GIS
 
-This course covers several statistical methods commonly used with geographic data.
+The following statistical methods are commonly used with geographic data.
 
 1. **Descriptive Statistics:** Summarizes the distribution of spatial data.
-2. **Data Visualization:** Creates maps and charts with `ggplot2`.
-3. **Regression Analysis:** Models relationships between geographic variables.
-4. **Time Series Analysis:** Analyzes temporal patterns in spatial data.
-5. **Logistic Regression:** Classifies spatial data whose outcome is one of two categories.
+2. **Data Visualization:** Creates maps and charts with `ggplot2` (Chapters 5-6).
+3. **Regression Analysis:** Models relationships between geographic variables (Chapter 7).
+4. **Time Series Analysis:** Analyzes temporal patterns in spatial data (Chapter 8).
+5. **Logistic Regression:** Classifies spatial data whose outcome is one of two categories (Chapter 9).
 
 ### 4.3 Key R Packages for GIS Statistics
 
