@@ -2,11 +2,11 @@
 
 [레포지토리 안내](../README.ko.md) | [English](README.md) | [한국어](README.ko.md)
 
-> **최종 수정일:** 2026-10-18
+> **최종 수정일:** 2026-11-10
 
 | 항목 | 내용 | 문서 |
 |:-----|:-----|:-----|
-| [HW02_Advanced-Visualization](HW02_Advanced-Visualization/) | 2차 과제에서 *Modern Data Visualization with R*의 5~8장 예제로 작성한 고급 시각화 코드. 그룹 막대 그래프와 분포 그래프, 그룹화와 패싯, mapview와 단계구분도, `data/`의 shapefile을 이용한 미국 주 지도, 덤벨 차트, 기울기 그래프, 영역 차트, 스트림 그래프를 다루며 6장과 이어진다 | [HW_AdvancedVisualization.R](HW02_Advanced-Visualization/HW_AdvancedVisualization.R) |
+| [HW02_Advanced-Visualization](HW02_Advanced-Visualization/) | 2차 과제에서 *Modern Data Visualization with R*의 5~8장 예제로 작성한 고급 시각화 코드. 그룹 막대 그래프와 분포 그래프, 그룹화와 패싯, mapview와 단계구분도, `data/`의 shapefile을 이용한 미국 주 지도, 덤벨 차트, 기울기 그래프, 영역 차트, 스트림 그래프를 다루며 6장과 이어진다 | [HW_AdvancedVisualization.R](HW02_Advanced-Visualization/Solution/HW_AdvancedVisualization.R) |
 | [Lab02_Data-Structures](Lab02_Data-Structures/) | 변수와 기본 연산, 데이터 프레임, 내장 함수와 도움말, 벡터, 행렬, 배열, 리스트, 팩터를 다루는 실습 코드. 숫자형과 팩터의 비교, 복합 데이터 구조 예제를 포함하며 2장과 이어진다 | [Lab_DataStructures.R](Lab02_Data-Structures/Lab_DataStructures.R) |
 | [Lab03_Functions-and-Control-Flow](Lab03_Functions-and-Control-Flow/) | 변수 할당, 내장 함수, 사용자 정의 함수, `print()`와 `cat()`, for 반복문, 티블과 정규화, 반복을 줄이는 `rescale` 함수, 비교와 논리 연산자, if-else 조건문, 클래스 확인을 다루는 실습 코드. 3장과 이어진다 | [Lab_FunctionsAndControlFlow.R](Lab03_Functions-and-Control-Flow/Lab_FunctionsAndControlFlow.R) |
 | [Lab04_Data-Import-and-Export](Lab04_Data-Import-and-Export/) | 데이터를 직접 입력해 데이터 프레임을 만들고, `read.table()`과 `read.csv()`로 `data/`의 CSV와 TXT 파일을 읽는 실습 코드. 4장과 이어진다 | [Lab_DataIO.R](Lab04_Data-Import-and-Export/Lab_DataIO.R) |

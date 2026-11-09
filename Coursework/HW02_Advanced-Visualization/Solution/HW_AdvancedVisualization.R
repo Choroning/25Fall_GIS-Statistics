@@ -265,8 +265,8 @@ library(tidyverse)
 library(sf)
 library(ggplot2)
 
-USMap <- st_read("data/cb_2024_us_state_5m.shp")
-litRates <- read.csv("data/us_literacy_rates_by_state_2025.csv")
+USMap <- st_read("../data/cb_2024_us_state_5m.shp")
+litRates <- read.csv("../data/us_literacy_rates_by_state_2025.csv")
 
 continentalUS <- USMap %>%
   left_join(litRates, by = c("NAME" = "State")) %>%
