@@ -2,11 +2,11 @@
 
 [Repository Guide](../README.md) | [English](README.md) | [한국어](README.ko.md)
 
-> **Last Updated:** 2026-10-18
+> **Last Updated:** 2026-11-10
 
 | Item | Description | Documents |
 |:-----|:-----|:-----|
-| [HW02_Advanced-Visualization](HW02_Advanced-Visualization/) | Advanced visualization code written for Report 2 from the examples in Chapters 5-8 of *Modern Data Visualization with R*. It covers grouped bar charts and distribution plots, grouping and faceting, mapview and choropleth maps, a US state map from the shapefile in `data/`, dumbbell charts, slope graphs, area charts, and stream graphs, and connects to Chapter 6 | [HW_AdvancedVisualization.R](HW02_Advanced-Visualization/HW_AdvancedVisualization.R) |
+| [HW02_Advanced-Visualization](HW02_Advanced-Visualization/) | Advanced visualization code written for Report 2 from the examples in Chapters 5-8 of *Modern Data Visualization with R*. It covers grouped bar charts and distribution plots, grouping and faceting, mapview and choropleth maps, a US state map from the shapefile in `data/`, dumbbell charts, slope graphs, area charts, and stream graphs, and connects to Chapter 6 | [HW_AdvancedVisualization.R](HW02_Advanced-Visualization/Solution/HW_AdvancedVisualization.R) |
 | [Lab02_Data-Structures](Lab02_Data-Structures/) | Lab code on variables and basic operations, data frames, built-in functions and help, vectors, matrices, arrays, lists, and factors. It includes a comparison of numeric and factor values and examples of compound data structures, and connects to Chapter 2 | [Lab_DataStructures.R](Lab02_Data-Structures/Lab_DataStructures.R) |
 | [Lab03_Functions-and-Control-Flow](Lab03_Functions-and-Control-Flow/) | Lab code on variable assignment, built-in functions, user-defined functions, `print()` and `cat()`, for loops, tibbles and normalization, a `rescale` function that removes repetition, comparison and logical operators, if-else statements, and class identification. It connects to Chapter 3 | [Lab_FunctionsAndControlFlow.R](Lab03_Functions-and-Control-Flow/Lab_FunctionsAndControlFlow.R) |
 | [Lab04_Data-Import-and-Export](Lab04_Data-Import-and-Export/) | Lab code that builds a data frame from manually entered data and reads the CSV and TXT files in `data/` with `read.table()` and `read.csv()`. It connects to Chapter 4 | [Lab_DataIO.R](Lab04_Data-Import-and-Export/Lab_DataIO.R) |
