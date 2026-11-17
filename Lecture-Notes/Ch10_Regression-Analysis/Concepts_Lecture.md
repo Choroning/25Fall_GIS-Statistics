@@ -1,8 +1,8 @@
-# Chapter 7 — Regression Analysis
+# Chapter 10 — Regression Analysis
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-26
+> **Last Updated:** 2026-11-18
 
 > **Learning Objectives:**
 > 1. Perform simple and multiple linear regression in R
@@ -68,7 +68,7 @@ The goals of regression analysis are:
 
 *Table 1. Types of regression by response variable and predictors*
 
-The Example column follows R formula notation (response ~ predictors). Logistic regression is covered in Chapter 9.
+The Example column follows R formula notation (response ~ predictors). Logistic regression is covered in Chapter 12.
 
 ---
 
@@ -372,7 +372,7 @@ ggplot(continentalUS, aes(geometry = geometry, fill = Rate)) +
   coord_sf()
 ```
 
-`left_join()` attaches the literacy rate to each row whose state name column `NAME` in the shapefile matches the `State` column of the CSV, and `filter()` removes Hawaii, Alaska, and Puerto Rico, which lie apart from the mainland, along with rows without a literacy rate. This join and filter are the same as in Chapter 6, Section 7.3. The joined sf object is a data frame, so it can be used directly for regression, as in `lm(Rate ~ predictor, data = continentalUS)`.
+`left_join()` attaches the literacy rate to each row whose state name column `NAME` in the shapefile matches the `State` column of the CSV, and `filter()` removes Hawaii, Alaska, and Puerto Rico, which lie apart from the mainland, along with rows without a literacy rate. This join and filter are the same as in Chapter 9, Section 7.3. The joined sf object is a data frame, so it can be used directly for regression, as in `lm(Rate ~ predictor, data = continentalUS)`.
 
 ### 7.2 Spatial Data Concepts
 

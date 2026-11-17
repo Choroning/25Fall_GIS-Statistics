@@ -1,8 +1,8 @@
-# Chapter 8 — Time Series Analysis
+# Chapter 11 — Time Series Analysis
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-26
+> **Last Updated:** 2026-11-18
 
 > **Learning Objectives:**
 > 1. Create and convert R date and time classes and `ts` objects
@@ -426,7 +426,7 @@ fc <- forecast(model, h = length(test))
 accuracy(fc, test)
 ```
 
-Because time order matters in a time series, the data is not split at random; `window()` takes the earlier part as the training set and the later part as the test set. `accuracy()` reports ME, RMSE, MAE, MPE, and MAPE from Chapter 7, plus MASE and others, separately for the training set and the test set.
+Because time order matters in a time series, the data is not split at random; `window()` takes the earlier part as the training set and the later part as the test set. `accuracy()` reports ME, RMSE, MAE, MPE, and MAPE from Chapter 10, plus MASE and others, separately for the training set and the test set.
 
 ### 8.3 Recommended Books
 
@@ -501,7 +501,7 @@ Because time order matters in a time series, the data is not split at random; `w
 
    </details>
 
-5. **Splitting into training and test sets:** Explain why a time series should not be split into training and test sets by drawing rows at random as in the regression example of Chapter 7, and write code that uses a monthly series up to December 2010 as the training set.
+5. **Splitting into training and test sets:** Explain why a time series should not be split into training and test sets by drawing rows at random as in the regression example of Chapter 10, and write code that uses a monthly series up to December 2010 as the training set.
 
    <details>
    <summary>Answer</summary>

@@ -1,8 +1,8 @@
-# Chapter 6 — Advanced Visualization
+# Chapter 9 — Advanced Visualization
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-10
+> **Last Updated:** 2026-11-18
 >
 > Modern Data Visualization with R, Kabacoff, Ch 5, 6, 7, 8
 
@@ -108,7 +108,7 @@ ggplot(Salaries,
 
 *Table 1. Key aesthetic parameters of a scatter plot*
 
-The code in Section 2.1 sets these values outside `aes()`, so, as shown in Chapter 5, Section 4, the same constant applies to every point.
+The code in Section 2.1 sets these values outside `aes()`, so, as shown in Chapter 6, Section 3, the same constant applies to every point.
 
 ---
 

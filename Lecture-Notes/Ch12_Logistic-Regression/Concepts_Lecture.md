@@ -1,8 +1,8 @@
-# Chapter 9 — Logistic Regression
+# Chapter 12 — Logistic Regression
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-17
+> **Last Updated:** 2026-11-18
 
 > **Learning Objectives:**
 > 1. Apply logistic regression for binary classification
@@ -54,11 +54,11 @@
 
 ### 1.1 Why Not Linear Regression for Classification?
 
-Linear regression, covered in Chapter 7, predicts a continuous response variable $Y \in (-\infty, +\infty)$. When the response is **binary** (e.g., Yes/No, 0/1), linear regression has critical limitations:
+Linear regression, covered in Chapter 10, predicts a continuous response variable $Y \in (-\infty, +\infty)$. When the response is **binary** (e.g., Yes/No, 0/1), linear regression has critical limitations:
 
 - Predicted values can fall **outside** the range $[0, 1]$, making them uninterpretable as probabilities.
 - The linear model assumes a constant effect of predictors, which is unrealistic for bounded outcomes.
-- Residuals are heteroscedastic and non-normal, violating the assumptions of ordinary least squares (OLS) regression covered in Chapter 7, Section 5.3.
+- Residuals are heteroscedastic and non-normal, violating the assumptions of ordinary least squares (OLS) regression covered in Chapter 10, Section 5.3.
 
 ### 1.2 The Classification Setting
 
@@ -186,7 +186,7 @@ $$\ell(\beta) = \sum_{i=1}^{n} \left[ y_i \log(p_i) + (1 - y_i) \log(1 - p_i) \r
 
 The MLE finds $\hat{\beta}$ that **maximizes** $\ell(\beta)$. This is solved iteratively using algorithms such as **Newton-Raphson** or **Iteratively Reweighted Least Squares (IRLS)**.
 
-> **[Calculus]** At a point where a function has a maximum, its partial derivative with respect to each variable is zero, so the MLE $\hat{\beta}$ satisfies $\partial \ell / \partial \beta_j = 0$. Using the derivative $\sigma'(z) = \sigma(z)(1 - \sigma(z))$ from Table 2 and the chain rule gives $\partial \ell / \partial \beta_j = \sum_{i=1}^{n} (y_i - p_i) x_{ij}$. Here $x_{ij}$ is the value of predictor $j$ for observation $i$, and $x_{i0} = 1$ for the intercept. Because $p_i$ is nonlinear in the coefficients, this equation, unlike least squares in Chapter 7, has no closed-form solution, and it is solved by iterative algorithms such as Newton-Raphson that use the gradient and second derivatives. The log-likelihood is a concave function of the coefficients, so the point where the gradient is zero is the maximum.
+> **[Calculus]** At a point where a function has a maximum, its partial derivative with respect to each variable is zero, so the MLE $\hat{\beta}$ satisfies $\partial \ell / \partial \beta_j = 0$. Using the derivative $\sigma'(z) = \sigma(z)(1 - \sigma(z))$ from Table 2 and the chain rule gives $\partial \ell / \partial \beta_j = \sum_{i=1}^{n} (y_i - p_i) x_{ij}$. Here $x_{ij}$ is the value of predictor $j$ for observation $i$, and $x_{i0} = 1$ for the intercept. Because $p_i$ is nonlinear in the coefficients, this equation, unlike least squares in Chapter 10, has no closed-form solution, and it is solved by iterative algorithms such as Newton-Raphson that use the gradient and second derivatives. The log-likelihood is a concave function of the coefficients, so the point where the gradient is zero is the maximum.
 
 ### 4.4 Implementation in R
 

@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Assignment-Explanation.md) | [한국어](Assignment-Explanation.ko.md)
 
-> **최종 수정일:** 2026-11-17
+> **최종 수정일:** 2026-11-18
 >
 > Modern Data Visualization with R, Kabacoff, Ch 5, 6, 7, 8
 
@@ -46,7 +46,7 @@
 
 이 과제는 R. Kabacoff의 *Modern Data Visualization with R*(이하 Kabacoff)의 5~8장에서 장마다 그림을 5개 이상 골라 R 코드를 실행하고, 콘솔과 plot 창의 캡처를 보고서로 엮는 과제이다. 정해진 정답은 없으며, 풀이는 조건보다 많은 25개의 그림을 골랐다. 코드는 `Solution/HW_AdvancedVisualization.R` 한 파일에 장 순서대로 모았고, 각 블록의 번호 (1), (2), ...는 제출한 보고서의 항목 번호와 같다.
 
-이 문서는 각 블록이 Kabacoff의 어느 절과 그림을 재현하는지 대응시키고 실행 결과를 해석한다. 코드를 줄 단위로 읽는 설명은 [HW2 코드 총정리](Code-Walkthrough.ko.md)에, 그래프 유형의 개념은 [6장 강의 노트](../../Lecture-Notes/Ch06_Advanced-Visualization/Concepts_Lecture.ko.md)에 있다.
+이 문서는 각 블록이 Kabacoff의 어느 절과 그림을 재현하는지 대응시키고 실행 결과를 해석한다. 코드를 줄 단위로 읽는 설명은 [HW2 코드 총정리](Code-Walkthrough.ko.md)에, 그래프 유형의 개념은 [9장 강의 노트](../../Lecture-Notes/Ch09_Advanced-Visualization/Concepts_Lecture.ko.md)에 있다.
 
 ```plaintext
 Coursework/HW02_Advanced-Visualization/
@@ -113,7 +113,7 @@ mapview 지도 두 개는 화면에서 확대하고 움직이는 인터랙티브
 
 ## 3. Kabacoff 5장: Bivariate Graphs
 
-Kabacoff 5장은 두 변수의 관계를 변수 유형의 조합으로 나누어, 범주형과 범주형(5.1절), 양적과 양적(5.2절), 범주형과 양적(5.3절)의 세 조합을 다룬다. 풀이는 세 조합에서 모두 그림을 골랐다. 강의 노트 열의 절 번호는 [6장 강의 노트](../../Lecture-Notes/Ch06_Advanced-Visualization/Concepts_Lecture.ko.md)의 절이다.
+Kabacoff 5장은 두 변수의 관계를 변수 유형의 조합으로 나누어, 범주형과 범주형(5.1절), 양적과 양적(5.2절), 범주형과 양적(5.3절)의 세 조합을 다룬다. 풀이는 세 조합에서 모두 그림을 골랐다. 강의 노트 열의 절 번호는 [9장 강의 노트](../../Lecture-Notes/Ch09_Advanced-Visualization/Concepts_Lecture.ko.md)의 절이다.
 
 | 번호 | 코드 줄 | Kabacoff의 절 | Kabacoff의 그림 | 강의 노트 |
 |:-----|:-----|:-----|:-----|:-----|

@@ -22,7 +22,7 @@ This repository archives lecture notes and coursework for the Global Information
 <br><a name="about-this-repository"></a>
 ## 📝 About This Repository
 
-- `Lecture-Notes/` holds a lecture note for each chapter (`Ch01`-`Ch09`).
+- `Lecture-Notes/` holds lecture notes that follow the textbook chapter numbers (`Ch01`-`Ch06`), and the topics covered with lecture slides and assignment materials outside the textbook are in supplementary units (`Ch09`-`Ch12`).
 - `Coursework/` holds the chapter R lab code (`Lab##`) and the handout, explanations, and code of Report 2 (`HW02`), with sample datasets in each item's `data/`.
 - Every lecture note comes as an English (`.md`) and Korean (`.ko.md`) pair.
 - The R code files carry **Doxygen-style headers**.
@@ -74,7 +74,7 @@ A core general studies course for students new to statistics, in which students 
 └── README.md
 ```
 
-The CSV and TXT files for the data import exercises (`data_ex.csv`, `data_ex-1.txt`, `data_ex-2.txt`, `data_ex_col.txt`) are in `Coursework/Lab04_Data-Import-and-Export/data/`, and the US Census Bureau state boundary shapefile (`cb_2024_us_state_5m.*`) and the CSV of literacy rates by state (`us_literacy_rates_by_state_2025.csv`) are in `Coursework/HW02_Advanced-Visualization/data/`. The map code in `Lab07` reads the data in `HW02`.
+The CSV and TXT files for the data import exercises (`data_ex.csv`, `data_ex-1.txt`, `data_ex-2.txt`, `data_ex_col.txt`) are in `Coursework/Lab04_Data-Import-and-Export/data/`, and the US Census Bureau state boundary shapefile (`cb_2024_us_state_5m.*`) and the CSV of literacy rates by state (`us_literacy_rates_by_state_2025.csv`) are in `Coursework/HW02_Advanced-Visualization/data/`. The map code in `Lab10` reads the data in `HW02`.
 
 The units are listed in the [`Lecture-Notes` index](Lecture-Notes/README.md), and the lab code and assignment documents in the [`Coursework` index](Coursework/README.md).
 

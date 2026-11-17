@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Assignment-Explanation.md) | [한국어](Assignment-Explanation.ko.md)
 
-> **Last Updated:** 2026-11-17
+> **Last Updated:** 2026-11-18
 >
 > Modern Data Visualization with R, Kabacoff, Ch 5, 6, 7, 8
 
@@ -46,7 +46,7 @@
 
 In this assignment, students choose at least 5 figures from each of Chapters 5-8 of *Modern Data Visualization with R* by R. Kabacoff (Kabacoff below), run their R code, and arrange the captures of the console and the plot pane into a report. There is no single correct answer, and the solution chooses 25 figures, more than the condition requires. The code is collected in one file, `Solution/HW_AdvancedVisualization.R`, in chapter order, and the block numbers (1), (2), ... match the item numbers of the submitted report.
 
-This document maps each block to the section and figure of Kabacoff that it reproduces and interprets the results. The line-by-line reading of the code is in the [HW2 code walkthrough](Code-Walkthrough.md), and the concepts of the graph types are in the [Chapter 6 lecture notes](../../Lecture-Notes/Ch06_Advanced-Visualization/Concepts_Lecture.md).
+This document maps each block to the section and figure of Kabacoff that it reproduces and interprets the results. The line-by-line reading of the code is in the [HW2 code walkthrough](Code-Walkthrough.md), and the concepts of the graph types are in the [Chapter 9 lecture notes](../../Lecture-Notes/Ch09_Advanced-Visualization/Concepts_Lecture.md).
 
 ```plaintext
 Coursework/HW02_Advanced-Visualization/
@@ -113,7 +113,7 @@ The two mapview maps are interactive maps that are zoomed and moved on screen, s
 
 ## 3. Kabacoff Chapter 5: Bivariate Graphs
 
-Kabacoff Chapter 5 divides the relationship between two variables by the combination of variable types and covers three combinations: categorical vs. categorical (Section 5.1), quantitative vs. quantitative (Section 5.2), and categorical vs. quantitative (Section 5.3). The solution chooses figures from all three combinations. The section numbers in the lecture notes column refer to the [Chapter 6 lecture notes](../../Lecture-Notes/Ch06_Advanced-Visualization/Concepts_Lecture.md).
+Kabacoff Chapter 5 divides the relationship between two variables by the combination of variable types and covers three combinations: categorical vs. categorical (Section 5.1), quantitative vs. quantitative (Section 5.2), and categorical vs. quantitative (Section 5.3). The solution chooses figures from all three combinations. The section numbers in the lecture notes column refer to the [Chapter 9 lecture notes](../../Lecture-Notes/Ch09_Advanced-Visualization/Concepts_Lecture.md).
 
 | No. | Code Lines | Kabacoff Section | Kabacoff Figure | Lecture Notes |
 |:-----|:-----|:-----|:-----|:-----|

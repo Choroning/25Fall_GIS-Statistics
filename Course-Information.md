@@ -2,7 +2,7 @@
 
 [Repository Guide](README.md) | [English](Course-Information.md) | [한국어](Course-Information.ko.md)
 
-> **Last Updated:** 2026-11-16
+> **Last Updated:** 2026-11-18
 
 ## Table of Contents
 
@@ -139,13 +139,15 @@
   - `Global_Chap2_20250909`: [Ch02](Lecture-Notes/Ch02_Data-Structures/Concepts_Lecture.md)
   - `Global_Chap3_20250916`: [Ch03](Lecture-Notes/Ch03_Functions-and-Control-Flow/Concepts_Lecture.md)
   - `Global_Chap4_20251014`: [Ch04](Lecture-Notes/Ch04_Data-Import-and-Export/Concepts_Lecture.md)
-  - `Global_Chap5_20251028`: data manipulation with dplyr and joining data in [Ch05](Lecture-Notes/Ch05_Data-Visualization-with-ggplot2/Concepts_Lecture.md)
-  - `Global_Chap6_20251111`: basic ggplot2 plots, aesthetic mappings, faceting, and reference lines and annotations in Ch05
-  - Report 2 (Chapters 5-8 of *Modern Data Visualization with R*): [Ch06](Lecture-Notes/Ch06_Advanced-Visualization/Concepts_Lecture.md)
-  - `Global_Reg_20251202`: [Ch07](Lecture-Notes/Ch07_Regression-Analysis/Concepts_Lecture.md)
-  - `Global_Chap6_Supplementary_20251111`, `Global_TSA_20251202`: [Ch08](Lecture-Notes/Ch08_Time-Series-Analysis/Concepts_Lecture.md)
-  - `Agresti_LogisticRegression`: [Ch09](Lecture-Notes/Ch09_Logistic-Regression/Concepts_Lecture.md)
+  - `Global_Chap5_20251028`: [Ch05](Lecture-Notes/Ch05_Data-Wrangling-with-dplyr/Concepts_Lecture.md)
+  - `Global_Chap6_20251111`: [Ch06](Lecture-Notes/Ch06_Data-Visualization-with-ggplot2/Concepts_Lecture.md)
+  - Report 2 (Chapters 5-8 of *Modern Data Visualization with R*): [Ch09](Lecture-Notes/Ch09_Advanced-Visualization/Concepts_Lecture.md)
+  - `Global_Reg_20251202`: [Ch10](Lecture-Notes/Ch10_Regression-Analysis/Concepts_Lecture.md)
+  - `Global_Chap6_Supplementary_20251111`, `Global_TSA_20251202`: [Ch11](Lecture-Notes/Ch11_Time-Series-Analysis/Concepts_Lecture.md)
+  - `Agresti_LogisticRegression`: [Ch12](Lecture-Notes/Ch12_Logistic-Regression/Concepts_Lecture.md)
   - `Global_Chap3,4_시험범위만-편집`: an edited version of `Global_Chap3` and `Global_Chap4` limited to the midterm exam range, whose content is in Ch03 and Ch04.
+- `Ch09`-`Ch12` are supplementary units on topics covered with lecture slides and assignment materials outside the textbook. Their numbers continue after Chapter 8, the last chapter of the textbook, so that they do not overlap with the textbook chapter numbers, and no lecture notes correspond to Chapters 7 and 8 of the textbook.
+- The lab code numbers in `Coursework` follow the chapter numbers of the units that the labs cover, and `Lab05` is the lab code for Chapters 5 and 6.
 - The following decks do not carry subject content, so no lecture notes were made for them.
   - `Global_Intro_20250902`: a course introduction presenting the syllabus and R books and websites
   - `Global_Fact_20250903`, `Global_법정에 선 수학자_20251105`, `Global_법정에 선 수학자_20251112`: excerpts from the designated books *Factfulness* and *Math on Trial* (Korean edition *법정에 선 수학*)

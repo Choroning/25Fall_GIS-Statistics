@@ -2,7 +2,7 @@
 
 [레포지토리 안내](README.ko.md) | [English](Course-Information.md) | [한국어](Course-Information.ko.md)
 
-> **최종 수정일:** 2026-11-16
+> **최종 수정일:** 2026-11-18
 
 ## 목차
 
@@ -139,13 +139,15 @@
   - `Global_Chap2_20250909`: [Ch02](Lecture-Notes/Ch02_Data-Structures/Concepts_Lecture.ko.md)
   - `Global_Chap3_20250916`: [Ch03](Lecture-Notes/Ch03_Functions-and-Control-Flow/Concepts_Lecture.ko.md)
   - `Global_Chap4_20251014`: [Ch04](Lecture-Notes/Ch04_Data-Import-and-Export/Concepts_Lecture.ko.md)
-  - `Global_Chap5_20251028`: [Ch05](Lecture-Notes/Ch05_Data-Visualization-with-ggplot2/Concepts_Lecture.ko.md)의 dplyr 데이터 조작과 데이터 결합
-  - `Global_Chap6_20251111`: Ch05의 ggplot2 기본 그래프, 미적 매핑, 패싯, 기준선과 주석
-  - 2차 과제(*Modern Data Visualization with R* 5~8장): [Ch06](Lecture-Notes/Ch06_Advanced-Visualization/Concepts_Lecture.ko.md)
-  - `Global_Reg_20251202`: [Ch07](Lecture-Notes/Ch07_Regression-Analysis/Concepts_Lecture.ko.md)
-  - `Global_Chap6_Supplementary_20251111`, `Global_TSA_20251202`: [Ch08](Lecture-Notes/Ch08_Time-Series-Analysis/Concepts_Lecture.ko.md)
-  - `Agresti_LogisticRegression`: [Ch09](Lecture-Notes/Ch09_Logistic-Regression/Concepts_Lecture.ko.md)
+  - `Global_Chap5_20251028`: [Ch05](Lecture-Notes/Ch05_Data-Wrangling-with-dplyr/Concepts_Lecture.ko.md)
+  - `Global_Chap6_20251111`: [Ch06](Lecture-Notes/Ch06_Data-Visualization-with-ggplot2/Concepts_Lecture.ko.md)
+  - 2차 과제(*Modern Data Visualization with R* 5~8장): [Ch09](Lecture-Notes/Ch09_Advanced-Visualization/Concepts_Lecture.ko.md)
+  - `Global_Reg_20251202`: [Ch10](Lecture-Notes/Ch10_Regression-Analysis/Concepts_Lecture.ko.md)
+  - `Global_Chap6_Supplementary_20251111`, `Global_TSA_20251202`: [Ch11](Lecture-Notes/Ch11_Time-Series-Analysis/Concepts_Lecture.ko.md)
+  - `Agresti_LogisticRegression`: [Ch12](Lecture-Notes/Ch12_Logistic-Regression/Concepts_Lecture.ko.md)
   - `Global_Chap3,4_시험범위만-편집`: 중간고사 범위에 맞춰 `Global_Chap3`과 `Global_Chap4`를 편집한 자료이며, 내용은 Ch03과 Ch04에 있다.
+- `Ch09`\~`Ch12`는 교재 밖의 강의자료와 과제 자료로 다룬 주제의 보충 단원이다. 번호는 교재의 장 번호와 겹치지 않도록 교재의 마지막 장인 8장 다음부터 이어지며, 교재 7장과 8장에 대응하는 강의 노트는 없다.
+- `Coursework`의 실습 코드 번호는 그 실습이 다룬 단원의 장 번호를 따르며, `Lab05`는 5장과 6장의 실습 코드이다.
 - 다음 자료는 학문 내용을 담은 강의자료가 아니어서 강의 노트를 만들지 않았다.
   - `Global_Intro_20250902`: 강의계획서와 R 관련 도서, 웹사이트를 소개하는 과목 소개 자료
   - `Global_Fact_20250903`, `Global_법정에 선 수학자_20251105`, `Global_법정에 선 수학자_20251112`: 지정 도서 *팩트풀니스*와 *법정에 선 수학*을 발췌한 자료

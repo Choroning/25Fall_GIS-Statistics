@@ -22,7 +22,7 @@
 <br><a name="about-this-repository"></a>
 ## 📝 레포지토리 소개
 
-- `Lecture-Notes/`에는 장별 강의 노트(`Ch01`\~`Ch09`)가 있습니다.
+- `Lecture-Notes/`에는 교재의 장 번호를 따른 강의 노트(`Ch01`\~`Ch06`)가 있고, 교재 밖의 강의자료와 과제 자료로 다룬 주제는 보충 단원(`Ch09`\~`Ch12`)에 있습니다.
 - `Coursework/`에는 장별 R 실습 코드(`Lab##`)와 2차 과제의 안내문, 해설, 코드(`HW02`)가 있으며, 샘플 데이터셋은 각 항목의 `data/`에 있습니다.
 - 모든 강의 노트는 영어(`.md`)와 한국어(`.ko.md`) 파일이 짝을 이룹니다.
 - R 코드 파일에는 **Doxygen 스타일 헤더**가 있습니다.
@@ -74,7 +74,7 @@
 └── README.md
 ```
 
-데이터 불러오기 실습용 CSV와 TXT 파일(`data_ex.csv`, `data_ex-1.txt`, `data_ex-2.txt`, `data_ex_col.txt`)은 `Coursework/Lab04_Data-Import-and-Export/data/`에, 미국 인구조사국의 주 경계 shapefile(`cb_2024_us_state_5m.*`)과 주별 문해율 CSV(`us_literacy_rates_by_state_2025.csv`)는 `Coursework/HW02_Advanced-Visualization/data/`에 있습니다. `Lab07`의 지도 코드는 `HW02`의 데이터를 읽습니다.
+데이터 불러오기 실습용 CSV와 TXT 파일(`data_ex.csv`, `data_ex-1.txt`, `data_ex-2.txt`, `data_ex_col.txt`)은 `Coursework/Lab04_Data-Import-and-Export/data/`에, 미국 인구조사국의 주 경계 shapefile(`cb_2024_us_state_5m.*`)과 주별 문해율 CSV(`us_literacy_rates_by_state_2025.csv`)는 `Coursework/HW02_Advanced-Visualization/data/`에 있습니다. `Lab10`의 지도 코드는 `HW02`의 데이터를 읽습니다.
 
 단원 목록은 [`Lecture-Notes` 색인](Lecture-Notes/README.ko.md)에, 실습 코드와 과제 문서는 [`Coursework` 색인](Coursework/README.ko.md)에 있습니다.
 
