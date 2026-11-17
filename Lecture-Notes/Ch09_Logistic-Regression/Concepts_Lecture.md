@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-26
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Apply logistic regression for binary classification
@@ -151,7 +151,9 @@ This is the key transformation: while $P$ is bounded between 0 and 1, the log-od
 
 ### 3.3 Relationship Summary
 
-$$X \xrightarrow{\text{linear combination}} z = \beta_0 + \beta X \xrightarrow{\text{sigmoid}} P = \sigma(z) \xrightarrow{\text{threshold}} \hat{Y} \in \{0, 1\}$$
+```math
+X \xrightarrow{\text{linear combination}} z = \beta_0 + \beta X \xrightarrow{\text{sigmoid}} P = \sigma(z) \xrightarrow{\text{threshold}} \hat{Y} \in \{0, 1\}
+```
 
 That is, the linear combination $z$ of the predictors is passed through the sigmoid function to obtain the probability $P$, and $P$ is compared with a threshold to decide the predicted class $\hat{Y}$.
 
@@ -184,7 +186,7 @@ $$\ell(\beta) = \sum_{i=1}^{n} \left[ y_i \log(p_i) + (1 - y_i) \log(1 - p_i) \r
 
 The MLE finds $\hat{\beta}$ that **maximizes** $\ell(\beta)$. This is solved iteratively using algorithms such as **Newton-Raphson** or **Iteratively Reweighted Least Squares (IRLS)**.
 
-> **[Calculus]** At a point where a function has a maximum, its partial derivative with respect to each variable is zero, so the MLE $\hat{\beta}$ satisfies $\partial \ell / \partial \beta_j = 0$. Using the derivative $\sigma'(z) = \sigma(z)(1 - \sigma(z))$ from Table 2 and the chain rule gives $\partial \ell / \partial \beta_j = \sum_{i=1}^{n} (y_i - p_i) x_{ij}$. Here $x_{ij}$ is the value of the $j$th predictor for the $i$th observation, and $x_{i0} = 1$ for the intercept. Because $p_i$ is nonlinear in the coefficients, this equation, unlike least squares in Chapter 7, has no closed-form solution, and it is solved by iterative algorithms such as Newton-Raphson that use the gradient and second derivatives. The log-likelihood is a concave function of the coefficients, so the point where the gradient is zero is the maximum.
+> **[Calculus]** At a point where a function has a maximum, its partial derivative with respect to each variable is zero, so the MLE $\hat{\beta}$ satisfies $\partial \ell / \partial \beta_j = 0$. Using the derivative $\sigma'(z) = \sigma(z)(1 - \sigma(z))$ from Table 2 and the chain rule gives $\partial \ell / \partial \beta_j = \sum_{i=1}^{n} (y_i - p_i) x_{ij}$. Here $x_{ij}$ is the value of predictor $j$ for observation $i$, and $x_{i0} = 1$ for the intercept. Because $p_i$ is nonlinear in the coefficients, this equation, unlike least squares in Chapter 7, has no closed-form solution, and it is solved by iterative algorithms such as Newton-Raphson that use the gradient and second derivatives. The log-likelihood is a concave function of the coefficients, so the point where the gradient is zero is the maximum.
 
 ### 4.4 Implementation in R
 
@@ -247,7 +249,9 @@ exp(confint(model))
 
 A **decision threshold** (typically 0.5) converts predicted probabilities into class labels:
 
-$$\hat{Y} = \begin{cases} 1 & \text{if } P(Y=1 \mid X) \geq 0.5 \\ 0 & \text{otherwise} \end{cases}$$
+```math
+\hat{Y} = \begin{cases} 1 & \text{if } P(Y=1 \mid X) \geq 0.5 \\ 0 & \text{otherwise} \end{cases}
+```
 
 Changing the threshold changes the number of observations predicted as positive, and the ROC curve in Section 6.3 shows the performance at all thresholds at once.
 

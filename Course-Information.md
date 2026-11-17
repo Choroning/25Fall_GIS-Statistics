@@ -2,7 +2,7 @@
 
 [Repository Guide](README.md) | [English](Course-Information.md) | [한국어](Course-Information.ko.md)
 
-> **Last Updated:** 2026-10-26
+> **Last Updated:** 2026-11-16
 
 ## Table of Contents
 
@@ -132,7 +132,7 @@
 | W16 | 12/16, 12/17 | Final exam | Final exam |
 
 - The planned topics follow the weekly plan in the syllabus, and the parentheses give the textbook chapter covered that week. The syllabus set the core competencies of weeks 1-7 as creativity and global communication and those of weeks 9-15 as expertise and foresight, and planned lectures and lab exercises as the activities of all of weeks 1-15.
-- Report 1 was announced in week 4 (9/23), and Report 2 in week 10. The contents and grading criteria of both reports are in [Section 3](#3-assessment).
+- Report 1 was announced in week 4 (9/23), and Report 2 in week 10. The contents and grading criteria of both reports are in [Section 3](#3-assessment), and the handout, explanations, and code of Report 2 are in the [`Coursework` index](Coursework/README.md).
 - Week 7 distributed the data files for the data import exercises (`data_ex.csv`, `data_ex-1.txt`, `data_ex-2.txt`, `data_ex_col.txt`) together with Chapter 3 of *Introduction to Scientific Programming and Simulation Using R*. The data files are in `Coursework/Lab04_Data-Import-and-Export/data/`.
 - The lecture decks map to the lecture notes as follows. The chapter numbers of `Global_Chap1`-`Global_Chap6` match the textbook chapters.
   - `Global_Chap1_20250902`: [Ch01](Lecture-Notes/Ch01_Introduction/Concepts_Lecture.md)

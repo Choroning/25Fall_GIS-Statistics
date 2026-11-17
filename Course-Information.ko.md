@@ -2,7 +2,7 @@
 
 [레포지토리 안내](README.ko.md) | [English](Course-Information.md) | [한국어](Course-Information.ko.md)
 
-> **최종 수정일:** 2026-10-26
+> **최종 수정일:** 2026-11-16
 
 ## 목차
 
@@ -132,7 +132,7 @@
 | 16주차 | 12/16, 12/17 | 기말고사 | 기말고사 |
 
 - 계획된 주제는 강의계획서의 주별 학습 내용을 따르며, 괄호 안은 그 주에 다루는 교재의 장이다. 강의계획서는 1\~7주차의 핵심역량을 창의력과 글로벌 소통, 9\~15주차의 핵심역량을 전문성과 미래안목으로 두었고, 1\~15주차의 활동을 모두 강의와 실습으로 계획했다.
-- 1차 과제는 4주차(9/23)에, 2차 과제는 10주차에 안내했다. 두 과제의 내용과 채점 기준은 [3절](#3-평가)에 있다.
+- 1차 과제는 4주차(9/23)에, 2차 과제는 10주차에 안내했다. 두 과제의 내용과 채점 기준은 [3절](#3-평가)에 있고, 2차 과제의 안내문, 해설, 코드는 [`Coursework` 색인](Coursework/README.ko.md)에 있다.
 - 7주차에는 데이터 불러오기 실습에 쓰는 데이터 파일(`data_ex.csv`, `data_ex-1.txt`, `data_ex-2.txt`, `data_ex_col.txt`)과 *Introduction to Scientific Programming and Simulation Using R*의 3장을 함께 배포했다. 데이터 파일은 `Coursework/Lab04_Data-Import-and-Export/data/`에 있다.
 - 강의자료와 강의 노트의 대응은 다음과 같다. `Global_Chap1`~`Global_Chap6`의 장 번호는 교재의 장 번호와 같다.
   - `Global_Chap1_20250902`: [Ch01](Lecture-Notes/Ch01_Introduction/Concepts_Lecture.ko.md)

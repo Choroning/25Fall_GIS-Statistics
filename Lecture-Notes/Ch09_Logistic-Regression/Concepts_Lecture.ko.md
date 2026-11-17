@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-26
+> **최종 수정일:** 2026-11-17
 
 > **학습 목표:**
 > 1. 이진 분류를 위해 로지스틱 회귀를 적용할 수 있다
@@ -151,7 +151,9 @@ $$\text{logit}(P) = \log\left(\frac{P}{1-P}\right) = \beta_0 + \beta_1 X_1 + \cd
 
 ### 3.3 관계 요약
 
-$$X \xrightarrow{\text{선형 결합}} z = \beta_0 + \beta X \xrightarrow{\text{시그모이드}} P = \sigma(z) \xrightarrow{\text{임계값}} \hat{Y} \in \{0, 1\}$$
+```math
+X \xrightarrow{\text{선형 결합}} z = \beta_0 + \beta X \xrightarrow{\text{시그모이드}} P = \sigma(z) \xrightarrow{\text{임계값}} \hat{Y} \in \{0, 1\}
+```
 
 즉 예측 변수의 선형 결합 $z$를 시그모이드 함수에 넣어 확률 $P$를 얻고, $P$를 임계값과 비교하여 예측 클래스 $\hat{Y}$를 정한다.
 
@@ -247,7 +249,9 @@ exp(confint(model))
 
 **결정 임계값**(일반적으로 0.5)이 예측 확률을 클래스 레이블로 변환한다:
 
-$$\hat{Y} = \begin{cases} 1 & \text{if } P(Y=1 \mid X) \geq 0.5 \\ 0 & \text{otherwise} \end{cases}$$
+```math
+\hat{Y} = \begin{cases} 1 & \text{if } P(Y=1 \mid X) \geq 0.5 \\ 0 & \text{otherwise} \end{cases}
+```
 
 임계값을 바꾸면 양성으로 예측하는 관측값의 수가 달라지며, 6.3절의 ROC 곡선은 모든 임계값에서의 성능을 한꺼번에 보여 준다.
 
