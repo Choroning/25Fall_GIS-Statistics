@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-26
+> **Last Updated:** 2026-11-18
 >
 > 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 2
 
@@ -144,7 +144,7 @@ is.matrix(a2)              # TRUE
 is.matrix(as.matrix(1:10)) # TRUE
 ```
 
-> **Key Point:** By default, R fills matrices column by column (column-major order). Use `byrow = TRUE` to fill row by row.
+By default, R fills matrices column by column (column-major order). Use `byrow = TRUE` to fill row by row.
 
 > **[Computer Programming]** Two-dimensional arrays in C and C++ are stored in memory in row-major order, so the elements of the same row lie next to each other. An R matrix is a vector of elements with a dimension (`dim`) attribute, and that vector is stored in column-major order, so the elements of the same column lie next to each other. `matrix()` fills by column by default because it follows this storage order. In addition, C indices start at 0 while R indices start at 1, so the element written `a[0][1]` in C is `a[1, 2]` in R.
 
@@ -302,7 +302,7 @@ x1 <- data.frame(
 class(x1)  # "data.frame"
 ```
 
-> **Key Point:** Data frames are the workhorse of data analysis in R. Each column is a variable and each row is an observation, which matches the standard tidy data format.
+Data frames are the workhorse of data analysis in R. Each column is a variable and each row is an observation, which matches the standard tidy data format.
 
 ---
 
