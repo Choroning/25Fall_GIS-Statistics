@@ -15,9 +15,9 @@
 
 ## Table of Contents
 
-- [1. What is R?](#1-what-is-r)
+- [1. Introduction to R](#1-introduction-to-r)
   - [1.1 Definition and History](#11-definition-and-history)
-  - [1.2 Why R for GIS Statistics?](#12-why-r-for-gis-statistics)
+  - [1.2 Reasons to Use R for GIS Statistics](#12-reasons-to-use-r-for-gis-statistics)
 - [2. R and RStudio Setup](#2-r-and-rstudio-setup)
   - [2.1 Installing R](#21-installing-r)
   - [2.2 RStudio IDE](#22-rstudio-ide)
@@ -28,7 +28,7 @@
   - [3.2 Assignment Operator Details](#32-assignment-operator-details)
   - [3.3 Data Types in R](#33-data-types-in-r)
 - [4. GIS and Statistics](#4-gis-and-statistics)
-  - [4.1 What is GIS?](#41-what-is-gis)
+  - [4.1 The Concept of GIS](#41-the-concept-of-gis)
   - [4.2 Statistical Methods in GIS](#42-statistical-methods-in-gis)
   - [4.3 Key R Packages for GIS Statistics](#43-key-r-packages-for-gis-statistics)
 - [Summary](#summary)
@@ -38,7 +38,7 @@
 
 <br>
 
-## 1. What is R?
+## 1. Introduction to R
 
 ### 1.1 Definition and History
 
@@ -48,7 +48,7 @@ R is a programming language and free software environment designed for statistic
 - It is widely used among statisticians and data scientists for data analysis, statistical modeling, and visualization.
 - R is open-source and has a vast ecosystem of packages, with more than 19,000 packages on CRAN.
 
-### 1.2 Why R for GIS Statistics?
+### 1.2 Reasons to Use R for GIS Statistics
 
 R provides several advantages for GIS-related statistical analysis.
 
@@ -198,7 +198,7 @@ Unlike the other five types, `factor` is a class that attaches a levels attribut
 
 ## 4. GIS and Statistics
 
-### 4.1 What is GIS?
+### 4.1 The Concept of GIS
 
 A Geographic Information System (GIS) is a framework for gathering, managing, and analyzing spatial and geographic data. GIS integrates the following three elements.
 

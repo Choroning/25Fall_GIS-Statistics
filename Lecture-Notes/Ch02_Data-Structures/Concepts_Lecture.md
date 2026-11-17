@@ -37,7 +37,7 @@
   - [5.3 Accessing Columns](#53-accessing-columns)
   - [5.4 Alternative: data.frame() Inline Construction](#54-alternative-dataframe-inline-construction)
 - [6. Factors](#6-factors)
-  - [6.1 What are Factors?](#61-what-are-factors)
+  - [6.1 The Concept of Factors](#61-the-concept-of-factors)
   - [6.2 Factors vs. Character Vectors](#62-factors-vs-character-vectors)
   - [6.3 Factor Behavior with Arithmetic](#63-factor-behavior-with-arithmetic)
   - [6.4 Case Sensitivity in Factors](#64-case-sensitivity-in-factors)
@@ -310,7 +310,7 @@ Data frames are the workhorse of data analysis in R. Each column is a variable a
 
 ## 6. Factors
 
-### 6.1 What are Factors?
+### 6.1 The Concept of Factors
 
 Factors represent categorical (qualitative) data with a fixed set of possible values called **levels**.
 

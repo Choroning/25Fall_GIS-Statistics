@@ -14,7 +14,7 @@
 ## Table of Contents
 
 - [1. Introduction to Regression](#1-introduction-to-regression)
-  - [1.1 What is Regression?](#11-what-is-regression)
+  - [1.1 The Concept of Regression](#11-the-concept-of-regression)
   - [1.2 Types of Regression](#12-types-of-regression)
 - [2. Simple Linear Regression](#2-simple-linear-regression)
   - [2.1 The Model](#21-the-model)
@@ -34,7 +34,7 @@
   - [5.2 Common Accuracy Measures](#52-common-accuracy-measures)
   - [5.3 Residual Diagnostics](#53-residual-diagnostics)
 - [6. Variable Selection](#6-variable-selection)
-  - [6.1 Why Select Variables?](#61-why-select-variables)
+  - [6.1 The Need for Variable Selection](#61-the-need-for-variable-selection)
   - [6.2 Methods](#62-methods)
   - [6.3 Implementation in R](#63-implementation-in-r)
 - [7. Regression with Geographic Data in R](#7-regression-with-geographic-data-in-r)
@@ -49,7 +49,7 @@
 
 ## 1. Introduction to Regression
 
-### 1.1 What is Regression?
+### 1.1 The Concept of Regression
 
 **Regression analysis** is a statistical method for modeling the relationship between a **dependent variable** (response, outcome) and one or more **independent variables** (predictors, features).
 
@@ -305,7 +305,7 @@ par(mfrow = c(1, 1))
 
 ## 6. Variable Selection
 
-### 6.1 Why Select Variables?
+### 6.1 The Need for Variable Selection
 
 Not all predictors contribute meaningfully to the model. Including irrelevant variables can cause the following problems:
 - Model complexity increases without improving accuracy.

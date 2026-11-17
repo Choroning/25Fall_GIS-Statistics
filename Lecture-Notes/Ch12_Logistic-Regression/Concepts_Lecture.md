@@ -15,7 +15,7 @@
 ## Table of Contents
 
 - [1. Motivation: Classification vs Regression](#1-motivation-classification-vs-regression)
-  - [1.1 Why Not Linear Regression for Classification?](#11-why-not-linear-regression-for-classification)
+  - [1.1 Reasons Linear Regression Is Unsuitable for Classification](#11-reasons-linear-regression-is-unsuitable-for-classification)
   - [1.2 The Classification Setting](#12-the-classification-setting)
 - [2. The Logistic Function (Sigmoid)](#2-the-logistic-function-sigmoid)
   - [2.1 Definition](#21-definition)
@@ -26,7 +26,7 @@
   - [3.2 Log-Odds (Logit)](#32-log-odds-logit)
   - [3.3 Relationship Summary](#33-relationship-summary)
 - [4. Maximum Likelihood Estimation](#4-maximum-likelihood-estimation)
-  - [4.1 Why Not Least Squares?](#41-why-not-least-squares)
+  - [4.1 Reasons Least Squares Cannot Be Used](#41-reasons-least-squares-cannot-be-used)
   - [4.2 The Likelihood Function](#42-the-likelihood-function)
   - [4.3 The Log-Likelihood](#43-the-log-likelihood)
   - [4.4 Implementation in R](#44-implementation-in-r)
@@ -52,7 +52,7 @@
 
 ## 1. Motivation: Classification vs Regression
 
-### 1.1 Why Not Linear Regression for Classification?
+### 1.1 Reasons Linear Regression Is Unsuitable for Classification
 
 Linear regression, covered in Chapter 10, predicts a continuous response variable $Y \in (-\infty, +\infty)$. When the response is **binary** (e.g., Yes/No, 0/1), linear regression has critical limitations:
 
@@ -163,7 +163,7 @@ That is, the linear combination $z$ of the predictors is passed through the sigm
 
 ## 4. Maximum Likelihood Estimation
 
-### 4.1 Why Not Least Squares?
+### 4.1 Reasons Least Squares Cannot Be Used
 
 Unlike linear regression, logistic regression does **not** use ordinary least squares (OLS) to estimate its coefficients because:
 - The response is binary, not continuous.
