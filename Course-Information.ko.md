@@ -2,7 +2,7 @@
 
 [레포지토리 안내](README.ko.md) | [English](Course-Information.md) | [한국어](Course-Information.ko.md)
 
-> **최종 수정일:** 2026-11-18
+> **최종 수정일:** 2026-11-19
 
 ## 목차
 
@@ -145,12 +145,13 @@
   - `Global_Reg_20251202`: [Ch10](Lecture-Notes/Ch10_Regression-Analysis/Concepts_Lecture.ko.md)
   - `Global_Chap6_Supplementary_20251111`, `Global_TSA_20251202`: [Ch11](Lecture-Notes/Ch11_Time-Series-Analysis/Concepts_Lecture.ko.md)
   - `Agresti_LogisticRegression`: [Ch12](Lecture-Notes/Ch12_Logistic-Regression/Concepts_Lecture.ko.md)
+  - `Global_Fact_20250903`, `Global_법정에 선 수학자_20251105`, `Global_법정에 선 수학자_20251112`(지정 도서 *팩트풀니스*와 *법정에 선 수학*을 발췌한 자료): [Ch13](Lecture-Notes/Ch13_Statistical-Thinking-and-Probability-Fallacies/Concepts_Lecture.ko.md)
   - `Global_Chap3,4_시험범위만-편집`: 중간고사 범위에 맞춰 `Global_Chap3`과 `Global_Chap4`를 편집한 자료이며, 내용은 Ch03과 Ch04에 있습니다.
-- `Ch09`\~`Ch12`는 교재 밖의 강의자료와 과제 자료로 다룬 주제의 보충 단원입니다. 번호는 교재의 장 번호와 겹치지 않도록 교재의 마지막 장인 8장 다음부터 이어지며, 교재 7장과 8장에 대응하는 강의 노트는 없습니다.
+- `Ch09`\~`Ch13`은 교재 밖의 강의자료와 과제 자료로 가르친 주제의 교재 밖 강의 단원입니다. 번호는 교재의 장 번호와 겹치지 않도록 교재의 마지막 장인 8장 다음부터 이어지며, 교재 7장과 8장에 대응하는 강의 노트는 없습니다.
+- `Ch14`는 수업에서 다루지 않은 통계적 추론의 기초를 보충한 단원이므로, 위 진도 표의 어느 주차에도 대응하지 않습니다. 계획된 주제였지만 수업에서 진행하지 않은 교재 7장 07-4절의 가설 검정과 분산 분석도 이 단원에서 다룹니다.
 - `Coursework`의 실습 코드 번호는 그 실습이 다룬 단원의 장 번호를 따르며, `Lab05`는 5장과 6장의 실습 코드입니다.
 - 다음 자료는 학문 내용을 담은 강의자료가 아니어서 강의 노트를 만들지 않았습니다.
   - `Global_Intro_20250902`: 강의계획서와 R 관련 도서, 웹사이트를 소개하는 과목 소개 자료
-  - `Global_Fact_20250903`, `Global_법정에 선 수학자_20251105`, `Global_법정에 선 수학자_20251112`: 지정 도서 *팩트풀니스*와 *법정에 선 수학*을 발췌한 자료
   - `Recommend book_Students_global`: 추천 도서 소개 자료 ([6절](#6-참고-자료))
   - `Announce_20251125`: 통계 학습용 동영상 강의 공지
 
@@ -172,6 +173,8 @@
 | 참고 도서 | H. Wickham and G. Grolemund, *R for Data Science*. Sebastopol, CA, USA: O'Reilly Media, 2017. [Online]. Available: https://r4ds.had.co.nz/ |
 | 참고 도서 | R. H. Shumway and D. S. Stoffer, *Time Series Analysis and Its Applications: With R Examples*, 4th ed. Cham, Switzerland: Springer, 2017. |
 | 참고 도서 | R. Krispin, *Hands-On Time Series Analysis with R*. Birmingham, U.K.: Packt Publishing, 2019. |
+| 참고 도서 | G. James, D. Witten, T. Hastie, and R. Tibshirani, *An Introduction to Statistical Learning: With Applications in R*, 2nd ed. New York, NY, USA: Springer, 2021. [Online]. Available: https://www.statlearning.com/ |
+| 참고 도서 | R. J. Hyndman and G. Athanasopoulos, *Forecasting: Principles and Practice*, 3rd ed. Melbourne, Australia: OTexts, 2021. [Online]. Available: https://otexts.com/fpp3/ |
 
 - 강의자료는 *R for Data Science*의 3장(Data visualisation)과 5장(Data transformation)을 함께 다뤘습니다. 시계열 강의자료(`Global_Chap6_Supplementary_20251111`, `Global_TSA_20251202`)는 Shumway와 Stoffer의 책과 Krispin의 책을 바탕으로 만들어졌습니다.
 - 1주차 과목 소개 자료는 R 관련 도서(*모두를 위한 R 데이터 분석 입문*, *R과 빅데이터 이해*, *R로 배우는 데이터 과학*, *Do it! 쉽게 배우는 R 데이터 분석*)와 *R for Data Science* 2판 웹사이트(https://r4ds.hadley.nz/)를 소개했습니다.

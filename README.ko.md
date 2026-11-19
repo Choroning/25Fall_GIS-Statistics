@@ -22,7 +22,7 @@
 <br><a name="about-this-repository"></a>
 ## 📝 레포지토리 소개
 
-- `Lecture-Notes/`에는 교재의 장 번호를 따른 강의 노트(`Ch01`\~`Ch06`)가 있고, 교재 밖의 강의자료와 과제 자료로 다룬 주제는 보충 단원(`Ch09`\~`Ch12`)에 있습니다.
+- `Lecture-Notes/`에는 교재의 장 번호를 따른 강의 노트(`Ch01`\~`Ch06`)가 있고, 교재 밖의 강의자료와 과제 자료로 가르친 주제는 교재 밖 강의 단원(`Ch09`\~`Ch13`)에, 수업에서 다루지 않은 통계적 추론의 기초는 보충 단원(`Ch14`)에 있습니다.
 - `Coursework/`에는 장별 R 실습 코드(`Lab##`)와 2차 과제의 안내문, 해설, 코드(`HW02`)가 있으며, 샘플 데이터셋은 각 항목의 `data/`에 있습니다.
 - 모든 강의 노트는 영어(`.md`)와 한국어(`.ko.md`) 파일이 짝을 이룹니다.
 - R 코드 파일에는 **Doxygen 스타일 헤더**가 있습니다.
@@ -65,7 +65,7 @@
 25Fall_GIS-Statistics
 ├── Lecture-Notes               장별 강의 노트
 ├── Coursework                  장별 실습 R 코드와 2차 과제
-├── images                      과제 해설의 그림
+├── images                      강의 노트와 과제 해설의 그림
 ├── Course-Information.ko.md    수업 운영 정보
 ├── Course-Information.md
 ├── LICENSE                     문서 라이선스 (CC BY-NC-SA 4.0)
