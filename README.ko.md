@@ -1,9 +1,9 @@
-# [2025학년도 가을학기] 글로벌정보사회와 통계의 창의적 기능
+# [2025학년도 가을학기] 글로벌정보사회와통계의창의적기능
 
 ![Last Commit](https://img.shields.io/github/last-commit/Choroning/25Fall_GIS-Statistics)
 ![Languages](https://img.shields.io/github/languages/top/Choroning/25Fall_GIS-Statistics)
 
-이 레포지토리는 글로벌정보사회와 통계의 창의적 기능 과목의 강의 노트와 수업 결과물을 정리한 아카이브입니다.
+이 레포지토리는 글로벌정보사회와통계의창의적기능 과목의 강의 노트와 수업 결과물을 정리한 아카이브입니다.
 
 *작성자: 박철원 (고려대학교(세종), 컴퓨터소프트웨어학과) - 2025년 기준 2학년*
 <br><br>
