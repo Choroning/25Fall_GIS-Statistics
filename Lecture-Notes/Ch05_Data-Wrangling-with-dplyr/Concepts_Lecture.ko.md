@@ -1393,16 +1393,7 @@ aq |> summarise(across(c(Ozone, Solar.R, Wind), \(x) mean(x, na.rm = TRUE)))
 
    </details>
 
-3. **filter()와 결측값:** `d <- tibble(x = c(2, NA, 5, 8))`일 때 `filter(d, x != 5)`와 `filter(d, !(x %in% 5))`의 결과 행 수를 각각 쓰고 차이의 이유를 설명하라.
-
-   <details>
-   <summary>정답</summary>
-
-   `x != 5`는 2, `NA`, 5, 8에 대해 `TRUE`, `NA`, `FALSE`, `TRUE`이므로 2와 8의 2행이 남는다. `x %in% 5`는 `NA`에 대해서도 `FALSE`를 돌려주므로 `!(x %in% 5)`는 `TRUE`, `TRUE`, `FALSE`, `TRUE`이고, 결측 행을 포함한 3행이 남는다. `%in%`은 결측값을 비교 불가능한 값이 아니라 집합에 없는 값으로 다루기 때문이다.
-
-   </details>
-
-4. **순위 함수:** `s <- c(70, 85, 85, 90)`일 때 `min_rank(desc(s))`, `dense_rank(desc(s))`, `rank(s)`의 결과를 쓰라.
+3. **순위 함수:** `s <- c(70, 85, 85, 90)`일 때 `min_rank(desc(s))`, `dense_rank(desc(s))`, `rank(s)`의 결과를 쓰라.
 
    <details>
    <summary>정답</summary>
@@ -1411,7 +1402,7 @@ aq |> summarise(across(c(Ozone, Solar.R, Wind), \(x) mean(x, na.rm = TRUE)))
 
    </details>
 
-5. **그룹별 계산:** 다음 코드의 결과에서 4기통 그룹의 `n`과 `prop`를 구하라.
+4. **그룹별 계산:** 다음 코드의 결과에서 4기통 그룹의 `n`과 `prop`를 구하라.
 
    ```r
    mtcars |> count(cyl) |> mutate(prop = n / sum(n))
@@ -1424,7 +1415,7 @@ aq |> summarise(across(c(Ozone, Solar.R, Wind), \(x) mean(x, na.rm = TRUE)))
 
    </details>
 
-6. **조인의 행 수:** `x <- tibble(k = c(1, 2, 2, 3))`, `y <- tibble(k = c(2, 3, 4), v = c("a", "b", "c"))`일 때 `inner_join(x, y, by = "k")`, `left_join(x, y, by = "k")`, `full_join(x, y, by = "k")`, `anti_join(x, y, by = "k")`의 행 수를 구하라.
+5. **조인의 행 수:** `x <- tibble(k = c(1, 2, 2, 3))`, `y <- tibble(k = c(2, 3, 4), v = c("a", "b", "c"))`일 때 `inner_join(x, y, by = "k")`, `left_join(x, y, by = "k")`, `full_join(x, y, by = "k")`, `anti_join(x, y, by = "k")`의 행 수를 구하라.
 
    <details>
    <summary>정답</summary>
@@ -1433,7 +1424,7 @@ aq |> summarise(across(c(Ozone, Solar.R, Wind), \(x) mean(x, na.rm = TRUE)))
 
    </details>
 
-7. **표의 모양 바꾸기:** 다음 넓은 형식의 표 `score`를 학생, 과목, 점수의 세 열을 가진 긴 형식으로 바꾸는 코드를 쓰고, 결과의 행 수를 구하라.
+6. **표의 모양 바꾸기:** 다음 넓은 형식의 표 `score`를 학생, 과목, 점수의 세 열을 가진 긴 형식으로 바꾸는 코드를 쓰고, 결과의 행 수를 구하라.
 
    ```r
    score <- tibble(student = c("A", "B", "C"),
@@ -1447,7 +1438,7 @@ aq |> summarise(across(c(Ozone, Solar.R, Wind), \(x) mean(x, na.rm = TRUE)))
 
    </details>
 
-8. **이상치 경계:** 어떤 변수의 사분위수가 $`Q_1 = 40`$, $`Q_3 = 60`$이고 값 5, 12, 95, 88이 관측되었다. IQR 규칙으로 이상치 후보를 모두 고르라.
+7. **이상치 경계:** 어떤 변수의 사분위수가 $`Q_1 = 40`$, $`Q_3 = 60`$이고 값 5, 12, 95, 88이 관측되었다. IQR 규칙으로 이상치 후보를 모두 고르라.
 
    <details>
    <summary>정답</summary>

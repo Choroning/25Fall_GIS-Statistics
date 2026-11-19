@@ -1393,16 +1393,7 @@ Every step of cleaning must be recorded in a script. Editing the original file d
 
    </details>
 
-3. **filter() and missing values:** For `d <- tibble(x = c(2, NA, 5, 8))`, give the number of rows in the results of `filter(d, x != 5)` and `filter(d, !(x %in% 5))`, and explain the reason for the difference.
-
-   <details>
-   <summary>Answer</summary>
-
-   `x != 5` is `TRUE`, `NA`, `FALSE`, `TRUE` for 2, `NA`, 5, 8, so the 2 rows with 2 and 8 remain. `x %in% 5` returns `FALSE` even for `NA`, so `!(x %in% 5)` is `TRUE`, `TRUE`, `FALSE`, `TRUE`, and 3 rows remain, including the missing row. `%in%` treats a missing value not as an incomparable value but as a value that is not in the set.
-
-   </details>
-
-4. **Ranking functions:** For `s <- c(70, 85, 85, 90)`, give the results of `min_rank(desc(s))`, `dense_rank(desc(s))`, and `rank(s)`.
+3. **Ranking functions:** For `s <- c(70, 85, 85, 90)`, give the results of `min_rank(desc(s))`, `dense_rank(desc(s))`, and `rank(s)`.
 
    <details>
    <summary>Answer</summary>
@@ -1411,7 +1402,7 @@ Every step of cleaning must be recorded in a script. Editing the original file d
 
    </details>
 
-5. **Computing by group:** In the result of the following code, find `n` and `prop` for the 4-cylinder group.
+4. **Computing by group:** In the result of the following code, find `n` and `prop` for the 4-cylinder group.
 
    ```r
    mtcars |> count(cyl) |> mutate(prop = n / sum(n))
@@ -1424,7 +1415,7 @@ Every step of cleaning must be recorded in a script. Editing the original file d
 
    </details>
 
-6. **Rows after joins:** For `x <- tibble(k = c(1, 2, 2, 3))` and `y <- tibble(k = c(2, 3, 4), v = c("a", "b", "c"))`, find the number of rows of `inner_join(x, y, by = "k")`, `left_join(x, y, by = "k")`, `full_join(x, y, by = "k")`, and `anti_join(x, y, by = "k")`.
+5. **Rows after joins:** For `x <- tibble(k = c(1, 2, 2, 3))` and `y <- tibble(k = c(2, 3, 4), v = c("a", "b", "c"))`, find the number of rows of `inner_join(x, y, by = "k")`, `left_join(x, y, by = "k")`, `full_join(x, y, by = "k")`, and `anti_join(x, y, by = "k")`.
 
    <details>
    <summary>Answer</summary>
@@ -1433,7 +1424,7 @@ Every step of cleaning must be recorded in a script. Editing the original file d
 
    </details>
 
-7. **Reshaping a table:** Write code that turns the following wide table `score` into a long format with three columns, student, subject, and score, and find the number of rows of the result.
+6. **Reshaping a table:** Write code that turns the following wide table `score` into a long format with three columns, student, subject, and score, and find the number of rows of the result.
 
    ```r
    score <- tibble(student = c("A", "B", "C"),
@@ -1447,7 +1438,7 @@ Every step of cleaning must be recorded in a script. Editing the original file d
 
    </details>
 
-8. **Outlier fences:** A variable has quartiles $`Q_1 = 40`$ and $`Q_3 = 60`$, and the values 5, 12, 95, and 88 were observed. Select all outlier candidates by the IQR rule.
+7. **Outlier fences:** A variable has quartiles $`Q_1 = 40`$ and $`Q_3 = 60`$, and the values 5, 12, 95, and 88 were observed. Select all outlier candidates by the IQR rule.
 
    <details>
    <summary>Answer</summary>

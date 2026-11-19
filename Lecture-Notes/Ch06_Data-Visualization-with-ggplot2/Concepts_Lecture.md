@@ -981,16 +981,7 @@ A choropleth map paints values over the area of each region, so regions with lar
 
    </details>
 
-7. **Zoom and limits:** Explain how the regression line differs when `xlim(2, 5)` and when `coord_cartesian(xlim = c(2, 5))` is added to `ggplot(mpg, aes(displ, hwy)) + geom_point() + geom_smooth(method = "lm")`.
-
-   <details>
-   <summary>Answer</summary>
-
-   `xlim(2, 5)` sets the scale range, so the 58 cars with displacement below 2 or above 5 are turned into missing values and left out of the regression line, and the line fitted to the remaining cars has slope -4.31. `coord_cartesian(xlim = c(2, 5))` draws the line with slope -3.53 fitted to all 234 cars and then shows only the 2-5 range enlarged.
-
-   </details>
-
-8. **Choropleth maps:** Give two reasons why a choropleth map that paints the number of incidents by region as it is can mislead.
+7. **Choropleth maps:** Give two reasons why a choropleth map that paints the number of incidents by region as it is can mislead.
 
    <details>
    <summary>Answer</summary>

@@ -981,16 +981,7 @@ arrests |> arrange(desc(Murder)) |> head(3)
 
    </details>
 
-7. **확대와 범위:** `ggplot(mpg, aes(displ, hwy)) + geom_point() + geom_smooth(method = "lm")`에 `xlim(2, 5)`를 더할 때와 `coord_cartesian(xlim = c(2, 5))`를 더할 때 회귀선이 어떻게 달라지는지 설명하라.
-
-   <details>
-   <summary>정답</summary>
-
-   `xlim(2, 5)`는 척도의 범위를 정하므로 배기량이 2 미만이거나 5를 넘는 58대가 결측으로 바뀌어 회귀선 계산에서 빠지며, 남은 차만으로 맞춘 직선의 기울기는 -4.31이다. `coord_cartesian(xlim = c(2, 5))`는 234대 모두로 맞춘 기울기 -3.53의 직선을 그린 뒤 2\~5 구간만 확대해 보여 준다.
-
-   </details>
-
-8. **단계구분도:** 지역별 사건 수를 그대로 칠한 단계구분도가 오해를 부를 수 있는 이유를 두 가지 쓰라.
+7. **단계구분도:** 지역별 사건 수를 그대로 칠한 단계구분도가 오해를 부를 수 있는 이유를 두 가지 쓰라.
 
    <details>
    <summary>정답</summary>

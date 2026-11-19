@@ -138,12 +138,7 @@ R can be downloaded from the Comprehensive R Archive Network (CRAN).
 - Website: https://cran.r-project.org/
 - R is available for Windows, macOS, and Linux.
 
-CRAN operates as a system of **mirrors** that copy the same files to servers around the world. Clicking the CRAN link on the R Project home page (https://www.r-project.org) shows a list of mirrors by country, from which a nearby server is chosen. The installation steps are as follows.
-
-1. In the Download and Install R area of the mirror site, click the link for your operating system. On Windows, click Download R for Windows.
-2. On Windows, choose the base item and then download the installer from the Download R x.y.z for Windows link. x.y.z is the version number.
-3. When the download finishes, double-click the installer to run it. The options in the installation screens do not need to be changed.
-4. Older installers asked users to choose "64-bit files" for a 64-bit operating system and "32-bit files" for a 32-bit one. From R 4.2.0, R for Windows no longer supports 32-bit builds, so recent versions install only the 64-bit version [4].
+CRAN operates as a system of **mirrors** that copy the same files to servers around the world, so R is installed by downloading the installer for your operating system from a nearby mirror (on Windows, R x.y.z under the base item, where x.y.z is the version number) and running it with the default options. Older Windows installers asked users to choose between 64-bit and 32-bit files, but from R 4.2.0 R for Windows no longer supports 32-bit builds, so recent versions install only the 64-bit version [4].
 
 The version number of R has the form `major.minor.patch`. The version of the running R can be checked as below, and all results in this document were obtained with R 4.5.1.
 
@@ -174,14 +169,6 @@ RStudio is the most popular integrated development environment (IDE) for R, and 
 *Figure 1. Default panel layout of RStudio*
 
 An **integrated development environment (IDE)** is software that gathers entering and running a program, checking and saving the results, and debugging into one screen. R works without RStudio, but RStudio lets you work while seeing the script, the results, the list of variables, and the graphs at a glance. RStudio is not a replacement for R but a program that calls R, so **R must be installed before RStudio.** RStudio Desktop can be downloaded from https://posit.co/download/rstudio-desktop/.
-
-The role of each panel in more detail is as follows.
-
-- The **Script pane** is at the top left and is a text editor, like Notepad, in which commands are written down. Code written here does nothing until it is run.
-- The **Console pane** is at the bottom left and shows how statements are executed and their results. Statements can also be typed and run directly in the Console pane.
-- The **Environment pane** shows the contents of the variables and data structures created while R statements run.
-- The **History pane** shows almost the whole working process in RStudio, including the code run, results, package installations, and errors.
-- The **Files pane** shows the contents of the current working folder like a file explorer, the **Plots pane** displays the graphs produced, and the **Packages pane** lists the R packages installed on the computer. The **Help pane** looks up the help for a given function, and the **Viewer pane** shows analysis results rendered as web documents such as HTML.
 
 ### 2.3 Basic R Console Operations
 
@@ -308,15 +295,12 @@ In the result of `args(round)`, `digits = 0` means that 0 is used when the `digi
 
 ### 2.8 RStudio Settings and Projects
 
-RStudio settings are changed in Global Options under the Tools menu. After the first installation, it is good to check the following three settings.
+RStudio settings are changed in Global Options under the Tools menu. After the first installation, it is good to check the following two settings.
 
-- **Character encoding:** In the Saving tab of the Code item, set Default text encoding to UTF-8. This reduces the problem of broken characters when a script containing Korean comments or strings is opened on another operating system.
-- **Saving the workspace:** In the General item, turn off Restore .RData into workspace at startup and set Save workspace to .RData on exit to Never. If variables are saved to an `.RData` file every time R closes and restored automatically next time, variables that are not in the script remain, and the same script can behave differently on another computer. The record of an analysis must be kept in the script, not in the workspace.
-- **Font and theme:** In the Appearance item, change the font size and color scheme of the editor.
+- **Character encoding:** Set the default text encoding of scripts to UTF-8. This reduces the problem of broken characters when a script containing Korean comments or strings is opened on another operating system.
+- **Saving the workspace:** Set RStudio not to restore `.RData` at startup and never to save it on exit. If variables are saved to an `.RData` file every time R closes and restored automatically next time, variables that are not in the script remain, and the same script can behave differently on another computer. The record of an analysis must be kept in the script, not in the workspace.
 
 A **project** is an RStudio feature that gathers the scripts, data, and outputs of one analysis in one folder. Creating a project with New Project in the File menu creates an `.Rproj` file in the folder, and opening RStudio with this file automatically sets the working directory to the project folder. Files can then be read with relative paths, so the same code works on other computers (Section 5 of Chapter 4).
-
-It also helps to learn frequently used shortcuts. The assignment operator `<-` is typed with Alt + - (Option + - on macOS), the pipe operator `%>%` covered in Chapter 5 with Ctrl + Shift + M (Cmd + Shift + M on macOS), and the console is cleared with Ctrl + L.
 
 ---
 
