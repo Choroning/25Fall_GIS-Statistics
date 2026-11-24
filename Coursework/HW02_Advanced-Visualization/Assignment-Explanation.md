@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Assignment-Explanation.md) | [한국어](Assignment-Explanation.ko.md)
 
-> **Last Updated:** 2026-11-18
+> **Last Updated:** 2026-11-24
 >
 > Modern Data Visualization with R, Kabacoff, Ch 5, 6, 7, 8
 
@@ -90,8 +90,7 @@ Coursework/HW02_Advanced-Visualization/
 ### 2.2 Report Format
 
 - Capture the code in the R console pane so that its colors are visible, together with the figure in the plot pane.
-- Edit the captures in hwp or Word so that the table of contents and sections can be told apart, convert the document to PDF, and submit one file per student on the LMS.
-- The file name is `Global_StudentID_Name.pdf`, and the deadline is 2025-11-29 (Sat) 18:00.
+- Edit the captures in hwp or Word so that the table of contents and sections can be told apart, and convert the document to one PDF file per student.
 
 ### 2.3 Response to the Grading Criteria
 
@@ -100,8 +99,7 @@ Coursework/HW02_Advanced-Visualization/
 | 5 figures per chapter | 7 in Chapter 5, 8 in Chapter 6, 5 in Chapter 7, and 5 in Chapter 8, so every chapter has at least 5, and the total is 25 |
 | Captures of the R console pane and the plot pane | Each item captures the executed code in the RStudio console on the left and the result in the Plots pane on the right, side by side. The mapview maps open in the Viewer pane, so the Viewer pane was captured |
 | Chapter format and section separation | The report is divided into a cover and four sections, Chapters 5, 6, 7, and 8, and each item carries its number, the Kabacoff section number and title, and the figure name, as in `(1) 5.1.2. Grouped Bar Chart (Side-by-side bar chart)` |
-| PDF format and file name | The report was edited in Hangul (hwpx) and converted to PDF, and the file name follows the `Global_StudentID_Name.pdf` format |
-| Deadline | The report was submitted on 2025-11-17 (Mon), ahead of the deadline |
+| PDF format | The report was edited in Hangul (hwpx) and converted to one PDF file |
 
 *Table 2. Grading criteria and the response of the solution*
 
@@ -409,7 +407,7 @@ The total width grows from about 76.1 million in 1900 to about 288.4 million in 
 | Faceting | Splitting panels with the same axes by category allows the levels and trends of groups to be compared side by side. |
 | Maps | A dot density map shows observation locations and a choropleth map shows values by region, and a choropleth map colors a region only when the region name in the data matches the name in the map exactly. |
 | Time-dependent graphs | Time series and area charts show trends, dumbbell charts and slope graphs show changes between time points, and stream graphs show the flow of composition. |
-| Report format | The console and the plot pane are captured together, and one PDF file edited so that chapters and items can be told apart is submitted as `Global_StudentID_Name.pdf`. |
+| Report format | The console and the plot pane are captured together, and the result is one PDF file edited so that chapters and items can be told apart. |
 
 ---
 

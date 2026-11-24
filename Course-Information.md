@@ -2,7 +2,7 @@
 
 [Repository Guide](README.md) | [English](Course-Information.md) | [한국어](Course-Information.ko.md)
 
-> **Last Updated:** 2026-11-19
+> **Last Updated:** 2026-11-24
 
 ## Table of Contents
 
@@ -67,16 +67,14 @@
   - In at least 4 pages, students write (1) a summary of the data, the statistical analysis methods, and the results of the analysis, and (2) their own opinion (impressions) of the paper and additional research beyond the chosen paper. The opinion and additional research must take at least 1 page.
   - The font size is 11. Figures may be copied as they are, but capturing the body text and inserting it as an image is penalized.
   - Papers that contain only multiple linear regression, analysis of variance, or frequency analysis are not allowed. Multiple regression is excluded because it is too easy, and other kinds of regression analysis may be used.
-  - The final file is submitted to Blackboard as a PDF named `Global_StudentID_Name.pdf`, and the referenced paper as a PDF named `Global_StudentID_Name_Ref.pdf`.
-  - The deadline was 10/4 (Sat) 18:00 and was extended to 10/7 (Tue) 18:00.
+  - The deliverables are the report in PDF format and the referenced paper as a PDF file.
 - **Report 2:** A report in which students choose at least 5 figures from each of Chapter 5 Bivariate Graphs, Chapter 6 Multivariate Graphs, Chapter 7 Maps, and Chapter 8 Time-dependent graphs of R. Kabacoff's *Modern Data Visualization with R* ([Section 6](#6-references)), at least 20 in total, type or copy and run the R code, and check the figures in the plot pane.
   - Students capture the code so that the colors of the R console pane are visible, and capture the figures in the plot pane.
-  - After careful editing in hwp or Word so that the table of contents and each section can be told apart, the report is converted to PDF and submitted to the LMS as one file per student (`Global_StudentID_Name.pdf`).
-  - The deadline is 11/29 (Sat) 18:00.
-  - Students could ask the instructor about program errors by e-mail. E-mails received before 18:00 on weekdays were answered on the same day where possible, e-mails received on weekends and holidays were answered during the week, and only e-mails received by 11/27 (Thu) 18:00 were answered.
+  - After careful editing in hwp or Word so that the table of contents and each section can be told apart, the report is converted to PDF as one file per student.
+  - Students could ask the instructor about program errors by e-mail. E-mails received before 18:00 on weekdays were answered on the same day where possible, and e-mails received on weekends and holidays were answered during the week.
 - **Assignment Grading Criteria:** The following deductions applied to both reports.
-  - A missing submission is -10 points, and a late submission follows the late submission rule in [Section 4](#4-course-policies).
-  - A file not in PDF format is -0.5 points, an inappropriate file name is -0.5 points, and each part that is hard for the grader to tell apart is -0.5 points.
+  - A missing submission is -10 points.
+  - A file not in PDF format is -0.5 points, and each part that is hard for the grader to tell apart is -0.5 points.
   - A report that is impossible to grade because the text is too small or the editing is odd is -2 points, and copying and pasting without summarizing and without minimal editing is -1 point.
   - Copying generative AI output as is costs -3 points, copying someone else's report -10 points, and resubmitting a past assignment as is -10 points.
 - **Report 1 Length and Content Deductions:** Falling short of the 4-page minimum is -3 points, not submitting the referenced paper -1 point, and a paper without data -1 point. A partly insufficient explanation of the data summary, statistical methods, and results is -1 point, and an overall very insufficient one -3 points. An opinion of half a page or less is -1 point, and no additional research beyond the paper -1 point. A paper that contains only multiple linear regression, analysis of variance, or frequency analysis, or a paper without the designated analyses, is -3 points each.
@@ -88,7 +86,6 @@
 
 ## 4. Course Policies
 
-- **Late Submission:** A late assignment receives 80% of its score after 1 day past the deadline, 60% after 2 days, 40% after 3 days, and 20% after 4 days.
 - Submitting an assignment on scrap paper or torn-out notebook pages is penalized.
 - Copying someone else's assignment or report gives both students 0 points, and resubmitting someone's past assignment as is also gives 0 points.
 - Reports must be edited carefully so that the grader can tell each requirement apart, or points may be deducted.
