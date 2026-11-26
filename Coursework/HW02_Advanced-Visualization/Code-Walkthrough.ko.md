@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Code-Walkthrough.md) | [한국어](Code-Walkthrough.ko.md)
 
-> **최종 수정일:** 2026-11-16
+> **최종 수정일:** 2026-11-27
 >
 > Modern Data Visualization with R, Kabacoff, Ch 5, 6, 7, 8
 
@@ -95,9 +95,9 @@
 | choroplethr, choroplethrMaps | 7장 (3), (4)의 국가별 단계구분도 | CRAN |
 | tidyverse | 7장 (5)에서 ggplot2, dplyr 등을 한꺼번에 불러오기 | CRAN |
 | gcookbook, forcats | 8장 (5)의 `uspopage` 자료와 팩터 수준 뒤집기 | CRAN |
-| ggalt | 8장 (2)의 덤벨 차트 | GitHub (`hrbrmstr/ggalt`) |
+| ggalt | 8장 (2)의 dumbbell chart | GitHub (`hrbrmstr/ggalt`) |
 | CGPfunctions | 8장 (3)의 기울기 그래프 | GitHub (`ibecav/CGPfunctions`) |
-| ggstream | 8장 (5)의 스트림 그래프 | GitHub (`davidsjoberg/ggstream`) |
+| ggstream | 8장 (5)의 stream graph | GitHub (`davidsjoberg/ggstream`) |
 
 *표 3. 스크립트가 쓰는 패키지*
 
@@ -122,7 +122,7 @@ setwd("Coursework/HW02_Advanced-Visualization/Solution")
 source("HW_AdvancedVisualization.R", echo = TRUE)
 ```
 
-`source()`는 기본값으로 식의 값을 출력하지 않아 ggplot 객체가 그려지지 않는다. `echo = TRUE`를 주면 `print.eval`의 기본값도 `TRUE`가 되어 각 식의 값이 출력되고 그래프가 차례로 그려진다. 과제의 방식대로 블록을 하나씩 실행해 plot 창을 확인하려면 RStudio에서 블록을 선택하고 Ctrl+Enter(macOS는 Cmd+Enter)로 실행한다. mapview 지도는 Plots 창이 아니라 Viewer 창에 열린다.
+`source()`는 기본값으로 식의 값을 출력하지 않아 ggplot 객체가 그려지지 않는다. `echo = TRUE`를 주면 `print.eval`의 기본값도 `TRUE`가 되어 각 식의 값이 출력되고 그래프가 차례로 그려진다. 과제의 방식대로 블록을 하나씩 실행해 Plots 창을 확인하려면 RStudio에서 블록을 선택하고 Ctrl+Enter(macOS는 Cmd+Enter)로 실행한다. mapview 지도는 Plots 창이 아니라 Viewer 창에 열린다.
 
 ---
 
@@ -250,7 +250,7 @@ ggplot(mpg,
 - `theme_ridges()`는 ggridges가 제공하는 완전한 테마이고, `theme(legend.position = "none")`은 범례를 지운다. 완전한 테마는 앞의 테마 설정을 모두 덮어쓰므로, 범례 설정은 테마 함수보다 뒤에 더해야 한다.
 - 82행의 `labs(title = ...)`는 Kabacoff의 `labs("Highway mileage by auto class")`를 고친 것이다. `labs()`는 인수 이름(`title`, `x` 등)으로 어느 레이블인지 정하므로 이름 없는 문자열은 제목이 되지 않으며, ggplot2 4.0.1에서는 오류가 난다. x축이 도시 주행 연비 `cty`이므로 제목의 Highway도 City로 바꾸었다.
 
-**(7) 지터 스트립 그래프 (86\~103행).**
+**(7) jittered strip plot (86\~103행).**
 
 ```r
 # (7) Fancy Jittered Strip Plot
@@ -274,7 +274,7 @@ ggplot(Salaries,
 ```
 
 - `factor(rank, labels = c(...))`는 직급의 세 수준 `AsstProf`, `AssocProf`, `Prof`에 차례로 새 이름을 붙인다. `\n`은 줄바꿈 문자여서 y축의 긴 이름이 두 줄로 표시된다.
-- 직급을 y축에, 급여를 x축에 두었으므로 가로 방향의 스트립 그래프가 된다.
+- 직급을 y축에, 급여를 x축에 두었으므로 가로 방향의 strip plot이 된다.
 - `geom_jitter()`는 점마다 작은 무작위 이동을 더해 같은 범주의 점이 한 줄로 겹치지 않게 한다. 기본 이동 폭은 각 축 자료 해상도의 40%이므로, 해상도가 1달러인 급여 방향으로는 거의 움직이지 않고 범주 방향으로 퍼진다.
 - 89행에서 scales를 불러왔으므로 `scale_x_continuous(label = dollar)`는 `scales::` 없이 `dollar`를 쓴다. `theme_minimal()`은 회색 배경과 테두리를 없앤 테마이다.
 
@@ -591,7 +591,7 @@ ggplot(economics, aes(x = date, y = psavert)) +
 - `geom_smooth()`는 방법을 주지 않으면 자료가 1,000행 미만일 때 LOESS를 쓴다. `economics`는 574행이므로 `` `geom_smooth()` using method = 'loess' and formula = 'y ~ x' `` 메시지가 출력되고, 곡선 주위에 신뢰 구간의 띠가 함께 그려진다.
 - Kabacoff의 코드는 `geom_line()`의 굵기를 `size=1`로 썼으며, 풀이는 `linewidth = 1`로 고쳤다.
 
-**(2) 덤벨 차트 (305\~324행).**
+**(2) dumbbell chart (305\~324행).**
 
 ```r
 # (2) Dumbbell chart: Life expectancy change 1952 to 2007
@@ -660,7 +660,7 @@ ggplot(economics, aes(x = date, y = psavert)) +
 
 - `geom_area()`는 y값과 0 사이를 채운다. `fill`은 채우기 색, `color`는 영역의 윤곽선 색이다.
 
-**(5) 스트림 그래프 (355\~372행).**
+**(5) stream graph (355\~372행).**
 
 ```r
 # (5) Stream graph: US population by age group

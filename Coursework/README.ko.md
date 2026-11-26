@@ -2,11 +2,11 @@
 
 [레포지토리 안내](../README.ko.md) | [English](README.md) | [한국어](README.ko.md)
 
-> **최종 수정일:** 2026-11-18
+> **최종 수정일:** 2026-11-27
 
 | 항목 | 내용 | 문서 |
 |:-----|:-----|:-----|
-| [HW02_Advanced-Visualization](HW02_Advanced-Visualization/) | 2차 과제. *Modern Data Visualization with R*의 5~8장에서 장마다 그림을 5개 이상 골라 R 코드를 실행하고, 콘솔과 plot 창의 캡처를 보고서로 엮습니다. 그래프 유형의 개념은 [9장 고급 시각화](../Lecture-Notes/Ch09_Advanced-Visualization/Concepts_Lecture.ko.md)에 있고, R 코드가 읽는 자료는 `data/`에 있습니다 | [과제 안내문](HW02_Advanced-Visualization/Original/Assignment.ko.md), [과제 해설](HW02_Advanced-Visualization/Assignment-Explanation.ko.md), [코드 총정리](HW02_Advanced-Visualization/Code-Walkthrough.ko.md), [R 코드](HW02_Advanced-Visualization/Solution/HW_AdvancedVisualization.R) |
+| [HW02_Advanced-Visualization](HW02_Advanced-Visualization/) | 2차 과제. *Modern Data Visualization with R*의 5~8장에서 장마다 그림을 5개 이상 골라 R 코드를 실행하고, 콘솔과 Plots 창의 캡처를 보고서로 엮습니다. 그래프 유형의 개념은 [9장 고급 시각화](../Lecture-Notes/Ch09_Advanced-Visualization/Concepts_Lecture.ko.md)에 있고, R 코드가 읽는 자료는 `data/`에 있습니다 | [과제 안내문](HW02_Advanced-Visualization/Original/Assignment.ko.md), [과제 해설](HW02_Advanced-Visualization/Assignment-Explanation.ko.md), [코드 총정리](HW02_Advanced-Visualization/Code-Walkthrough.ko.md), [R 코드](HW02_Advanced-Visualization/Solution/HW_AdvancedVisualization.R) |
 | [Lab02_Data-Structures](Lab02_Data-Structures/) | [2장 R의 데이터 구조](../Lecture-Notes/Ch02_Data-Structures/Concepts_Lecture.ko.md) 수업의 실습 코드. 변수와 기본 연산, 데이터 프레임, 내장 함수와 도움말, 벡터, 행렬, 배열, 리스트, 팩터를 차례로 만들고 확인하며, 숫자형과 팩터의 비교, 복합 데이터 구조 예제를 포함합니다 | [Lab_DataStructures.R](Lab02_Data-Structures/Lab_DataStructures.R) |
 | [Lab03_Functions-and-Control-Flow](Lab03_Functions-and-Control-Flow/) | [3장 함수와 제어 흐름](../Lecture-Notes/Ch03_Functions-and-Control-Flow/Concepts_Lecture.ko.md) 수업의 실습 코드. 변수 할당, 내장 함수, 사용자 정의 함수, `print()`와 `cat()`, for 반복문, 티블과 정규화, 반복을 줄이는 `rescale` 함수, 비교와 논리 연산자, if-else 조건문, 클래스 확인을 다룹니다 | [Lab_FunctionsAndControlFlow.R](Lab03_Functions-and-Control-Flow/Lab_FunctionsAndControlFlow.R) |
 | [Lab04_Data-Import-and-Export](Lab04_Data-Import-and-Export/) | [4장 데이터 입출력](../Lecture-Notes/Ch04_Data-Import-and-Export/Concepts_Lecture.ko.md) 수업의 실습 코드. 데이터를 직접 입력해 데이터 프레임을 만들고, `read.table()`과 `read.csv()`로 `data/`의 CSV와 TXT 파일을 읽습니다 | [Lab_DataIO.R](Lab04_Data-Import-and-Export/Lab_DataIO.R) |

@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-19
+> **최종 수정일:** 2026-11-27
 >
 > An Introduction to Statistical Learning, James, Witten, Hastie, and Tibshirani, Ch 3
 
@@ -202,7 +202,7 @@ S_{xy} = \sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y}) = \sum_{i=1}^{n} x_i y_i 
 \hat{\beta}_1 = \frac{S_{xy}}{S_{xx}}
 ```
 
-이 해가 최솟값이라는 것은 RSS의 2계 편미분으로 확인한다. $\partial^2 RSS / \partial \beta_0^2 = 2n$, $\partial^2 RSS / \partial \beta_1^2 = 2\sum x_i^2$, $\partial^2 RSS / \partial \beta_0 \partial \beta_1 = 2\sum x_i$이므로 헤세 행렬의 행렬식은 $4(n\sum x_i^2 - (\sum x_i)^2) = 4n S_{xx}$이다. $x_i$가 모두 같지 않으면 $S_{xx} > 0$이므로 헤세 행렬은 양의 정부호이고, 이 점은 유일한 최솟값이다. 반대로 $x_i$가 모두 같으면 $S_{xx} = 0$이 되어 기울기를 정할 수 없다. 예측 변수에 변동이 없으면 기울기를 추정할 수 없다는 뜻이다.
+이 해가 최솟값이라는 것은 RSS의 2계 편미분으로 확인한다. $\partial^2 RSS / \partial \beta_0^2 = 2n$, $\partial^2 RSS / \partial \beta_1^2 = 2\sum x_i^2$, $\partial^2 RSS / \partial \beta_0 \partial \beta_1 = 2\sum x_i$이므로 Hessian 행렬의 행렬식은 $4(n\sum x_i^2 - (\sum x_i)^2) = 4n S_{xx}$이다. $x_i$가 모두 같지 않으면 $S_{xx} > 0$이므로 Hessian 행렬은 양의 정부호이고, 이 점은 유일한 최솟값이다. 반대로 $x_i$가 모두 같으면 $S_{xx} = 0$이 되어 기울기를 정할 수 없다. 예측 변수에 변동이 없으면 기울기를 추정할 수 없다는 뜻이다.
 
 다섯 관측값 $(x, y)$ = (1, 2), (2, 4), (3, 5), (4, 4), (5, 5)로 계산 과정을 따라가면 다음과 같다. $\bar{x} = 3$, $\bar{y} = 4$이고 편차 $x_i - \bar{x}$는 -2, -1, 0, 1, 2, $y_i - \bar{y}$는 -2, 0, 1, 0, 1이다. 편차의 곱은 4, 0, 0, 0, 2이므로 $S_{xy} = 6$, 편차의 제곱은 4, 1, 0, 1, 4이므로 $S_{xx} = 10$이다. 따라서 $\hat{\beta}_1 = 0.6$, $\hat{\beta}_0 = 4 - 0.6 \times 3 = 2.2$이고, 직선은 $\hat{y} = 2.2 + 0.6x$이다.
 
@@ -474,7 +474,7 @@ $RSS$를 $\boldsymbol{\beta}$로 미분하면 $-2\mathbf{X}^\top(\mathbf{y} - \m
 \hat{\boldsymbol{\beta}} = (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{y}
 ```
 
-$p = 1$이면 이 식은 2.4절의 두 정규 방정식과 같다. $\mathbf{X}^\top \mathbf{X}$의 역행렬이 있으려면 $\mathbf{X}$의 열들이 일차 독립이어야 한다. 어떤 예측 변수가 다른 예측 변수들의 일차 결합으로 정확히 표현되면(예: 같은 길이를 cm와 inch로 두 번 넣은 경우) 계수를 하나로 정할 수 없고, R은 그런 변수의 계수를 `NA`로 보고한다. 일차 결합에 가깝기만 한 경우가 5.8절의 다중공선성이다.
+$p = 1$이면 이 식은 2.4절의 두 정규 방정식과 같다. $\mathbf{X}^\top \mathbf{X}$의 역행렬이 있으려면 $\mathbf{X}$의 열들이 일차 독립이어야 한다. 어떤 예측 변수가 다른 예측 변수들의 일차 결합으로 정확히 표현되면(예: 같은 길이를 cm와 인치로 두 번 넣은 경우) 계수를 하나로 정할 수 없고, R은 그런 변수의 계수를 `NA`로 보고한다. 일차 결합에 가깝기만 한 경우가 5.8절의 다중공선성이다.
 
 > **[선형대수학]** 정규 방정식은 $\mathbf{y}$를 $\mathbf{X}$의 열 공간에 정사영하는 문제와 같다. 잔차 벡터 $\mathbf{e} = \mathbf{y} - \mathbf{X}\hat{\boldsymbol{\beta}}$가 $\mathbf{X}^\top \mathbf{e} = \mathbf{0}$을 만족한다는 것은 잔차가 $\mathbf{X}$의 모든 열과 직교한다는 뜻이며, 2.5절의 $\sum e_i = 0$과 $\sum x_i e_i = 0$은 이 직교 조건을 성분별로 쓴 것이다. 적합값 $\hat{\mathbf{y}} = \mathbf{X}(\mathbf{X}^\top \mathbf{X})^{-1}\mathbf{X}^\top \mathbf{y}$에 쓰인 행렬 $\mathbf{H} = \mathbf{X}(\mathbf{X}^\top \mathbf{X})^{-1}\mathbf{X}^\top$를 모자 행렬이라 하며, 그 대각 원소가 5.9절의 레버리지이다.
 
