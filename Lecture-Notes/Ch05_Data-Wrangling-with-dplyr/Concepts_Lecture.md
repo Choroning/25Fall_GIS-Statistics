@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-19
+> **Last Updated:** 2026-11-26
 >
 > 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 5
 
@@ -53,7 +53,6 @@
   - [4.3 Detecting Outliers](#43-detecting-outliers)
   - [4.4 Correcting Values and Types](#44-correcting-values-and-types)
 - [Concept Applications](#concept-applications)
-- [Glossary](#glossary)
 - [Summary](#summary)
 - [Self-Check Questions](#self-check-questions)
 - [References](#references)
@@ -78,7 +77,9 @@ The `dplyr` package provides five core functions for data manipulation:
 
 *Table 1. Five core dplyr functions*
 
-`dplyr` is a data processing package created by Hadley Wickham; it improved the earlier `plyr` package, which was written only in R and was slow, by rewriting it in C++ so that data frames can be manipulated faster and in a more user-friendly way. The five functions plus `group_by()` serve as the six **verbs** of a language for data manipulation. `group_by()` changes the scope of each function so that it works group by group rather than on the whole data (Sections 1.6 and 1.12).
+`dplyr` is a data processing package created by Hadley Wickham; it improved the earlier `plyr` package, which was written only in R and was slow, by rewriting it in C++ so that data frames can be manipulated faster and in a more user-friendly way. The five functions plus `group_by()` are the six verbs of dplyr. `group_by()` changes the scope of each function so that it works group by group rather than on the whole data (Sections 1.6 and 1.12).
+
+> **Definition:** A **verb** is a core dplyr function that takes a data frame and returns a new data frame; such functions act as the verbs of a language for data manipulation.
 
 ### 1.2 filter(): Row Selection
 
@@ -159,6 +160,8 @@ mutate(flights_sml,
 
 ### 1.6 summarise() and group_by()
 
+> **Definition:** A **grouped summary** is the result of splitting the data into groups by the values of one or more variables and computing summary statistics for each group, one row per group.
+
 `group_by()` splits the data into groups, and a following `summarise()` produces one summary row per group. `n()` counts the rows of a group. `na.rm = TRUE` drops missing values before averaging; without it, a single missing value makes the result `NA`.
 
 ```r
@@ -180,7 +183,7 @@ summarise(mtcars,
 )
 ```
 
-> **Key Point:** The pipe operator `%>%` passes the result of the left expression as the first argument to the right function. It makes chains of operations readable: `data %>% filter() %>% summarise()`.
+> **Definition:** The **pipe operator** is the operator `%>%` (`|>` in base R) that passes the result of the left expression as the first argument to the right function, which makes chains of operations readable: `data %>% filter() %>% summarise()`.
 
 The mean departure delay of all flights is 12.6 minutes. Using `summarise()` alone reduces the whole data to one row, but using it after `group_by()` creates 365 rows, one per date, so the mean delay can be compared across dates.
 
@@ -407,6 +410,8 @@ cummean(w)
 ```
 
 `lag()` shifts values one position back so that each position holds the value just before it, and `lead()` holds the value just after it. So `w - lag(w)` is the difference from the previous value, used to compute changes in time series data (Chapter 11). `cummean()` is the cumulative mean, and its third value is (3 + 5 + 4) / 3 = 4.
+
+> **Definition:** A **window function**, such as `rank()`, `lag()`, or `cumsum()`, returns a result of the same length as its input, but the result for each row depends not only on that row's value but on the values in other rows (all the values being ranked, the value just before or after, or the values up to that row). A vectorized function such as `sqrt()`, which computes each element separately, is not a window function.
 
 To set values by conditions, use `if_else()` and `case_when()`.
 
@@ -714,6 +719,10 @@ In `by`, only the name of the key column is written in quotation marks. The firs
 
 ### 2.2 Counting and Filtering Duplicates
 
+> **Definition:** A **key** is a variable or combination of variables used to connect two tables, and it uniquely identifies an observation.
+
+> **Definition:** A **primary key** is a variable or combination of variables that uniquely identifies each observation in its own table.
+
 Before joining, check whether the key identifies each row uniquely, that is, whether it is a primary key. Counting rows per key combination with `count()` and keeping only combinations with `n > 1` reveals duplicated keys.
 
 ```r
@@ -732,7 +741,9 @@ weather %>%
 
 ### 2.3 Relational Data and Keys
 
-It is rare for all the information needed for an analysis to be in one table. Data spread over several tables, handled together with the relationships between the tables, is called **relational data**. A relationship is always defined between two tables, and a relationship among three or more tables is a chain of relationships between pairs. Besides `flights`, `nycflights13` has four tables.
+> **Definition:** **Relational data** is data made of several tables linked by relationships, handled together with the relationships between the tables.
+
+It is rare for all the information needed for an analysis to be in one table. A relationship is always defined between two tables, and a relationship among three or more tables is a chain of relationships between pairs. Besides `flights`, `nycflights13` has four tables.
 
 ```r
 airlines |> head(3)
@@ -781,9 +792,9 @@ flowchart LR
 
 `flights` connects to `planes` through the single variable `tailnum` and to `airlines` through `carrier`. It connects to `airports` in two ways, through the origin `origin` and the destination `dest`, both of which correspond to `faa` in `airports`. It connects to `weather` through location (`origin`) and time (`year`, `month`, `day`, `hour`).
 
-> **Definition:** A **key** is a variable or combination of variables used to connect two tables, and it uniquely identifies an observation.
+> **Definition:** A **foreign key** is a variable or combination of variables that uniquely identifies an observation in another table and is used to link the two tables.
 
-There are two kinds of keys. A **primary key** uniquely identifies an observation in its own table; `planes$tailnum` pins down each aircraft in `planes`, so it is a primary key. A **foreign key** uniquely identifies an observation in another table; `flights$tailnum` maps each flight to one aircraft, so it is a foreign key. A variable can play both roles. `origin` is part of the primary key of `weather` and also a foreign key referring to `airports`.
+There are two kinds of keys. One is the primary key of Section 2.2; `planes$tailnum` pins down each aircraft in `planes`, so it is a primary key. The other is the foreign key; `flights$tailnum` maps each flight to one aircraft, so it is a foreign key. A variable can play both roles. `origin` is part of the primary key of `weather` and also a foreign key referring to `airports`.
 
 ```r
 airlines |> count(carrier) |> filter(n > 1)
@@ -797,7 +808,9 @@ flights |> count(year, month, day, flight) |> filter(n > 1) |> nrow()
 
 ### 2.4 Four Kinds of Mutating Joins
 
-A **mutating join** matches the observations of two tables by key and then adds the variables of one table to the other. It is so named because, like `mutate()`, it attaches columns to the right. There are four kinds, depending on how observations without a match are handled. The following two small tables show the differences.
+> **Definition:** A **mutating join** matches the observations of two tables by key and then adds the variables of one table to the other.
+
+The mutating join is so named because, like `mutate()`, it attaches columns to the right. There are four kinds, depending on how observations without a match are handled. The following two small tables show the differences.
 
 ```r
 A <- tibble(ID = c(1, 2, 3), city = c("Seoul", "Busan", "Jeju"))
@@ -835,9 +848,11 @@ full_join(A, B, by = "ID")
 The IDs of `A` are 1, 2, 3 and those of `B` are 1, 2, 4, so the IDs in both tables are 1 and 2.
 
 - `left_join(A, B)` joins on all rows of the first table `A`. ID 3 is not in `B`, so `NA` goes into `sex`.
-- `inner_join(A, B)` joins only when the IDs match, so only the two rows with IDs 1 and 2 remain. This is called an **inner join**.
+- `inner_join(A, B)` joins only when the IDs match, so only the two rows with IDs 1 and 2 remain.
 - `right_join(A, B)` is based on all rows of the second table `B`, so ID 4 remains with `city` as `NA`.
 - `full_join(A, B)` keeps all rows of both tables by ID, giving four rows for IDs 1-4.
+
+> **Definition:** An **inner join** keeps only the observations whose key is present in both tables.
 
 The three other than the inner join are called **outer joins**. An outer join can be thought of as attaching a virtual match whose values are all `NA` to rows without a match.
 
@@ -864,7 +879,9 @@ The most frequently used is `left_join()`, because it does not lose observations
 
 ### 2.5 Specifying the Join Key
 
-Omitting `by` gives a **natural join**, which uses every variable whose name appears in both tables as the key, and dplyr reports which key it used in a message.
+> **Definition:** A **natural join** uses every variable whose name appears in both tables as the key.
+
+Omitting `by` gives a natural join, and dplyr reports which key it used in a message.
 
 ```r
 flights2 <- flights |> select(year:day, hour, origin, dest, tailnum, carrier)
@@ -900,7 +917,9 @@ When the key names of the two tables differ, pair the name in the left table wit
 
 ### 2.6 Filtering Joins
 
-A **filtering join** adds no columns and only selects rows according to whether they have a match in another table.
+> **Definition:** A **filtering join** adds no columns and only selects rows according to whether they have a match in another table.
+
+dplyr's filtering joins are `semi_join()` and `anti_join()`.
 
 ```r
 semi_join(A, B, by = "ID")
@@ -1065,7 +1084,11 @@ The number of cases per 10,000 people for Afghanistan in 1999 is 745 / 19,987,07
 
 ### 3.2 pivot_longer(): From Wide to Long Format
 
-A table like `table4a`, in which values of a variable have become column names, is called the **wide format**, and `pivot_longer()` brings the column names down into the values of one variable, lengthening the rows. A table with many rows and few columns, like the result, is called the **long format**.
+> **Definition:** The **wide format** is a table shape in which the values of a variable are spread out as column names.
+
+> **Definition:** The **long format** is a table shape in which values of the same kind are gathered in one column and the category each belongs to is recorded in another column, giving many rows and few columns.
+
+`table4a` is in the wide format, and `pivot_longer()` brings the column names down into the values of one variable, lengthening the rows, to give the long format.
 
 ```r
 table4a |>
@@ -1181,7 +1204,9 @@ table1 |> unite(cy, country, year, sep = "_") |> head(2)
 
 ## 4. Cleaning Data
 
-Real data contains missing values, wrongly entered values, values far from the others, and categories with inconsistent spellings. Finding such problems and fixing them so that the data can be analyzed is called **data cleaning**. Cleaning has no single correct method, and even the same missing value or outlier is handled differently depending on its cause. This section covers how to find and handle problems with dplyr and tidyr, together with the effect of each method on the results of an analysis.
+Real data contains missing values, wrongly entered values, values far from the others, and categories with inconsistent spellings. Cleaning has no single correct method, and even the same missing value or outlier is handled differently depending on its cause. This section covers how to find and handle problems with dplyr and tidyr, together with the effect of each method on the results of an analysis.
+
+> **Definition:** **Data cleaning** is the work of finding the errors and inconsistencies in data and fixing them so that the data can be analyzed.
 
 ### 4.1 Checking and Excluding Missing Values
 
@@ -1215,7 +1240,9 @@ coalesce(c(NA, 2, NA), 0)
 
 ### 4.2 Imputing Missing Values and Its Effects
 
-Filling missing values with plausible values instead of removing them is called **imputation**. The simplest method is mean imputation, which fills them with the mean of the observed values.
+> **Definition:** **Imputation** fills missing values with plausible estimated values instead of removing them.
+
+The simplest method is mean imputation, which fills them with the mean of the observed values.
 
 ```r
 oz <- airquality$Ozone
@@ -1232,7 +1259,9 @@ Before handling missing values, first check why they are missing. If values are 
 
 ### 4.3 Detecting Outliers
 
-An **outlier** is a value far from the other observations. An outlier may be an entry error or a rare but important real phenomenon. The basic rule for finding outliers in statistics is the interquartile range rule used by the box plot in Section 8 of Chapter 4, which treats values below $`Q_1 - 1.5 \times \mathrm{IQR}`$ or above $`Q_3 + 1.5 \times \mathrm{IQR}`$ as outlier candidates.
+> **Definition:** An **outlier** is a value far from the other observations.
+
+An outlier may be an entry error or a rare but important real phenomenon. The basic rule for finding outliers in statistics is the interquartile range rule used by the box plot in Section 8 of Chapter 4, which treats values below $`Q_1 - 1.5 \times \mathrm{IQR}`$ or above $`Q_3 + 1.5 \times \mathrm{IQR}`$ as outlier candidates.
 
 ```r
 q <- quantile(oz, c(0.25, 0.75), na.rm = TRUE)
@@ -1313,35 +1342,6 @@ Every step of cleaning must be recorded in a script. Editing the original file d
 | `semi_join(x, y)` attaches the columns of `y` to `x`. | **F.** A filtering join only selects the rows of `x` with a match and does not attach the columns of `y`. |
 | Imputing missing values with the mean keeps the mean and shrinks the standard deviation. | **T.** The filled values all have zero deviation, so the spread is computed smaller than it actually is. |
 | Defining values outside the mean ± 2 × standard deviation as outliers is the most robust method. | **F.** The mean and standard deviation are affected by extreme values, so the rule based on the interquartile range is more robust. |
-
----
-
-<br>
-
-## Glossary
-
-| English | Korean | One-Line Definition |
-|:--|:--|:--|
-| verb | 동사 | A core dplyr function that takes a data frame and returns a new data frame. |
-| pipe operator | 파이프 연산자 | The operator `%>%` or `\|>` that passes the result on the left as the first argument of the function on the right. |
-| window function | 윈도 함수 | A function such as `lag()` or `rank()` that returns a result of the same length as its input. |
-| grouped summary | 그룹별 요약 | The result of splitting data into groups and computing summary statistics for each group. |
-| relational data | 관계형 데이터 | Data made of several tables connected by relationships. |
-| primary key | 기본 키 | A variable or combination of variables that uniquely identifies each observation in its own table. |
-| foreign key | 외래 키 | A variable that uniquely identifies an observation in another table. |
-| surrogate key | 대리 키 | A key created from row numbers or the like when there is no natural primary key. |
-| mutating join | 변경 조인 | A join that adds variables from another table matched by key. |
-| inner join | 내부 조인 | A join that keeps only observations whose key is in both tables. |
-| outer join | 외부 조인 | A join that keeps all observations of one or both tables. |
-| natural join | 자연 조인 | A join that uses every variable common to both tables as the key. |
-| filtering join | 필터링 조인 | A join that only selects rows according to whether they have a match in another table. |
-| wide format | 넓은 형식 | The shape of a table in which values of a variable are spread out as column names. |
-| long format | 긴 형식 | The shape of a table in which such values are brought down into a variable, giving more rows. |
-| data cleaning | 데이터 정제 | The work of finding missing values, errors, outliers, and inconsistencies and fixing them for analysis. |
-| imputation | 대체 | Filling missing values with estimated values. |
-| outlier | 이상치 | A value far from the other observations. |
-
-*Table 5. Glossary*
 
 ---
 

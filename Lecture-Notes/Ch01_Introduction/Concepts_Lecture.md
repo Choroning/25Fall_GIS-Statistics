@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-19
+> **Last Updated:** 2026-11-26
 >
 > 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 1
 
@@ -53,7 +53,6 @@
   - [4.5 Coordinate Reference Systems](#45-coordinate-reference-systems)
   - [4.6 Point Data with sf](#46-point-data-with-sf)
 - [Concept Applications](#concept-applications)
-- [Glossary](#glossary)
 - [Summary](#summary)
 - [Self-Check Questions](#self-check-questions)
 - [References](#references)
@@ -66,15 +65,17 @@
 
 ### 1.1 Definition and History
 
-R is a programming language and free software environment designed for statistical computing and graphics. It was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and released as free software in 1995.
+> **Definition:** **R** is a language and environment for statistical computing and graphics, and it is free software whose source code is released under the GNU GPL [1].
+
+R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and released as free software in 1995.
 
 - R is an implementation of the S programming language.
 - It is widely used among statisticians and data scientists for data analysis, statistical modeling, and visualization.
-- R is open-source and has a vast ecosystem of packages, with more than 25,000 packages on CRAN as of November 2026 [1].
+- R is open-source and has a vast ecosystem of packages, with more than 25,000 packages on CRAN as of November 2026 [2].
 
-S, the root of R, is a language for statistical analysis developed at Bell Laboratories by John Chambers and colleagues [2]. S-PLUS was a widely used commercial implementation of S, and R was first introduced as a free alternative to S-PLUS. Ihaka and Gentleman experimentally built a small statistical environment with S-like syntax; in August 1993 they placed binary copies on StatLib and first announced it on the s-news mailing list. In June 1995, persuaded by Martin Mächler of ETH Zurich, they released the source code under the GNU General Public License (GPL), and since mid-1997 a core development group (R Core) of developers from several institutions has maintained the source code [3]. Because R started as a free implementation of the S language, much code written in S also runs unchanged in R.
+> **Definition:** **CRAN (the Comprehensive R Archive Network)** is the network of servers around the world that distributes R and its extensions.
 
-> **Definition:** **R** is a language and environment for statistical computing and graphics, and it is free software whose source code is released under the GNU GPL [2].
+S, the root of R, is a language for statistical analysis developed at Bell Laboratories by John Chambers and colleagues [1]. S-PLUS was a widely used commercial implementation of S, and R was first introduced as a free alternative to S-PLUS. Ihaka and Gentleman experimentally built a small statistical environment with S-like syntax; in August 1993 they placed binary copies on StatLib and first announced it on the s-news mailing list. In June 1995, persuaded by Martin Mächler of ETH Zurich, they released the source code under the GNU General Public License (GPL), and since mid-1997 a core development group (R Core) of developers from several institutions has maintained the source code [3]. Because R started as a free implementation of the S language, much code written in S also runs unchanged in R.
 
 ### 1.2 Reasons to Use R for GIS Statistics
 
@@ -90,7 +91,9 @@ R provides several advantages for GIS-related statistical analysis.
 
 ### 1.3 Big Data and Data Analysis
 
-**Big data** refers to data that is so large, generated so fast, or so varied in form that it is difficult to store, manage, and analyze with conventional database tools. It is commonly described by three characteristics.
+> **Definition:** **Big data** is data so large, generated so fast, or so varied in form that it is difficult to store, manage, and analyze with conventional database tools.
+
+Big data is commonly described by three characteristics.
 
 | Characteristic | Meaning | Example |
 |:--|:--|:--|
@@ -102,7 +105,11 @@ R provides several advantages for GIS-related statistical analysis.
 
 Data can be divided into three kinds by structure. **Structured data** is tabular data with fixed rows and columns, such as spreadsheet tables or tables in a relational database. **Semi-structured data** has no fixed table but marks its structure with tags or keys; JSON and XML are typical examples. **Unstructured data** has no predefined structure, such as text, images, and audio. Most analyses in R covered in this course target structured data, that is, tables in the form of data frames (Chapter 2).
 
-However much data there is, it does not become information by itself. Drawing meaningful facts from data requires **descriptive statistics**, which organize and summarize the data, and **inferential statistics**, which draw conclusions about the whole (the population) from the part that was observed (the sample). For example, surveying 1,000 households in a city and computing their mean income is descriptive statistics, and using that result to estimate the range in which the mean income of all households in the city lies is inferential statistics. Because R handles both tasks in the same language, the whole process of importing (Chapter 4), transforming (Chapter 5), visualizing (Chapter 6), and modeling (Chapters 10-12) the data can be kept in one script.
+However much data there is, it does not become information by itself. Drawing meaningful facts from data requires descriptive statistics and inferential statistics. For example, surveying 1,000 households in a city and computing their mean income is descriptive statistics, and using that result to estimate the range in which the mean income of all households in the city lies is inferential statistics. Because R handles both tasks in the same language, the whole process of importing (Chapter 4), transforming (Chapter 5), visualizing (Chapter 6), and modeling (Chapters 10-12) the data can be kept in one script.
+
+> **Definition:** **Descriptive statistics** organize and summarize data to show its characteristics.
+
+> **Definition:** **Inferential statistics** draw conclusions about the whole (the population) from the part that was observed (the sample).
 
 ### 1.4 Strengths and Limitations of R
 
@@ -119,9 +126,9 @@ R also has limitations. First, R basically loads all the data being analyzed int
 
 ### 1.5 Structure of R: Base System and Packages
 
-Installing R also installs the **base system (base R)**. The base system contains packages such as `base`, `stats`, `graphics`, `utils`, and `datasets`, so functions such as `mean()`, `lm()`, `plot()`, and `read.csv()` and practice data such as `mtcars` and `iris` can be used without installing anything else. Other functionality is added with **packages**.
+Installing R also installs the **base system (base R)**. The base system contains packages such as `base`, `stats`, `graphics`, `utils`, and `datasets`, so functions such as `mean()`, `lm()`, `plot()`, and `read.csv()` and practice data such as `mtcars` and `iris` can be used without installing anything else. Other functionality is added with packages.
 
-> **Definition:** A **package** is a unit of R code that bundles functions, data, and help documentation into one distributable bundle.
+> **Definition:** A **package** is the unit of distributed R code that bundles functions, data, and help documentation.
 
 Using a package takes two steps. First it is **installed** on the computer once with `install.packages("name")`, and then it is **loaded** into the current session with `library(name)` each time R starts. Installing is like shelving a book, and loading is like opening that book on the desk. Package management is covered in detail in Section 4 of Chapter 3.
 
@@ -133,7 +140,7 @@ Using a package takes two steps. First it is **installed** on the computer once 
 
 ### 2.1 Installing R
 
-R can be downloaded from the Comprehensive R Archive Network (CRAN).
+R can be downloaded from CRAN.
 
 - Website: https://cran.r-project.org/
 - R is available for Windows, macOS, and Linux.
@@ -148,6 +155,8 @@ R.version.string
 ```
 
 ### 2.2 RStudio IDE
+
+> **Definition:** An **integrated development environment (IDE)** is software that brings writing and running a program, checking and saving its results, and debugging together in one window.
 
 RStudio is the most popular integrated development environment (IDE) for R, and its default layout divides the window into four panels.
 
@@ -168,7 +177,7 @@ RStudio is the most popular integrated development environment (IDE) for R, and 
 
 *Figure 1. Default panel layout of RStudio*
 
-An **integrated development environment (IDE)** is software that gathers entering and running a program, checking and saving the results, and debugging into one screen. R works without RStudio, but RStudio lets you work while seeing the script, the results, the list of variables, and the graphs at a glance. RStudio is not a replacement for R but a program that calls R, so **R must be installed before RStudio.** RStudio Desktop can be downloaded from https://posit.co/download/rstudio-desktop/.
+R works without RStudio, but RStudio lets you work while seeing the script, the results, the list of variables, and the graphs at a glance. RStudio is not a replacement for R but a program that calls R, so **R must be installed before RStudio.** RStudio Desktop can be downloaded from https://posit.co/download/rstudio-desktop/.
 
 ### 2.3 Basic R Console Operations
 
@@ -300,6 +309,8 @@ RStudio settings are changed in Global Options under the Tools menu. After the f
 - **Character encoding:** Set the default text encoding of scripts to UTF-8. This reduces the problem of broken characters when a script containing Korean comments or strings is opened on another operating system.
 - **Saving the workspace:** Set RStudio not to restore `.RData` at startup and never to save it on exit. If variables are saved to an `.RData` file every time R closes and restored automatically next time, variables that are not in the script remain, and the same script can behave differently on another computer. The record of an analysis must be kept in the script, not in the workspace.
 
+> **Definition:** The **workspace** is where the variables and objects created during an R session are stored; more precisely, it is the global environment.
+
 A **project** is an RStudio feature that gathers the scripts, data, and outputs of one analysis in one folder. Creating a project with New Project in the File menu creates an `.Rproj` file in the folder, and opening RStudio with this file automatically sets the working directory to the project folder. Files can then be read with relative paths, so the same code works on other computers (Section 5 of Chapter 4).
 
 ---
@@ -353,6 +364,8 @@ sum(y = 1)   # y is a named argument, NOT assigned globally
 
 The difference in precedence shows up in an expression such as `G <- E = 10`. Because `<-` binds before `=`, R reads this expression as `(G <- E) = 10`, that is, as an instruction to assign 10 again to the assignment `G <- E`. Such an assignment is not defined, so R raises an error whose message depends on the situation. If `G` does not exist yet, the message is `object 'G' not found`; if `G` already exists, R fails to find the assignment function `<-<-` and raises the error `could not find function "<-<-"`. Conversely, `C = D <- 5` is read as `C = (D <- 5)`, which puts 5 into D and then that value into C. To avoid such confusion, it is safest to always use `<-` for assignment and `=` only for function arguments.
 
+> **Definition:** **Operator precedence** is the rule that decides which operator is computed first when one command contains several operators.
+
 ### 3.3 Data Types in R
 
 R has several fundamental data types.
@@ -384,7 +397,9 @@ Unlike the other five types, `factor` is a class that attaches a levels attribut
 
 ### 3.4 Expressions, Autoprinting, and Comments
 
-Each command in R is called an **expression**. When an expression is entered in the console, R computes its value and, unless the expression is an assignment, prints the result automatically. An assignment does not print its value, so to see the result while assigning, wrap the whole expression in parentheses.
+> **Definition:** An **expression** is the unit of command that R evaluates to compute a value; each command in R is an expression.
+
+When an expression is entered in the console, R computes its value and, unless the expression is an assignment, prints the result automatically. An assignment does not print its value, so to see the result while assigning, wrap the whole expression in parentheses.
 
 ```r
 x <- 3 * 4
@@ -413,7 +428,9 @@ y
 
 ### 3.5 Integers and Doubles
 
-In R, a number written without a decimal point is still stored as a **double-precision real number (double)** by default. To store an integer, add `L` after the number or create a sequence with the colon operator, as in `1:10`.
+> **Definition:** A **double-precision real number (double)** is the 64-bit floating-point format in which R stores numeric data by default; even a number written without a decimal point is stored this way.
+
+To store an integer, add `L` after the number or create a sequence with the colon operator, as in `1:10`.
 
 ```r
 typeof(5)
@@ -449,6 +466,8 @@ R has four special values that represent situations ordinary values cannot expre
 | `NULL` | No value at all, an object of length 0 | Extracting an element that does not exist | `is.null()` |
 
 *Table 6. Special values in R*
+
+> **Definition:** A **missing value** is a value that should exist but is unknown; R represents it as `NA` (Not Available).
 
 ```r
 1 / 0
@@ -497,7 +516,7 @@ R usually prints only 7 significant digits, so `0.1 + 0.2` appears as 0.3 on the
 
 ### 3.8 Operator Precedence
 
-When an expression contains several operators, R computes them according to a fixed **precedence**. The main operators, from highest to lowest, are as follows.
+R's main operators, from highest to lowest operator precedence (Section 3.2), are as follows.
 
 | Rank | Operator | Meaning |
 |:--|:--|:--|
@@ -541,7 +560,7 @@ Quotients and remainders of negative numbers need care. R's `%/%` does not drop 
 
 ### 3.9 Managing the Workspace
 
-Variables created while R runs are stored in the **workspace**, more precisely the global environment. The list shown in the Environment tab of RStudio is exactly this. In the console, the workspace is managed with the following functions.
+Variables created while R runs are stored in the workspace (Section 2.8). The list shown in the Environment tab of RStudio is exactly this. In the console, the workspace is managed with the following functions.
 
 ```r
 a <- 1; b <- "text"; d <- TRUE
@@ -603,7 +622,9 @@ The first error, `object 'scores' not found`, means that a variable that was nev
 
 ### 4.1 The Concept of GIS
 
-A Geographic Information System (GIS) is a framework for gathering, managing, and analyzing spatial and geographic data. GIS integrates the following three elements.
+> **Definition:** A **Geographic Information System (GIS)** is a framework for gathering, managing, and analyzing spatial and geographic data.
+
+GIS integrates the following three elements.
 
 - **Spatial data:** Location-based information such as coordinates and boundaries.
 - **Attribute data:** Characteristics associated with spatial features.
@@ -662,12 +683,17 @@ In R, vector data is handled mainly with the `sf` package and raster data mainly
 
 ### 4.5 Coordinate Reference Systems
 
-The coordinates of spatial data are meaningful only when it is known by what reference they were measured. This reference is called a **coordinate reference system (CRS)**.
+> **Definition:** A **coordinate reference system (CRS)** is the reference that fixes which location on the Earth a coordinate means.
 
-- **Geographic coordinate systems:** Treat the Earth as an ellipsoid and give positions as angles of longitude and latitude. The most widely used is WGS 84, used by GPS, referred to by the EPSG code 4326. Its unit is the degree, so differences in coordinates cannot be read directly as distances. One degree of longitude spans about 111 km at the equator but shrinks as latitude increases.
-- **Projected coordinate systems:** Flatten (project) the curved Earth onto a plane and give positions as x and y coordinates in length units such as meters. They make distance and area computations over small regions convenient, but no projection preserves distance, area, shape, and direction over a large region at the same time.
+The coordinates of spatial data are meaningful only when it is known by what reference, that is, by what coordinate reference system, they were measured. Coordinate reference systems fall into two broad kinds.
+
+> **Definition:** A **geographic coordinate system** is a coordinate reference system that treats the Earth as an ellipsoid and gives positions as angles of longitude and latitude; the most widely used is WGS 84, used by GPS. Its unit is the degree, so differences in coordinates cannot be read directly as distances: one degree of longitude spans about 111 km at the equator but shrinks as latitude increases.
+
+> **Definition:** A **projected coordinate system** is a coordinate reference system that flattens (projects) the curved Earth onto a plane and gives positions as x and y coordinates in length units such as meters. It makes distance and area computations over small regions convenient, but no projection preserves distance, area, shape, and direction over a large region at the same time.
 
 To overlay two datasets with different CRSs, one must be transformed into the CRS of the other. If data with different CRSs is overlaid as is, the same place is drawn at different positions on the map.
+
+> **Definition:** An **EPSG code** is the number assigned to a coordinate reference system in the database begun by the European Petroleum Survey Group (EPSG); for example, 4326 is WGS 84 longitude and latitude.
 
 ### 4.6 Point Data with sf
 
@@ -750,34 +776,6 @@ st_distance(pts_tm)
 | `typeof(5)` is `"integer"`. | **F.** A number written without a decimal point is still stored as a double, so it is `"double"`; write `5L` for an integer. |
 | `st_point(c(37.57, 126.98))` creates a point near Seoul City Hall. | **F.** `st_point()` takes (x, y) = (longitude, latitude), so longitude 126.98 and latitude 37.57 must be written as `c(126.98, 37.57)`. |
 | Saving the workspace as `.RData` makes an analysis easier to reproduce. | **F.** Variables that are not in the script remain in the workspace, so results can differ in another environment; keep the record of an analysis in scripts. |
-
----
-
-<br>
-
-## Glossary
-
-| English | Korean | One-Line Definition |
-|:--|:--|:--|
-| CRAN (Comprehensive R Archive Network) | CRAN | A network of servers around the world that distributes R and its packages. |
-| big data | 빅데이터 | Data that is hard to handle with conventional tools because of its volume, velocity, and variety. |
-| descriptive statistics | 기술 통계 | Statistics that summarize and organize data to describe its features. |
-| inferential statistics | 추론 통계 | Statistics that draw conclusions about a population from a sample. |
-| base R | 기본 시스템 | The set of basic packages installed together with R. |
-| integrated development environment (IDE) | 통합 개발 환경 | Software that gathers writing, running, checking results, and debugging code into one screen. |
-| prompt | 프롬프트 | The symbol `>` showing that the console is waiting for a command. |
-| generic function | 제네릭 함수 | A function whose executed method depends on the class of its argument. |
-| project | 프로젝트 | An RStudio feature that gathers the files of one analysis in one folder and sets the working directory automatically. |
-| expression | 식 | The unit of command that R evaluates to compute a value. |
-| comment | 주석 | Explanatory text written after `#` that is not executed. |
-| double | 배정밀도 실수 | The 64-bit floating-point format in which R stores numeric data by default. |
-| missing value (NA) | 결측값 | A value that should exist but is unknown. |
-| operator precedence | 연산자 우선순위 | The rule for the order in which operators in an expression are computed. |
-| workspace | 작업 공간 | The global environment in which variables created during a session are stored. |
-| resolution | 해상도 | The real size covered by one grid cell of raster data. |
-| coordinate reference system (CRS) | 좌표 참조 체계 | The reference that determines which location on Earth a coordinate means. |
-
-*Table 9. Glossary*
 
 ---
 
@@ -886,7 +884,7 @@ st_distance(pts_tm)
 
 ## References
 
-1. CRAN, "Contributed packages." [Online]. Available: https://cran.r-project.org/web/packages/
-2. The R Foundation, "What is R?" [Online]. Available: https://www.r-project.org/about.html
+1. The R Foundation, "What is R?" [Online]. Available: https://www.r-project.org/about.html
+2. CRAN, "Contributed packages." [Online]. Available: https://cran.r-project.org/web/packages/
 3. R. Ihaka, "R: Past and future history," presented at Interface '98, 1998. [Online]. Available: https://cran.r-project.org/doc/html/interface98-paper/paper.html
 4. R Core Team, "R news." [Online]. Available: https://cran.r-project.org/doc/manuals/r-release/NEWS.html

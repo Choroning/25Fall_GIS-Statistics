@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-19
+> **Last Updated:** 2026-11-26
 >
 > 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 6
 
@@ -57,7 +57,6 @@
 - [9. Themes](#9-themes)
 - [10. Map Visualization](#10-map-visualization)
 - [Concept Applications](#concept-applications)
-- [Glossary](#glossary)
 - [Summary](#summary)
 - [Self-Check Questions](#self-check-questions)
 - [References](#references)
@@ -70,16 +69,23 @@
 
 ### 1.1 The Grammar of Graphics
 
-`ggplot2` is based on the **Grammar of Graphics** concept, where every plot is composed of:
+`ggplot2` is based on the grammar of graphics, in which every plot is composed of data, aesthetic mappings (`aes()`), geometric objects (`geom_*`), statistical transformations (`stat_*`), scales, coordinates (`coord_*`), facets, and themes.
 
-- **Data**: The dataset being plotted.
-- **Aesthetics** (`aes()`): Mappings from data variables to visual properties (x, y, color, size, shape).
-- **Geometries** (`geom_*`): The visual elements, such as points, lines, and bars.
-- **Statistics** (`stat_*`): Summaries or transformations of the data before drawing, such as counting. `geom_bar()` counts by default.
-- **Scales**: How data values map to aesthetic values.
-- **Coordinates** (`coord_*`): How positions are placed on the plane. The default is the Cartesian coordinate system, and `coord_polar()` gives polar coordinates.
-- **Facets**: Splitting data into subplots.
-- **Themes**: Visual appearance, such as fonts, colors, and backgrounds.
+> **Definition:** The **grammar of graphics** is a system that describes a plot as a combination of the data and a few independent components; ggplot2 is based on it.
+
+> **Definition:** An **aesthetic mapping** assigns variables of the data to visual properties of the plot such as x and y position, color, size, and shape; in ggplot2 it is written inside `aes()`.
+
+> **Definition:** A **geometric object (geom)** is a visual element that represents the data in a plot, such as a point, a line, or a bar; in ggplot2 it is set with a `geom_*()` function.
+
+> **Definition:** A **statistical transformation** is a computation that turns the original data into the values drawn in the plot, computing new values before drawing, such as counts, counts per bin, or the predicted values of a smooth curve. For example, `geom_bar()` counts by default.
+
+> **Definition:** A **scale** is the rule that turns data values into the values of aesthetics such as position, color, and size; axes and legends show that rule.
+
+> **Definition:** A **coordinate system** is how x and y positions are placed on the plot plane; the default is the Cartesian coordinate system, and `coord_polar()` gives polar coordinates.
+
+> **Definition:** A **facet** is a subplot drawn in one of several panels after the data is split into subsets by the values of a variable.
+
+> **Definition:** A **theme** is the data-independent appearance of a plot, such as the background color, grid lines, fonts, and legend position.
 
 `ggplot2` was created by Hadley Wickham, who also created the `reshape2` and `dplyr` packages, and it is the most widely used visualization package in R. The base graphics of Section 8 of Chapter 4 use a different function for each kind of graph (`hist()`, `boxplot()`, `barplot()`), but ggplot2 builds every graph from combinations of the same components. So knowing how to draw a scatter plot means that bar charts, maps, and faceted plots can be drawn with the same grammar.
 
@@ -96,9 +102,11 @@ ggplot(data, aes(x = variable1, y = variable2)) +
 
 Giving `ggplot()` only the data and `aes()` shows an empty plot frame with only axes and ticks in the Plots pane. The first argument of `ggplot()` is the dataset, and inside `aes()` the **variables** for the x- and y-axes are specified. Points or lines are drawn only after a layer such as `geom_point()` is added with `+`. When using ggplot2 for the first time, install it with `install.packages("ggplot2")`, and load it with `library(ggplot2)` in each session. The examples in this chapter also use the `dplyr` functions of Chapter 5 (`count()`, `filter()`, `summarise()`, and others) for counts and summaries, so run `library(dplyr)` as well.
 
+> **Definition:** A **layer** is one tier of a plot that bundles one geometric object, one statistical transformation, and one way of arranging overlapping objects, with optional data and mappings.
+
 ### 1.3 Components of the Layered Grammar
 
-ggplot2 follows the **layered grammar of graphics**, which extends Wilkinson's grammar of graphics while implementing it in R [1]. The layered grammar defines a plot as a combination of the following components [1].
+ggplot2 follows the layered grammar of graphics, which extends Wilkinson's grammar of graphics while implementing it in R [1]. The layered grammar defines a plot as a combination of the following components [1].
 
 | Component | What It Does | ggplot2 Function |
 |:--|:--|:--|
@@ -109,6 +117,10 @@ ggplot2 follows the **layered grammar of graphics**, which extends Wilkinson's g
 | Facets | How the data is split into subsets drawn in several panels | `facet_*()` |
 
 *Table 1. Components of a plot defined by the layered grammar*
+
+> **Definition:** A **position adjustment** is the component of a layer that decides how geometric objects overlapping at the same position are arranged: left overlapping, stacked, placed side by side, or scattered slightly.
+
+> **Definition:** The **layered grammar of graphics** is the grammar of graphics of ggplot2, which defines a plot as a combination of default data and mappings, one or more layers, scales, a coordinate system, and facets.
 
 The theme sets data-independent appearance such as fonts, backgrounds, and grid lines, and it is specified with `theme()` separately from the components of the layered grammar (Section 9). Using all of these components, a ggplot2 plot can be written in the following template.
 
@@ -325,6 +337,8 @@ count(mpg, drv)
 
 `geom_smooth()` draws one curve per drive type, with a different line type for each, according to `linetype = drv`. The message reports that, with fewer than 1,000 observations, the curve was fitted by local regression (loess). `se = FALSE` omits the confidence band around the curve. In Figure 3, the curve for four-wheel drive (`4`) declines steadily as displacement increases, front-wheel drive (`f`) is concentrated at small displacements, and rear-wheel drive (`r`) has large displacements but a stretch where fuel efficiency rises again. Rear-wheel drive has only 25 cars, so its curve is pulled strongly by a few points and must be interpreted with care.
 
+> **Definition:** **Local regression (loess)** fits, at each position of x, a low-degree polynomial (a line or a quadratic) to the nearby points with weights that grow as the points get closer, and joins these fitted values into a smooth curve.
+
 > **Caution:** A smooth curve only summarizes the trend of the points and does not explain causes. Also, where points are few, the curve bends strongly under a few values, so when drawing a curve, draw the original points together to see where the curve has weak support.
 
 ### 2.9 Choosing a Plot by Variable Type
@@ -409,7 +423,11 @@ City fuel efficiency `cty` is an integer numeric variable, so a continuous scale
 
 ### 3.5 Global and Local Mappings
 
-A mapping written in `aes()` inside `ggplot()` is a **global mapping** inherited by every layer of the plot, and a mapping written in `aes()` inside `geom_*()` is a **local mapping** applied only to that layer.
+> **Definition:** A **global mapping** is an aesthetic mapping written in `aes()` inside `ggplot()` and inherited by every layer of the plot.
+
+> **Definition:** A **local mapping** is an aesthetic mapping written in `aes()` inside the `geom_*()` of one layer and applied only to that layer.
+
+The following code uses both kinds of mapping.
 
 ```r
 ggplot(mpg, aes(x = displ, y = hwy)) +
@@ -579,7 +597,7 @@ This plot shows the number of cars by number of gears as bars of heights 15, 12,
 
 ### 6.1 Statistical Transformations
 
-A **statistical transformation** is a computation that turns the original data into the values drawn in the plot. A scatter plot draws each value as it is, but bar charts, histograms, and smooth curves compute new values before drawing. `geom_bar()` computes counts with `stat_count()`, `geom_histogram()` counts per bin with `stat_bin()`, `geom_smooth()` predicted values with `stat_smooth()`, and `geom_boxplot()` quartiles and whisker ends with `stat_boxplot()`.
+The computation done by the statistical transformation differs by graph. A scatter plot draws each value as it is, but bar charts, histograms, and smooth curves compute new values before drawing. `geom_bar()` computes counts with `stat_count()`, `geom_histogram()` counts per bin with `stat_bin()`, `geom_smooth()` predicted values with `stat_smooth()`, and `geom_boxplot()` quartiles and whisker ends with `stat_boxplot()`.
 
 Variables computed by a statistical transformation can be taken out with `after_stat()` and used for other aesthetics. For example, to draw bar heights as proportions instead of counts, write the following.
 
@@ -623,7 +641,7 @@ The y values of the points per car type drawn by `stat_summary(fun = mean)` equa
 
 ### 6.2 Position Adjustments
 
-A **position adjustment** decides how to arrange geometric objects that overlap at the same position. In a bar chart, mapping another variable to `fill` stacks the bars upward by default (`position = "stack"`, Section 2.3).
+In a bar chart, mapping another variable to `fill` stacks the bars upward by default (`position = "stack"`, Section 2.3).
 
 ```r
 pos <- ggplot(mtcars, aes(x = factor(cyl), fill = factor(am))) +
@@ -672,7 +690,7 @@ nrow(mpg)
 
 ## 7. Scales
 
-A **scale** is the rule that turns data values into aesthetic values, and axes and legends show that rule. ggplot2 automatically chooses a scale suited to the variable type for each mapping, and to change a default scale, add a function of the form `scale_<aesthetic>_<kind>()`.
+ggplot2 automatically chooses a scale suited to the variable type for each mapping, and to change a default scale, add a function of the form `scale_<aesthetic>_<kind>()`.
 
 ```r
 sc <- ggplot(mpg, aes(displ, hwy, color = drv)) +
@@ -732,7 +750,7 @@ ggplot(mpg, aes(x = reorder(class, hwy, FUN = median), y = hwy)) +
 
 ## 8. Coordinate Systems
 
-A **coordinate system** is how x and y positions are placed on the plot plane. The default is the Cartesian coordinate system (`coord_cartesian()`).
+The default coordinate system is the Cartesian coordinate system (`coord_cartesian()`).
 
 | Function | What It Does |
 |:--|:--|
@@ -774,7 +792,7 @@ The code above draws the box plots of highway fuel efficiency by car type lying 
 
 ## 9. Themes
 
-A **theme** sets the data-independent appearance of a plot, that is, the background color, grid lines, fonts, and legend position. It is common to choose a ready-made complete theme and adjust only the needed parts with `theme()`.
+When changing the theme, it is common to choose a ready-made complete theme and adjust only the needed parts with `theme()`.
 
 ```r
 ggplot(mpg, aes(displ, hwy)) + geom_point() + theme_bw()
@@ -810,7 +828,9 @@ length(unique(us$group))
 
 Each row is one point on a boundary; `long` and `lat` are longitude and latitude, `order` the order in which points are connected, and `region` the name of the state. `group` represents one closed polygon, and states with detached parts such as islands have several polygons, so there are 49 states (the 48 contiguous states and Washington, D.C.) but 63 groups. Without `group = group` in `geom_polygon()`, even points of different polygons are connected by one line and the map becomes a mess.
 
-Joining an attribute value for each state to the boundary data gives a **choropleth map**, which colors regions by the size of their values. The built-in data `USArrests` holds, for each of the 50 US states in 1973, the arrests per 100,000 residents for murder, assault, and rape, and the percentage of the urban population.
+> **Definition:** A **choropleth map** is a map that colors each region by the size of its value.
+
+Joining an attribute value for each state to the boundary data makes a choropleth map possible. The built-in data `USArrests` holds, for each of the 50 US states in 1973, the arrests per 100,000 residents for murder, assault, and rape, and the percentage of the urban population.
 
 ```r
 arrests <- USArrests |>
@@ -862,33 +882,6 @@ A choropleth map paints values over the area of each region, so regions with lar
 | `scale_x_continuous(limits = ...)` and `coord_cartesian(xlim = ...)` always make the same plot. | **F.** Scale limits turn data outside the range into missing values and leave them out of statistical computations, while coordinate limits compute with all the data and only zoom. |
 | Drawing a line through time series data with `stat_smooth(method = "lm")` amounts to testing the trend. | **F.** A single line ignores changes across periods and autocorrelation, so it is not a proper analysis; time series methods must be used (Chapter 11). |
 | On a map drawn with `map_data()`, omitting `group = group` connects the polygons wrongly. | **T.** Even points of different polygons are connected by one line. |
-
----
-
-<br>
-
-## Glossary
-
-| English | Korean | One-Line Definition |
-|:--|:--|:--|
-| grammar of graphics | 그래픽 문법 | A system that describes a plot as a combination of components such as data, mappings, and geometric objects. |
-| layered grammar of graphics | 층 문법 | ggplot2's grammar of graphics, which defines a plot as a combination of layers, scales, a coordinate system, and facets. |
-| aesthetic mapping | 미적 매핑 | Assigning variables of the data to visual properties such as position, color, size, and shape. |
-| geometric object (geom) | 기하 객체 | A visual object such as a point, line, or bar that represents the data. |
-| layer | 레이어 | One layer of a plot that bundles a geometric object, a statistical transformation, and a position adjustment. |
-| facet | 패싯 | A subplot drawn in one of several panels after splitting the data by the values of a variable. |
-| global mapping | 전역 매핑 | A mapping written in `ggplot()` and inherited by all layers. |
-| local mapping | 지역 매핑 | A mapping written inside one layer and applied only to that layer. |
-| loess | 국소 회귀 | A smooth curve fitted by weighting the points near each location. |
-| statistical transformation | 통계 변환 | A computation that turns data into the values drawn in a plot. |
-| position adjustment | 위치 조정 | The way geometric objects overlapping at the same position are arranged. |
-| overplotting | 과대 겹침 | The phenomenon in which several points overlap at the same position and look like one. |
-| scale | 척도 | The rule that turns data values into aesthetic values, together with its axis or legend. |
-| coordinate system | 좌표계 | The way x and y positions are placed on the plot plane. |
-| theme | 테마 | The data-independent appearance of a plot, such as background, grid lines, and fonts. |
-| choropleth map | 단계구분도 | A map that colors each region by the size of its value. |
-
-*Table 6. Glossary*
 
 ---
 

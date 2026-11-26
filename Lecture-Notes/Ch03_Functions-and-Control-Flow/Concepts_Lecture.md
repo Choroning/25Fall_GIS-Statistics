@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-19
+> **Last Updated:** 2026-11-26
 >
 > 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 3
 
@@ -70,7 +70,6 @@
   - [9.4 Example: Applying User-Defined Functions to a List](#94-example-applying-user-defined-functions-to-a-list)
   - [9.5 Choosing a Function](#95-choosing-a-function)
 - [Concept Applications](#concept-applications)
-- [Glossary](#glossary)
 - [Summary](#summary)
 - [Self-Check Questions](#self-check-questions)
 - [References](#references)
@@ -104,7 +103,11 @@ Sys.Date()              # Get current system date
 
 ### 1.3 Function Calls and Arguments
 
-A **function** is a bundle of code that takes inputs, performs a fixed computation, and returns a result. The values passed inside the parentheses after the function name are called **arguments**, and they are passed in two ways.
+> **Definition:** A **function** is a bundle of code that takes inputs, performs a fixed computation, and returns a result.
+
+> **Definition:** An **argument** is a value passed inside the parentheses after the function name when a function is called.
+
+Arguments are passed in two ways.
 
 - **By position:** Only the values are written, without names, in the order given in the Usage of the help page. In `seq(1, 10, 3)`, 1, 10, and 3 correspond to `from`, `to`, and `by` in turn.
 - **By name:** They are written in the form `name = value`. With a name, the value goes to that argument regardless of order.
@@ -215,7 +218,7 @@ message("This is a message")
 A user-defined function has four components.
 
 1. **Function name:** It is stored in the R environment and used to call the function.
-2. **Parameters:** They are the input variables passed when the function is called.
+2. **Parameters:** The inputs the function receives (defined below).
 3. **Function body:** It is the code that implements the logic of the function.
 4. **Return value:** It is the result produced by the function.
 
@@ -228,7 +231,9 @@ function_name <- function(param1, param2, ...) {
 }
 ```
 
-The names written in the parentheses when a function is defined are called **parameters**, and the values actually passed when the function is called are called **arguments**. A user-defined function is a function made by the user in addition to the predefined built-in functions, and bundling repeated work into a function automates it. A function may have no parameters or several, and without `return()`, the value of the last expression evaluated in the body becomes the result.
+> **Definition:** A **parameter** is the name of an input written in the parentheses when a function is defined; when the function is called, it receives the value of the argument passed.
+
+Parameters belong to the definition and arguments (Section 1.3) to the call. A user-defined function is a function made by the user in addition to the predefined built-in functions, and bundling repeated work into a function automates it. A function may have no parameters or several, and without `return()`, the value of the last expression evaluated in the body becomes the result.
 
 ### 3.2 Example: Multiplication Function
 
@@ -280,7 +285,9 @@ Bundling code into a function has three benefits. First, giving the function a n
 
 ### 3.5 Default Values and Returning Several Values
 
-Setting a **default value** for a parameter with `name = value` lets that argument be omitted in calls.
+> **Definition:** A **default value** is a value set for a parameter with `name = value` when the function is defined, used when that argument is omitted in a call.
+
+An argument whose parameter has a default value can be omitted in calls.
 
 ```r
 power <- function(x, p = 2) {
@@ -320,7 +327,11 @@ The mean of 4, 8, 6, 2 is 20 / 4 = 5. The standard deviation is the square root 
 
 ### 3.6 Scope
 
-A variable created inside a function is a **local variable** that exists only while the function runs, and it does not affect a variable of the same name outside the function. The rule that determines which value a variable name refers to in which region is called **scope**.
+> **Definition:** A **local variable** is a variable created inside a function that exists only while the function runs.
+
+> **Definition:** **Scope** is the rule that determines, for each part of a program, which value a variable name refers to.
+
+A local variable created inside a function does not affect a variable of the same name outside the function.
 
 ```r
 z <- 10
@@ -339,7 +350,9 @@ g(5)
 #> [1] 15
 ```
 
-The `z <- 1` inside `f()` only creates a new local variable `z` inside the function, so `f()` returns 2 and the `z` outside the function is still 10. Conversely, `g()` has no `z` inside, so R looks for `z` in the outer environment where the function was defined, uses 10, and `g(5)` becomes 15. R thus searches outward for names starting from where a function is **defined**, which is called **lexical scoping**. If a function depends on an outer variable, its result changes whenever that variable changes, so it is safer to pass the values a function needs as arguments.
+The `z <- 1` inside `f()` only creates a new local variable `z` inside the function, so `f()` returns 2 and the `z` outside the function is still 10. Conversely, `g()` has no `z` inside, so R looks for `z` in the outer environment where the function was defined, uses 10, and `g(5)` becomes 15. R thus follows lexical scoping. If a function depends on an outer variable, its result changes whenever that variable changes, so it is safer to pass the values a function needs as arguments.
+
+> **Definition:** **Lexical scoping** is the scope rule that looks up a name not found inside a function in the enclosing environments, starting from where the function was defined rather than where it was called.
 
 > **[Programming Languages]** Lexical (static) scoping determines the meaning of a variable from the structure of the code alone, and dynamic scoping determines it from the order of calls at run time. R, Python, and Scheme use lexical scoping.
 
@@ -443,7 +456,9 @@ Some packages bundle the functions and data that accompany a textbook or course.
 
 ### 4.3 Name Conflicts and the :: Operator
 
-Different packages may contain functions with the same name. The function of the package loaded later then hides the earlier one, which is called **masking**. R reports the hidden functions when a package is loaded.
+> **Definition:** **Masking** is the phenomenon in which, when different packages contain functions with the same name, the function of the package loaded later hides the earlier one.
+
+R reports the hidden functions when a package is loaded.
 
 ```r
 library(dplyr)
@@ -648,7 +663,9 @@ y <- NULL
 #> [1] FALSE
 ```
 
-Giving a vector of length 2 or more to `&&` raises an error. Older versions used only the first element and moved on, but from R 4.3.0 it is always an error [1]. Also, `&&` and `||` do not compute the right side when the left side alone determines the result. This is called **short-circuit evaluation**. In `FALSE && stop(...)`, the left side is `FALSE`, so the result is already fixed as `FALSE` and `stop()` is not run. Thanks to this property, a later condition that could raise an error when the earlier condition is false can be chained safely, as in `!is.null(y) && y > 0`. When `y` is `NULL`, `y > 0` becomes a logical value of length 0 that cannot be used as an `if` condition, but it is not computed because the earlier condition already fixes `FALSE`.
+> **Definition:** **Short-circuit evaluation** is the way of evaluating a logical operation that does not compute the right operand when the left operand alone determines the result.
+
+Giving a vector of length 2 or more to `&&` raises an error. Older versions used only the first element and moved on, but from R 4.3.0 it is always an error [1]. Also, `&&` and `||` use short-circuit evaluation. In `FALSE && stop(...)`, the left side is `FALSE`, so the result is already fixed as `FALSE` and `stop()` is not run. Thanks to this property, a later condition that could raise an error when the earlier condition is false can be chained safely, as in `!is.null(y) && y > 0`. When `y` is `NULL`, `y > 0` becomes a logical value of length 0 that cannot be used as an `if` condition, but it is not computed because the earlier condition already fixes `FALSE`.
 
 | Operator | Input | Length of Result | Right Side Computed | Typical Use |
 |:--|:--|:--|:--|:--|
@@ -940,7 +957,7 @@ When storing the results of a loop, it is good to first create a vector of the r
 
 ## 9. The apply Family of Functions
 
-R has functions that apply one function to many elements of a list or data frame, or to each row or column of a matrix. Together they are called the **apply family**, and they let the same computation be repeated without writing loops.
+> **Definition:** The **apply family** is the set of R functions that apply one function to each element of a list or data frame, or to each row or column of a matrix, repeating a computation without loops.
 
 ### 9.1 apply(): Rows and Columns of a Matrix
 
@@ -988,7 +1005,7 @@ apply(x, 2, sort)
 
 ### 9.2 tapply(): Applying by Group
 
-`tapply(X, INDEX, FUN)` splits the vector `X` into groups by the levels of the factor `INDEX`, applies `FUN` to each group, and returns the results as an array named by the levels. If `INDEX` is not a factor, it is converted to one automatically. This process can be viewed as three steps, **split-apply-combine**.
+`tapply(X, INDEX, FUN)` splits the vector `X` into groups by the levels of the factor `INDEX`, applies `FUN` to each group, and returns the results as an array named by the levels. If `INDEX` is not a factor, it is converted to one automatically. This process can be viewed as three steps: split, apply, and combine.
 
 ```mermaid
 flowchart LR
@@ -1004,6 +1021,8 @@ flowchart LR
 ```
 
 *Figure 2. Split, apply, and combine in tapply()*
+
+> **Definition:** **Split-apply-combine** is the way of working that splits data into groups, applies the same computation to each group, and combines the results into one.
 
 Computing the mean tree height by species with the `ufc` data of the `spuRs` package gives the following.
 
@@ -1177,29 +1196,6 @@ Using `apply()` on a data frame first converts it to a matrix, so if even one co
 | `sum(is.na(x))` is the number of missing values of `x`. | **T.** The `TRUE` values of the logical vector made by `is.na()` are turned into 1 and added. |
 | `apply(df, 2, mean)` correctly computes the means of the numeric columns even for a data frame with a string column. | **F.** `apply()` converts the data frame to a matrix, making every value character, so use `sapply()` to compute per column. |
 | `FALSE && stop("x")` raises an error. | **F.** When the left side is `FALSE`, the result is determined, so short-circuit evaluation does not run the `stop()` on the right. |
-
----
-
-<br>
-
-## Glossary
-
-| English | Korean | One-Line Definition |
-|:--|:--|:--|
-| argument | 인수 | A value passed inside the parentheses when a function is called. |
-| partial matching | 부분 일치 | R's behavior of finding an argument or column name from only its beginning. |
-| parameter | 매개변수 | The name of an input written inside the parentheses when a function is defined. |
-| default value | 기본값 | The value used for a parameter when its argument is omitted. |
-| local variable | 지역 변수 | A variable created inside a function that exists only while the function runs. |
-| scope | 유효 범위 | The rule that determines which value a variable name refers to in which region. |
-| lexical scoping | 어휘적 유효 범위 | The rule of searching outward for names from where a function is defined. |
-| masking | 마스킹 | The phenomenon in which a same-named function of a package loaded later hides an earlier one. |
-| short-circuit evaluation | 단락 평가 | Evaluation that skips the right operand when the left operand alone determines the result. |
-| trimmed mean | 절사 평균 | The mean computed after discarding a fixed proportion at both ends of the sorted values. |
-| split-apply-combine | 나누기, 적용하기, 합치기 | The way of working that splits data into groups, computes for each group, and combines the results. |
-| anonymous function | 익명 함수 | A function defined where it is used, without a name. |
-
-*Table 8. Glossary*
 
 ---
 

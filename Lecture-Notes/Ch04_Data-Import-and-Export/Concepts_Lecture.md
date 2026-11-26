@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-19
+> **Last Updated:** 2026-11-26
 >
 > 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 4
 
@@ -56,7 +56,6 @@
   - [8.2 Reading Graphs](#82-reading-graphs)
   - [8.3 Stem-and-Leaf Plots](#83-stem-and-leaf-plots)
 - [Concept Applications](#concept-applications)
-- [Glossary](#glossary)
 - [Summary](#summary)
 - [Self-Check Questions](#self-check-questions)
 
@@ -261,7 +260,9 @@ read.table(text = txt2, header = TRUE)
 
 ### 2.5 Character Encoding
 
-Computers store characters by turning them into numbers, and the rule that maps characters to numbers is called a **character encoding**. English letters and digits are stored as the same numbers in most encodings, but Korean is stored differently by each encoding. UTF-8, the standard today, and CP949 (an extension of EUC-KR), long used by Korean Windows, are typical. If the encoding used when a file was created differs from the encoding assumed when reading it, Korean text breaks into unreadable characters.
+> **Definition:** A **character encoding** is the rule that maps characters to the numbers a computer stores them as.
+
+English letters and digits are stored as the same numbers in most encodings, but Korean is stored differently by each encoding. UTF-8, the standard today, and CP949 (an extension of EUC-KR), long used by Korean Windows, are typical. If the encoding used when a file was created differs from the encoding assumed when reading it, Korean text breaks into unreadable characters.
 
 ```r
 kor <- c("name,city", "Kim,서울", "Lee,부산")
@@ -311,6 +312,14 @@ Since R 4.0.0, the default of `stringsAsFactors` is `FALSE`. The argument is spe
 
 ### 3.3 File Path Considerations
 
+When reading a file, its location is given as a path, and there are two ways to write a path.
+
+> **Definition:** An **absolute path** gives the full location of a file starting from the top (root) of the file system.
+
+> **Definition:** The **working directory** is the folder R is currently working in; `getwd()` shows it and `setwd()` changes it.
+
+> **Definition:** A **relative path** gives the location of a file relative to the working directory.
+
 ```r
 # Absolute path (platform-specific)
 read.csv("/Users/username/Desktop/data_ex.csv", header = TRUE)
@@ -319,7 +328,7 @@ read.csv("/Users/username/Desktop/data_ex.csv", header = TRUE)
 read.csv("data/data_ex.csv", header = TRUE)
 ```
 
-A relative path is resolved against the working directory. If the working directory is `/Users/username/Desktop/project/`, `"data/data_ex.csv"` points to the file in Figure 1.
+For example, if the working directory is `/Users/username/Desktop/project/`, `"data/data_ex.csv"` points to the file in Figure 1.
 
 ```text
 /Users/username/Desktop/project/   ← working directory (result of getwd())
@@ -370,7 +379,9 @@ cars_tb
 #> # ℹ 22 more rows
 ```
 
-`readr_example()` returns the path of an example file included in the package. After reading, `read_csv()` reports the **column specification**, that is, the type it decided for each column, as a message. The message above means that 32 rows and 11 columns were read and that all 11 columns are doubles (`dbl`). `read_csv()` guesses types from the values of the first 1,000 rows, so the guess can be wrong if values of another type appear later. A tibble shortens significant digits to fit the screen width, so the 146.7 of `disp` appears as `147.`. The value itself has not changed.
+> **Definition:** The **column specification** is the list of data types that `read_csv()` set or guessed for each column.
+
+`readr_example()` returns the path of an example file included in the package. After reading, `read_csv()` reports the column specification as a message. The message above means that 32 rows and 11 columns were read and that all 11 columns are doubles (`dbl`). `read_csv()` guesses types from the values of the first 1,000 rows, so the guess can be wrong if values of another type appear later. A tibble shortens significant digits to fit the screen width, so the 146.7 of `disp` appears as `147.`. The value itself has not changed.
 
 ```r
 spec(cars_tb)
@@ -510,7 +521,9 @@ data_col <- read.table("data/data_ex_col.txt", header = FALSE, col.names = c("ID
 
 ### 4.3 Reading by Character Position with read.fwf()
 
-A **fixed-width file** is a text file in which each column occupies a fixed number of characters without separator characters. Old administrative data and the output of measuring instruments often take this form. Giving the number of characters per column to `widths` of `read.fwf()` cuts and reads at those positions.
+> **Definition:** A **fixed-width file** is a text file in which each column occupies a fixed number of characters without separator characters.
+
+Old administrative data and the output of measuring instruments are often fixed-width files. Giving the number of characters per column to `widths` of `read.fwf()` cuts and reads at those positions.
 
 ```r
 fwf_txt <- c("01F50Seoul", "02M40Busan", "03F28Jeju ")
@@ -666,17 +679,27 @@ The JSON string contains double quotation marks, so the R string is enclosed in 
 
 ## 7. Observing Data: Descriptive Statistics
 
-Once the data is imported and checked, summarize with a few numbers where the values of each variable gather and how widely they spread. Such numbers are called **descriptive statistics**.
+Once the data is imported and checked, summarize with a few numbers where the values of each variable gather and how widely they spread.
+
+> **Definition:** A **descriptive statistic** is a number that summarizes the center, the scatter, or the shape of the distribution of data.
 
 ### 7.1 Central Tendency
 
-**Central tendency** describes the location of the center around which the data gathers, and its typical measures are the mean, median, and mode. The **sample mean** of n values $`x_1, \dots, x_n`$ is as follows.
+> **Definition:** **Central tendency** is the location of the center around which the data gathers.
+
+> **Definition:** The **sample mean** is the sum of n values divided by n.
+
+The typical measures of central tendency are the mean, median, and mode. The sample mean of n values $`x_1, \dots, x_n`$ is as follows.
 
 ```math
 \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
 ```
 
-The **median** is the value in the middle when the values are arranged in order of size, and when n is even it is the mean of the two middle values. The **mode** is the most frequent value.
+> **Definition:** The **median** is the value in the middle when the values are arranged in order of size; when their number is even, it is the mean of the two middle values.
+
+> **Definition:** The **mode** is the most frequent value in the data.
+
+The three measures are computed for the following data.
 
 ```r
 x <- c(2, 4, 4, 5, 7, 9, 30)
@@ -695,13 +718,21 @@ mean(x, trim = 0.2)
 #> [1] 5.8
 ```
 
-The sum of the 7 values is 2 + 4 + 4 + 5 + 7 + 9 + 30 = 61, so the mean is 61 / 7 ≈ 8.714. The fourth value in order of size is in the middle, so the median is 5. The mean is much larger than the median because the single value 30 pulls the mean up. The mean is thus sensitive to extreme values while the median is not, a property called being **robust**. For data with a long tail on one side, such as income or house prices, the median represents a typical value better.
+The sum of the 7 values is 2 + 4 + 4 + 5 + 7 + 9 + 30 = 61, so the mean is 61 / 7 ≈ 8.714. The fourth value in order of size is in the middle, so the median is 5. The mean is much larger than the median because the single value 30 pulls the mean up. The mean is thus sensitive to extreme values while the median is robust. For data with a long tail on one side, such as income or house prices, the median represents a typical value better.
+
+> **Definition:** **Robust** describes a statistic that is little affected by extreme values.
 
 R has no built-in function for the mode, so count the frequencies with `table()` and pick the name of the value with the largest frequency. `mode()` is the function that returns the storage mode seen in Section 7 of Chapter 2 and has nothing to do with the statistical mode. The trimmed mean `mean(x, trim = 0.2)` drops the fractional part of 7 × 0.2 = 1.4, discards one value at each end, 2 and 30, and averages the remaining 4, 4, 5, 7, 9 to give 29 / 5 = 5.8 (Section 9 of Chapter 3).
 
 ### 7.2 Dispersion
 
-Even with the same center, data whose values gather near the center differs from data that is widely scattered. Typical measures of **dispersion** are the range, variance, standard deviation, and interquartile range. The **sample variance** and **sample standard deviation** are as follows.
+> **Definition:** **Dispersion** is the degree to which values are scattered around the center.
+
+> **Definition:** The **sample variance** is the sum of the squared differences (deviations) between each value and the sample mean, divided by n - 1.
+
+> **Definition:** The **sample standard deviation** is the square root of the sample variance, expressing dispersion in the units of the data.
+
+Even with the same center, data whose values gather near the center differs from data that is widely scattered. Typical measures of dispersion are the range, variance, standard deviation, and interquartile range. The sample variance and sample standard deviation are as follows.
 
 ```math
 s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2, \qquad s = \sqrt{s^2}
@@ -727,7 +758,13 @@ The mean of `y` is 31 / 6 ≈ 5.167. The differences between each value and the 
 
 ### 7.3 Quantiles and Summaries
 
-A **quantile** is the value at the position corresponding to a given proportion from the bottom when the data is arranged in order of size. The values at the 25%, 50%, and 75% positions are called the first quartile $`Q_1`$, the median, and the third quartile $`Q_3`$, and their difference $`\mathrm{IQR} = Q_3 - Q_1`$ is called the **interquartile range**.
+> **Definition:** A **quantile** is the value at the position corresponding to a given proportion from the bottom when the data is arranged in order of size.
+
+> **Definition:** The **quartiles** are the values at the 25%, 50%, and 75% positions when the data is arranged in order of size: the first quartile $`Q_1`$, the median, and the third quartile $`Q_3`$.
+
+> **Definition:** The **interquartile range (IQR)** is the difference $`\mathrm{IQR} = Q_3 - Q_1`$ between the third and first quartiles.
+
+Computed with `quantile()` and `IQR()`:
 
 ```r
 quantile(y)
@@ -781,7 +818,9 @@ The fuel efficiency of `mtcars` (`mpg`, miles per gallon) ranges from 10.4 to 33
 
 ### 7.4 Frequency Tables and Contingency Tables
 
-A categorical variable is summarized not by its mean but by how many observations fall in each category. A table of the frequency of each category is called a **frequency table**, and the frequency divided by the total count is the **relative frequency**.
+> **Definition:** A **frequency table** is a table of the number of observations (frequency) in each category or interval.
+
+A categorical variable is summarized not by its mean but by how many observations fall in each category. In a frequency table, the frequency divided by the total count is the **relative frequency**.
 
 ```r
 table(mtcars$cyl)
@@ -800,7 +839,9 @@ round(prop.table(table(mtcars$cyl)) * 100, 1)
 
 Of the 32 cars in `mtcars`, 11 have 4 cylinders, 7 have 6, and 14 have 8. The relative frequency is computed as 11 / 32 = 0.34375, and multiplying by 100 and rounding gives a percentage. The relative frequencies always sum to 1.
 
-A table of the joint frequencies of two categorical variables is called a **contingency table**.
+> **Definition:** A **contingency table** is a table of the frequencies of each combination of the values of two categorical variables.
+
+Passing two variables to `table()` together produces a contingency table.
 
 ```r
 table(mtcars$cyl, mtcars$am)
@@ -828,13 +869,15 @@ round(prop.table(table(mtcars$cyl, mtcars$am), margin = 1), 3)
 
 ### 7.5 Relationship of Two Variables: The Correlation Coefficient
 
-The degree to which two numeric variables increase or decrease together is expressed with the **Pearson correlation coefficient**.
+The degree to which two numeric variables increase or decrease together is expressed with the Pearson correlation coefficient.
 
 ```math
 r = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^2}\,\sqrt{\sum_{i=1}^{n} (y_i - \bar{y})^2}}
 ```
 
 r is a value between -1 and 1; a value near 1 means a strong positive linear relationship, near -1 a strong negative linear relationship, and near 0 a weak linear relationship.
+
+> **Definition:** The **Pearson correlation coefficient** expresses the direction and strength of the linear relationship between two numeric variables.
 
 ```r
 cor(mtcars$wt, mtcars$mpg)
@@ -857,6 +900,10 @@ The correlation coefficient between car weight (`wt`, in units of 1,000 pounds) 
 ## 8. Exploring Data: Base Graphics
 
 ### 8.1 Types of Graphs and Their Functions
+
+> **Definition:** An **outlier** is a value far from the other observations.
+
+> **Definition:** A **scatter plot** is a graph that draws the pairs of values of two numeric variables as points to show their relationship.
 
 Numerical summaries alone easily miss the shape of a distribution, outliers, and relationships between variables, so data is examined with graphs as well. The `graphics` package of the base system (base graphics) draws one graph with one function. ggplot2, more widely used in modern data visualization, is covered in Chapter 6; here the base graphics functions often used for exploration are summarized.
 
@@ -890,7 +937,9 @@ plot(airquality$Temp, type = "l", main = "Line plot of Temp", xlab = "day index"
 
 ### 8.2 Reading Graphs
 
-A **histogram** divides the range of a numeric variable into bins of equal width and shows the number of observations in each bin as the bar height. The bars have no gaps because the bins are contiguous. The bins and frequencies used by the histogram in Figure 2 are as follows.
+> **Definition:** A **histogram** is a graph that divides the range of a numeric variable into bins of equal width and shows the number of observations in each bin as the height of contiguous bars.
+
+A histogram's bars have no gaps because the bins are contiguous. The bins and frequencies used by the histogram in Figure 2 are as follows.
 
 ```r
 h <- hist(mtcars$mpg, breaks = 8, plot = FALSE)
@@ -904,7 +953,9 @@ h$counts
 
 The first thing to read from a histogram is the shape of the distribution. A distribution that is high in the middle and falls off similarly on both sides is called a **symmetric distribution**, and in it the mean and median are nearly equal. A distribution with a long tail stretching to the right is called a **right-skewed distribution**; a few large values pull the mean up, so the mean is larger than the median. A distribution with a long tail to the left has, conversely, a mean smaller than the median. The fuel efficiency distribution in Figure 2 is concentrated in the 15-20 bin and has a few values above 30, so it is slightly right-skewed, consistent with the mean 20.09 being larger than the median 19.2 in Section 7.3. A distribution with two peaks may be a sign that two groups of different nature are mixed, so it is worth drawing it again with the groups separated.
 
-A **box plot** draws the five-number summary. The lower and upper edges of the box are the quartiles, the thick line in the box is the median, and the whiskers extending from the box reach the farthest observations within 1.5 × IQR of the box. Points beyond them are drawn separately as outlier candidates. In Figure 2, one point is drawn below the box of the 8-cylinder cars; checking it by computation gives the following.
+> **Definition:** A **box plot** is a graph that shows the distribution of a numeric variable with a box drawn at the quartiles, a line at the median, whiskers extending from the box, and separately drawn outlier candidates.
+
+The lower and upper edges of the box are the quartiles, the thick line in the box is the median, and the whiskers extending from the box reach the farthest observations within 1.5 × IQR of the box. Points beyond them are drawn separately as outlier candidates. In Figure 2, one point is drawn below the box of the 8-cylinder cars; checking it by computation gives the following.
 
 ```r
 boxplot.stats(mtcars$mpg[mtcars$cyl == 8])$stats
@@ -922,11 +973,13 @@ The `stats` of `boxplot.stats()` are, in order, the end of the lower whisker, th
 
 A **bar chart** shows the frequency of each category as the bar height, and the bars are drawn apart because there is no order or continuity between categories. A **pie chart** shows the proportion of each category in the whole as the angle of a sector. But the human eye compares lengths more accurately than angles and areas, so a bar chart is better than a pie chart for comparing proportions. In Figure 2 as well, the difference between 4- and 8-cylinder cars is clearer in the bar chart.
 
-A **scatter plot** draws the pairs of values of two numeric variables as points to show their relationship. The scatter plot in Figure 2 shows a negative relationship in which fuel efficiency falls as weight rises, consistent with the correlation coefficient -0.868 of Section 7.5. A **line plot** connects ordered values, such as values over time, with lines to show their change, and the temperature graph in Figure 2 shows a seasonal change in which the temperature rises from May toward July and August and falls again in September.
+The scatter plot in Figure 2 shows a negative relationship in which fuel efficiency falls as weight rises, consistent with the correlation coefficient -0.868 of Section 7.5. A **line plot** connects ordered values, such as values over time, with lines to show their change, and the temperature graph in Figure 2 shows a seasonal change in which the temperature rises from May toward July and August and falls again in September.
 
 ### 8.3 Stem-and-Leaf Plots
 
-A **stem-and-leaf plot** is a text plot of a distribution that splits each value into a stem (leading digits) and a leaf (trailing digit). Like a histogram it shows the shape of the distribution, but it also lets most of the original values be recovered.
+> **Definition:** A **stem-and-leaf plot** is a text plot of a distribution that splits each value into a stem (leading digits) and a leaf (trailing digit).
+
+Like a histogram, a stem-and-leaf plot shows the shape of the distribution, but it also lets most of the original values be recovered.
 
 ```r
 stem(mtcars$mpg)
@@ -966,36 +1019,6 @@ stem(mtcars$mpg)
 | In data with extreme values, the median is less affected than the mean. | **T.** The median is the middle value in order, so it does not change when one large value becomes larger. |
 | A correlation coefficient near 0 means there is no relationship at all between the two variables. | **F.** The correlation coefficient measures only linear relationships, so it can be near 0 even with a curved relationship. |
 | A pie chart is more accurate than a bar chart for comparing the proportions of categories. | **F.** The human eye compares lengths more accurately than angles, so a bar chart is better. |
-
----
-
-<br>
-
-## Glossary
-
-| English | Korean | One-Line Definition |
-|:--|:--|:--|
-| character encoding | 문자 인코딩 | The rule that maps characters to the numbers that store them. |
-| column specification | 열 사양 | The list of data types that `read_csv()` sets or guesses for each column. |
-| fixed-width file | 고정 폭 파일 | A text file in which each column occupies a fixed number of characters without separators. |
-| descriptive statistic | 기술 통계량 | A number that summarizes the center, spread, or distribution of data. |
-| central tendency | 중심 경향 | The location of the center around which data gathers. |
-| sample mean | 표본 평균 | The sum of the values divided by their number. |
-| median | 중앙값 | The value in the middle when values are arranged in order of size. |
-| mode | 최빈값 | The most frequent value. |
-| robust | 로버스트 | The property of being little affected by extreme values. |
-| dispersion | 퍼짐 | The degree to which values are scattered from the center. |
-| sample variance | 표본 분산 | The sum of squared deviations divided by n - 1. |
-| quantile | 분위수 | The value at the position corresponding to a given proportion from the bottom in order of size. |
-| interquartile range (IQR) | 사분위수 범위 | The difference between the third and first quartiles. |
-| frequency table | 도수분포표 | A table of the number of observations in each category or bin. |
-| contingency table | 교차표 | A table of the frequencies of each combination of two categorical variables. |
-| Pearson correlation coefficient | 피어슨 상관 계수 | A value from -1 to 1 expressing the direction and strength of the linear relationship of two numeric variables. |
-| histogram | 히스토그램 | A graph showing the number of observations in each bin as contiguous bars. |
-| box plot | 상자 그림 | A graph showing a distribution with quartiles, the median, whiskers, and outlier candidates. |
-| stem-and-leaf plot | 줄기 잎 그림 | A text plot of a distribution that splits values into stems and leaves. |
-
-*Table 8. Glossary*
 
 ---
 

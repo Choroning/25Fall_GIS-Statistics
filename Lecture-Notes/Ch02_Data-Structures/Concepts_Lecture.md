@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-19
+> **Last Updated:** 2026-11-26
 >
 > 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 2
 
@@ -71,7 +71,6 @@
 - [8. Comparison of Data Structures](#8-comparison-of-data-structures)
 - [9. The Data Analysis Process](#9-the-data-analysis-process)
 - [Concept Applications](#concept-applications)
-- [Glossary](#glossary)
 - [Summary](#summary)
 - [Self-Check Questions](#self-check-questions)
 - [References](#references)
@@ -84,7 +83,9 @@
 
 ### 1.1 Creating Vectors
 
-Vectors are the most fundamental data structure in R. They are one-dimensional, ordered collections of elements of the **same type**.
+> **Definition:** A **vector** is a one-dimensional data structure that holds elements in order; it is the most fundamental data structure in R. The word usually refers to a vector whose elements all have the same type (Section 1.4).
+
+The following creates vectors.
 
 ```r
 # Create vectors using c() function
@@ -142,7 +143,7 @@ x + 2               # 3, 4, 5 (element-wise addition)
 x * 3               # 3, 6, 9 (element-wise multiplication)
 ```
 
-> **Key Point:** R operations on vectors are **vectorized**, so they automatically apply to each element without needing explicit loops.
+> **Definition:** A **vectorized operation** applies to every element of a vector at once without an explicit loop; R operations on vectors are vectorized in this way.
 
 Vectorization applies not only to arithmetic operators but also to mathematical functions such as `sqrt()`, `round()`, and `log()` and to comparison operators. An operation between two vectors of the same length pairs up the elements at the same positions.
 
@@ -169,9 +170,11 @@ x == y * y
 
 ### 1.4 Types of Atomic Vectors and NULL
 
-Vectors in R come in two kinds: **atomic vectors**, whose elements all have the same type, and **lists**, whose elements may have different types. Because a list can contain other lists as elements, it is also called a **recursive vector**.
+Vectors in R come in two kinds: atomic vectors, whose elements all have the same type, and lists, whose elements may have different types. Because a list can contain other lists as elements, it is also called a **recursive vector**.
 
 > **Definition:** An **atomic vector** is a one-dimensional vector whose elements all have one of the types logical, integer, double, character, complex, or raw.
+
+> **Definition:** A **list** is a vector whose elements may differ in type and length; it can even contain other lists as elements.
 
 Of the six types of atomic vectors, integer and double together are called **numeric**. The raw type is used only for byte data and is rarely used in data analysis. Separately, **NULL** is an object representing the absence of a vector, and it behaves like a vector of length 0.
 
@@ -217,7 +220,9 @@ typeof(NULL); length(NULL)
 
 ### 1.5 Indexing
 
-Extracting some elements from a vector is called **indexing**, and one of positions, logical values, or names is put inside the brackets `[ ]`. Position indices in R start at 1.
+> **Definition:** **Indexing** is the operation that extracts some elements from a vector by position, logical value, or name.
+
+Indexing uses the brackets `[ ]`, and position indices in R start at 1.
 
 ```r
 v <- c(10, 20, 30, 40, 50)
@@ -259,9 +264,9 @@ v[c("e", "a")]
 
 ### 1.6 The Recycling Rule
 
-When an element-wise operation is applied to two vectors of different lengths, R repeats the shorter vector from the beginning to match the length of the longer one. This is called **recycling**.
-
 > **Definition:** The **recycling rule** is the rule that, in an element-wise operation on vectors of different lengths, the shorter vector is repeated from the beginning to match the length of the longer vector.
+
+The following are element-wise operations on vectors of different lengths.
 
 ```r
 c(1, 2, 3, 4) + c(10, 20)
@@ -278,7 +283,9 @@ In the first expression, `c(10, 20)` is extended to `c(10, 20, 10, 20)`, so the 
 
 ### 1.7 Implicit Coercion
 
-An atomic vector can hold elements of only one type, so when values of different types are put into `c()`, R automatically converts all elements to one type that can represent them all. This is called **implicit coercion**. Conversion always goes toward the type further to the right in the following order.
+> **Definition:** **Implicit coercion** is R's automatic conversion of all elements to one type that can represent them all when values of different types are put into one atomic vector.
+
+An atomic vector can hold elements of only one type, so putting values of different types into `c()` triggers implicit coercion. Conversion always goes toward the type further to the right in the following order.
 
 ```text
 logical  →  integer  →  double  →  character
@@ -383,7 +390,9 @@ c(2, 7) %in% w
 
 ### 2.1 Creating Matrices
 
-Matrices are two-dimensional data structures where all elements must be of the same type.
+> **Definition:** A **matrix** is a two-dimensional data structure whose elements all have the same type, arranged in rows and columns.
+
+The following creates a matrix.
 
 ```r
 x <- c(1, 2, 3, 4, 5, 6)
@@ -457,7 +466,9 @@ t(m)
 #> C  5  6
 ```
 
-`dim()` returns (number of rows, number of columns), which can also be obtained separately with `nrow()` and `ncol()`. Naming the rows and columns with `rownames()` and `colnames()` allows elements to be extracted by name, as in `m["r2", "B"]`. Marks such as `[1,]` and `[,1]` in the output are indices that R shows in place of names when there are none. `t()` returns the **transpose**, with rows and columns exchanged, so the 2 × 3 matrix becomes 3 × 2 and the row and column names are swapped as well.
+`dim()` returns (number of rows, number of columns), which can also be obtained separately with `nrow()` and `ncol()`. Naming the rows and columns with `rownames()` and `colnames()` allows elements to be extracted by name, as in `m["r2", "B"]`. Marks such as `[1,]` and `[,1]` in the output are indices that R shows in place of names when there are none. `t()` returns the transpose, so the 2 × 3 matrix becomes 3 × 2 and the row and column names are swapped as well.
+
+> **Definition:** The **transpose** of a matrix is the matrix with its rows and columns exchanged.
 
 ### 2.5 Matrix Operations
 
@@ -516,7 +527,9 @@ In `cbind(A, 9)`, the 9 is recycled into a column of length 2. A matrix is an at
 
 ### 3.1 Creating Arrays
 
-Arrays generalize matrices to any number of dimensions, and a two-dimensional array is a matrix.
+> **Definition:** An **array** is a data structure that generalizes a matrix to any number of dimensions; a two-dimensional array is a matrix.
+
+The following creates an array.
 
 ```r
 y <- c(1, 2, 3, 4, 5, 6)
@@ -530,7 +543,7 @@ The `dim` argument specifies the dimensions.
 - The second value is the number of columns.
 - The third value is the number of layers (depth).
 
-The array above has 2 × 2 × 3 = 12 cells, but `y` has only 6 elements, so R reuses `y` from the beginning to fill the remaining cells. This is called **recycling**. Each layer is filled in column-major order, like a matrix.
+The array above has 2 × 2 × 3 = 12 cells, but `y` has only 6 elements, so R reuses `y` from the beginning to fill the remaining cells. This is the recycling of Section 1.6. Each layer is filled in column-major order, like a matrix.
 
 ```text
           Layer 1        Layer 2        Layer 3
@@ -590,7 +603,7 @@ The `, , 1` and `, , 2` in the output mean the layers whose third index is 1 and
 
 ### 4.1 Creating Lists
 
-Lists are the most flexible data structure in R. Unlike vectors and matrices, lists can contain elements of **different types and different sizes**.
+Lists (Section 1.4) are the most flexible data structure in R.
 
 ```r
 list1 <- list(c(1, 2, 3), "Hello")
@@ -702,7 +715,9 @@ unlist(list(a = 1, b = 2:3))
 
 ### 5.1 Creating Data Frames
 
-Data frames are the primary structure for tabular data in R. They are essentially lists of vectors of equal length, where each column can have a different type.
+> **Definition:** A **data frame** is a table-shaped data structure made of a list of vectors of equal length, whose columns may have different types; it is the primary structure for tabular data in R.
+
+The following creates a data frame.
 
 ```r
 ID <- c(1, 2, 3, 4, 5)
@@ -750,15 +765,21 @@ x1 <- data.frame(
 class(x1)  # "data.frame"
 ```
 
-Data frames are the workhorse of data analysis in R. Each column is a variable and each row is an observation, which matches the standard tidy data format.
+Data frames are the workhorse of data analysis in R. Each column is a variable and each row is an observation, which matches the tidy data format of Section 5.5.
 
 ### 5.5 The Shape of Data: Observations, Variables, Values
 
 Most data has the n × p form made of rows and columns, where n is the number of rows and p the number of columns.
 
-- **Rows:** Observations. Each corresponds to one measured unit, such as one person, one region, or one point in time.
-- **Columns:** Variables. Each corresponds to one characteristic measured for every observation, such as age, sex, or region.
-- **Value:** The result of measuring one variable for one observation, stored in the one cell where a row and a column meet.
+- **Rows:** Observations.
+- **Columns:** Variables.
+- **Values:** The cells where rows and columns meet.
+
+> **Definition:** An **observation** is one measured unit, such as one person, one region, or one point in time; it corresponds to one row of a data frame.
+
+> **Definition:** A **variable** is one characteristic measured for every observation, such as age, sex, or region; it corresponds to one column of a data frame.
+
+> **Definition:** A **value** is the result of measuring one variable for one observation; it fills the one cell of a data frame where a row and a column meet.
 
 Every column of a data frame must have a variable name, and this structure is very similar to a spreadsheet table. `dataframe_ex` in Section 5.1 is data with n = 5 and p = 4, and the 40 in the `AGE` column of the second row is one value, the age of person 2.
 
@@ -775,7 +796,9 @@ Observation → │  1 │ F      │  50 │ Seoul    │
 
 *Figure 4. Observations, variables, and values of a data frame*
 
-Data in which each variable forms a column, each observation forms a row, and each type of observational unit forms a table is called **tidy data** [1]. The same information can take many table shapes. For example, putting the population of each year in its own column, such as `2020` and `2021`, scatters the variable "year" across the column names, so the table is not tidy. Most functions for data transformation and visualization in R assume tidy data as input, and Section 3 of Chapter 5 shows how to turn untidy tables into tidy data.
+> **Definition:** **Tidy data** is data in which each variable forms a column, each observation forms a row, and each type of observational unit forms a table [1].
+
+The same information can take many table shapes. For example, putting the population of each year in its own column, such as `2020` and `2021`, scatters the variable "year" across the column names, so the table is not tidy. Most functions for data transformation and visualization in R assume tidy data as input, and Section 3 of Chapter 5 shows how to turn untidy tables into tidy data.
 
 ### 5.6 Selecting Rows by Condition and Adding Columns
 
@@ -810,7 +833,9 @@ In the first expression, `dataframe_ex$AGE >= 40` is `TRUE TRUE FALSE TRUE FALSE
 
 ### 5.7 Tibbles and Data Frames
 
-A **tibble** is the data frame used by the tidyverse packages, and it changes the parts of the traditional data frame's behavior that easily lead to mistakes. A tibble also has the `data.frame` class, so it can be passed unchanged to functions that take data frames. An existing data frame is converted to a tibble with `as_tibble()`.
+> **Definition:** A **tibble** is the data frame used by the tidyverse packages; it changes the parts of the traditional data frame's behavior that easily lead to mistakes.
+
+A tibble also has the `data.frame` class, so it can be passed unchanged to functions that take data frames. An existing data frame is converted to a tibble with `as_tibble()`.
 
 ```r
 library(tibble)
@@ -903,7 +928,11 @@ As for string columns in Table 3, the default of the `stringsAsFactors` argument
 
 ### 6.1 The Concept of Factors
 
-Factors represent categorical (qualitative) data with a fixed set of possible values called **levels**.
+> **Definition:** A **factor** is an R object that stores categorical (qualitative) data as integer codes with a category name (label) for each code; the set of possible categories is fixed in advance.
+
+> **Definition:** A **level** is one of the category values a factor can take; the levels of a factor form a fixed set determined in advance.
+
+The following creates blood types as a factor.
 
 ```r
 blood.type <- factor(
@@ -976,7 +1005,7 @@ Values that are not in the list of levels become `NA`, and `table()` does not co
 
 ### 6.5 Order of Levels and Ordered Factors
 
-When `levels` is not given, the levels are the values sorted alphabetically. When the categories have a natural order, such as sizes, set the order directly with `levels`, and when sizes must be compared between categories, create an **ordered factor** with `ordered = TRUE`.
+When `levels` is not given, the levels are the values sorted alphabetically. When the categories have a natural order, such as sizes, set the order directly with `levels`, and when sizes must be compared between categories, create an ordered factor with `ordered = TRUE`.
 
 ```r
 size <- factor(c("small", "large", "medium", "small"))
@@ -998,6 +1027,8 @@ size3 < "large"
 ```
 
 The levels of `size` are in alphabetical order, large, medium, small, which does not match the meaning of size. `size2` sets the levels in the order small, medium, large, so the internal codes become small = 1, medium = 2, large = 3, and `as.integer(size2)` is 1, 3, 2, 1. The order of levels determines the column order of frequency tables, the order of axes and legends in graphs (Chapter 6), and the reference category of regression analysis (Chapter 10). The ordered factor `size3` shows `<` in the `Levels:` line of its output and allows comparison operations such as `<`. Computing `size2 < "large"` on an ordinary factor without order gives `NA` with a warning.
+
+> **Definition:** The **reference category** is, by R's default, the category given by the first level of a factor; in models such as regression analysis, the effects of the other categories are measured relative to it.
 
 > **Definition:** An **ordered factor** is a factor whose levels have a defined order of greater and smaller, so that comparison operations can be applied.
 
@@ -1180,7 +1211,7 @@ Removing the user-created `T` with `rm(T)` makes the original `T` defined in the
 
 ### 7.5 Dates: The Date Class
 
-Dates look like strings but must support computation, so they are handled as a separate class. The base system of R provides the **Date** class, which handles dates only, and the POSIXct and POSIXlt classes, which handle dates together with times.
+Dates look like strings but must support computation, so they are handled as a separate class. The base system of R provides the Date class, which handles dates only, and the POSIXct and POSIXlt classes, which handle dates together with times.
 
 > **Definition:** The **Date class** is R's date format that stores a date as the number of days since the origin 1970-01-01.
 
@@ -1214,6 +1245,8 @@ class(Sys.Date())
 ```
 
 The quoted `"2022-09-21"` is a string, so no date computation can be done with it. Converting it with `as.Date()` gives a `Date` object, which prints in the same form but stores a number internally. `unclass()` shows the underlying value without the class attribute, and 2022-09-21 is day 19,256 since 1970-01-01. Therefore `d2 + 10` is 2022-10-01, ten days later, and the difference of two dates is computed in days, 95 days until 2022-12-25. Adding 9 days from September 21 to September 30, then October's 31, November's 30, and December's 25 gives 9 + 31 + 30 + 25 = 95, the same value. `as.Date()` reads the ISO 8601 format `YYYY-MM-DD` by default, and `%Y`, `%m`, and `%d` in `format()` mean the four-digit year, two-digit month, and two-digit day. A string in another format must be described with the same symbols. `"16/04/14"`, written as day, month, and two-digit year (`%y`), becomes 2014-04-16 only when read as `as.Date("16/04/14", format = "%d/%m/%y")`; without a format, R reads it as `YYYY/MM/DD` and produces the meaningless date 0016-04-14. `Sys.Date()` returns the computer's current date as a `Date` object.
+
+> **Definition:** **ISO 8601** is the international standard notation that writes dates and times from the largest unit down; a date is written as `YYYY-MM-DD` (four-digit year, two-digit month, two-digit day).
 
 POSIXct, which also holds the time, stores the number of seconds since the origin 1970-01-01 00:00:00 UTC as one number, and POSIXlt stores components such as year, month, day, hour, minute, and second as a list. The difference between the two classes, time zones, and conversion between date formats are covered in Section 3 of Chapter 11 together with time series data.
 
@@ -1312,29 +1345,6 @@ Transformation, visualization, and modeling are not finished at once but repeate
 | `tb[, 1]` on a tibble returns the first column as a vector. | **F.** `[ ]` on a tibble always returns a tibble, and a vector is pulled out with `tb[[1]]` or `tb$column_name`. |
 | The levels of `factor(c("10", "5", "20"))` are in the order 5, 10, 20. | **F.** Strings are sorted alphabetically, so the levels are in the order `"10"`, `"20"`, `"5"`. |
 | `as.Date("2024-03-01") - as.Date("2024-02-01")` is 29 days. | **T.** 2024 is a leap year, so February has 29 days, and the difference of the two dates is 29 days. |
-
----
-
-<br>
-
-## Glossary
-
-| English | Korean | One-Line Definition |
-|:--|:--|:--|
-| vectorized operation | 벡터화 연산 | An operation applied to all elements of a vector at once without a loop. |
-| recursive vector | 재귀 벡터 | A vector that can hold other lists as elements, that is, a list. |
-| indexing | 인덱싱 | The operation of extracting some elements of a vector by position, logical value, or name. |
-| implicit coercion | 암묵적 형 변환 | R's automatic conversion of values of different types to one type when they are put into one vector. |
-| transpose | 전치 행렬 | The matrix obtained by exchanging the rows and columns of a matrix. |
-| observation | 관측치 | One measured unit, corresponding to one row of a data frame. |
-| variable | 변수 | One characteristic measured for every observation, corresponding to one column of a data frame. |
-| tidy data | 정돈 데이터 | Data in which variables are columns, observations are rows, and observational units are tables. |
-| tibble | 티블 | The data frame used by the tidyverse, with refined printing and indexing behavior. |
-| level | 수준 | A category value that a factor can take. |
-| reference level | 기준 범주 | The first level of a factor, which serves as the baseline of comparison in models. |
-| ISO 8601 | ISO 8601 | The international standard notation that writes dates in the form `YYYY-MM-DD`. |
-
-*Table 7. Glossary*
 
 ---
 
