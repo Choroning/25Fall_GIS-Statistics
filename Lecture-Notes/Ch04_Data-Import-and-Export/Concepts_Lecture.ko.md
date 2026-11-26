@@ -73,7 +73,7 @@
 ID <- c(1, 2, 3, 4, 5)
 SEX <- c("F", "M", "F", "M", "F")
 DATA <- data.frame(ID = ID, SEX = SEX)
-View(DATA)   # 스프레드시트 뷰어에서 열기
+View(DATA)   # Open in spreadsheet viewer
 ```
 
 `c()`로 만든 두 벡터를 `data.frame()`으로 묶으면 각 벡터가 하나의 열이 되어 5행 2열의 데이터 프레임이 만들어진다. `ID = ID`에서 등호 왼쪽은 열 이름이고 오른쪽은 그 열에 넣을 벡터이다.
@@ -135,11 +135,11 @@ R은 외부 데이터를 읽기 위한 여러 함수를 제공한다:
 ```r
 help(read.table)
 
-# 주요 매개변수:
-# file      - 파일 경로
-# header    - 첫 번째 행이 열 이름을 포함하면 TRUE
-# sep       - 필드 구분 문자
-# dec       - 소수점 문자
+# Key parameters:
+# file      - path to the file
+# header    - TRUE if first row contains column names
+# sep       - field separator character
+# dec       - decimal point character
 ```
 
 `read.table()`의 기본값은 `header = FALSE`, `sep = ""`, `dec = "."`이다. `sep = ""`는 공백이나 탭 같은 공백 문자가 하나 이상 이어진 곳을 구분자로 본다는 뜻이다.
@@ -264,7 +264,7 @@ read.table(text = txt2, header = TRUE)
 
 영문자와 숫자는 대부분의 인코딩에서 같은 숫자로 저장되지만, 한국어는 인코딩마다 저장 방식이 다르다. 오늘날 표준으로 쓰이는 UTF-8과, 한국어 Windows가 오래 써 온 CP949(EUC-KR을 확장한 인코딩)가 대표적이다. 파일을 만들 때의 인코딩과 읽을 때 가정한 인코딩이 다르면 한국어가 알아볼 수 없는 글자로 깨진다.
 
-```r
+```r wide-ok
 kor <- c("name,city", "Kim,서울", "Lee,부산")
 con <- file("kor_cp949.csv", encoding = "CP949")
 writeLines(kor, con)
@@ -288,7 +288,7 @@ read.csv("kor_cp949.csv", fileEncoding = "CP949")
 CSV(Comma-Separated Values)는 데이터 교환에 가장 일반적으로 사용되는 형식이다:
 
 ```r
-# 헤더 행이 있는 CSV 파일 읽기
+# Read a CSV file with header row
 ex_data <- read.csv("data/data_ex.csv", header = TRUE)
 View(ex_data)
 ```
@@ -301,10 +301,10 @@ Excel에서 표를 CSV로 저장하려면 파일 메뉴의 다른 이름으로 �
 
 ```r
 read.csv(
-  file,                    # 파일 경로 (절대 경로 또는 상대 경로)
-  header = TRUE,           # 첫 번째 행이 열 이름
-  sep = ",",               # 구분자 (CSV의 경우 쉼표)
-  stringsAsFactors = FALSE # 문자열을 팩터로 변환하지 않음
+  file,                    # File path (absolute or relative)
+  header = TRUE,           # First row is column names
+  sep = ",",               # Separator (comma for CSV)
+  stringsAsFactors = FALSE # Do not convert strings to factors
 )
 ```
 
@@ -321,19 +321,19 @@ R 4.0.0부터 `stringsAsFactors`의 기본값은 `FALSE`이다. 이 인수는 �
 > **용어 정의:** **상대 경로(relative path)** 는 작업 디렉토리를 기준으로 파일의 위치를 나타낸 경로이다.
 
 ```r
-# 절대 경로 (플랫폼에 따라 다름)
+# Absolute path (platform-specific)
 read.csv("/Users/username/Desktop/data_ex.csv", header = TRUE)
 
-# 상대 경로 (작업 디렉토리 기준)
+# Relative path (relative to working directory)
 read.csv("data/data_ex.csv", header = TRUE)
 ```
 
 예를 들어 작업 디렉토리가 `/Users/username/Desktop/project/`이면 `"data/data_ex.csv"`는 그림 1의 파일을 가리킨다.
 
 ```text
-/Users/username/Desktop/project/   ← 작업 디렉토리 (getwd()의 결과)
+/Users/username/Desktop/project/   ← working directory (result of getwd())
 └── data/
-    ├── data_ex.csv                ← "data/data_ex.csv"가 가리키는 파일
+    ├── data_ex.csv                ← file that "data/data_ex.csv" points to
     ├── data_ex-1.txt
     └── data_ex_col.txt
 ```
@@ -360,8 +360,8 @@ cars_tb <- read_csv(path)
 #> Delimiter: ","
 #> dbl (11): mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb
 #> 
-#> ℹ Use `spec()` to retrieve the full column specification for this data.
-#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 cars_tb
 #> # A tibble: 32 × 11
 #>      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
@@ -376,7 +376,7 @@ cars_tb
 #>  8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
 #>  9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
 #> 10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
-#> # ℹ 22 more rows
+#> # i 22 more rows
 ```
 
 > **용어 정의:** **열 사양(column specification)** 은 `read_csv()`가 열마다 정하거나 추측한 자료 유형의 목록이다.
@@ -501,10 +501,10 @@ CSV로 저장한 뒤 다시 읽은 `out2.csv`에서는 날짜 열 `when`과 팩�
 탭 구분 파일은 `read.table()`에 `sep = "\t"`를 지정하거나 `read.delim()`으로 읽는다. `read.delim()`은 `header = TRUE`, `sep = "\t"`가 기본값이다.
 
 ```r
-# 적절한 구분자를 지정한 read.table()
+# read.table() with appropriate separator
 data_txt <- read.table("data/data_ex-1.txt", header = TRUE, sep = "\t")
 
-# 탭 구분 파일의 단축 함수인 read.delim()
+# read.delim() is a shortcut for tab-delimited files
 data_txt <- read.delim("data/data_ex-1.txt", header = TRUE)
 ```
 
@@ -513,7 +513,7 @@ data_txt <- read.delim("data/data_ex-1.txt", header = TRUE)
 `data_ex_col.txt`에는 열 이름 행이 없고 첫 행부터 자료가 들어 있다. 따라서 `header = FALSE`로 모든 행을 자료로 읽고, `col.names`로 열 이름을 지정한다. `header = TRUE`로 읽으면 첫 자료 행이 열 이름이 되어 자료가 한 행 줄어든다.
 
 ```r
-# 열이 정렬된 텍스트 파일의 경우
+# For column-aligned text files
 data_col <- read.table("data/data_ex_col.txt", header = FALSE, col.names = c("ID", "SEX", "AGE", "AREA"))
 ```
 
@@ -546,13 +546,13 @@ read.fwf("fixed.txt", widths = c(2, 1, 2, 5), col.names = c("id", "sex", "age", 
 ### 5.1 작업 디렉토리 확인 및 설정
 
 ```r
-# 현재 작업 디렉토리 확인
+# Check current working directory
 getwd()
 
-# 작업 디렉토리 설정
+# Set working directory
 setwd("/Users/username/Desktop/project/")
 
-# 이제 상대 경로를 사용할 수 있다
+# Now you can use relative paths
 data <- read.csv("data/data_ex.csv", header = TRUE)
 ```
 
@@ -601,19 +601,19 @@ dirname("/Users/kim/project/data/aq.txt")
 데이터를 불러온 후에는 항상 데이터를 점검해야 한다:
 
 ```r
-# 구조 및 요약
-str(data)        # 구조의 간결한 표시
-summary(data)    # 각 열의 통계 요약
-head(data)       # 처음 6행
-tail(data)       # 마지막 6행
-dim(data)        # 차원 (행 x 열)
-nrow(data)       # 행의 수
-ncol(data)       # 열의 수
-names(data)      # 열 이름
-class(data)      # 객체 클래스
+# Structure and summary
+str(data)        # Compact display of structure
+summary(data)    # Statistical summary of each column
+head(data)       # First 6 rows
+tail(data)       # Last 6 rows
+dim(data)        # Dimensions (rows x columns)
+nrow(data)       # Number of rows
+ncol(data)       # Number of columns
+names(data)      # Column names
+class(data)      # Object class
 
-# 시각화
-View(data)       # RStudio의 스프레드시트 뷰어
+# Visualization
+View(data)       # Spreadsheet viewer in RStudio
 ```
 
 `head()`와 `tail()`은 기본으로 6행을 보여 주며 `head(data, 10)`처럼 행 수를 바꿀 수 있다. `summary()`는 수치 열에는 최솟값, 사분위수, 평균, 최댓값을, 팩터 열에는 수준별 빈도를, 문자형 열에는 길이와 유형만 보여 준다. 그래서 범주를 담은 문자형 열의 빈도를 보려면 `table()`을 쓰거나 팩터로 바꾼 뒤 `summary()`를 쓴다. `names()`는 열 이름을 문자형 벡터로 돌려주므로 `names(data)[2] <- "age"`처럼 열 이름을 바꾸는 데에도 쓴다.

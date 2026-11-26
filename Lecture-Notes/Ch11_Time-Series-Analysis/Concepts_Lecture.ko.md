@@ -312,7 +312,7 @@ R은 날짜와 시간을 다루기 위한 여러 클래스를 제공한다:
 *표 6. R의 날짜와 시간 클래스*
 
 ```r
-# 현재 날짜 및 시간 가져오기
+# Get current date and time
 date <- Sys.Date()
 date                    # "2025-12-02"
 class(date)             # "Date"
@@ -321,7 +321,7 @@ time_ct <- Sys.time()
 time_ct                 # "2025-12-02 14:30:00 KST"
 class(time_ct)          # "POSIXct" "POSIXt"
 
-# POSIXct를 POSIXlt로 변환
+# Convert POSIXct to POSIXlt
 time_lt <- as.POSIXlt(time_ct)
 class(time_lt)          # "POSIXlt" "POSIXt"
 ```
@@ -329,29 +329,29 @@ class(time_lt)          # "POSIXlt" "POSIXt"
 ### 3.2 POSIXct vs. POSIXlt
 
 ```r
-# POSIXct: 단일 숫자 값으로 저장 (기준점 이후 초)
-unclass(time_ct)        # 예: 1764653400
+# POSIXct: stored as a single numeric value (seconds since origin)
+unclass(time_ct)        # e.g., 1764653400
 
-# POSIXlt: 이름 있는 리스트로 저장
-unclass(time_lt)$sec    # 초
-unclass(time_lt)$hour   # 시
-unclass(time_lt)$mday   # 일
-unclass(time_lt)$mon    # 월 (0-11)
-unclass(time_lt)$year   # 1900년 이후 연수
-unclass(time_lt)$yday   # 연중 일수 (0-365)
+# POSIXlt: stored as a named list
+unclass(time_lt)$sec    # seconds
+unclass(time_lt)$hour   # hour
+unclass(time_lt)$mday   # day of month
+unclass(time_lt)$mon    # month (0-11)
+unclass(time_lt)$year   # years since 1900
+unclass(time_lt)$yday   # day of year (0-365)
 ```
 
 ### 3.3 날짜 객체 생성
 
 ```r
-# 문자열을 Date로 변환
+# String to Date conversion
 d1 <- "2022-09-21"
 class(d1)               # "character"
 
 d2 <- as.Date("2022-09-21")
 class(d2)               # "Date"
 
-# 시간대를 지정하여 POSIXct와 POSIXlt 생성
+# Creating POSIXct and POSIXlt with timezone
 time_ct <- as.POSIXct("2022-09-21 20:05:35", tz = "EST")
 time_lt <- as.POSIXlt("2022-09-21 20:05:35", tz = "EST")
 ```
@@ -372,13 +372,13 @@ ISO 8601 형식(YYYY-MM-DD)이 아닌 날짜 문자열은 `format` 인수에 형
 *표 7. 날짜 형식 지정자*
 
 ```r
-# ISO 8601 형식 (기본): YYYY-MM-DD
+# ISO 8601 format (default): YYYY-MM-DD
 as.Date("2017-01-20")
 
-# 미국 형식: MM/DD/YYYY
+# US format: MM/DD/YYYY
 as.Date("1/20/2017", format = "%m/%d/%Y")
 
-# 뉴질랜드 형식: DD/MM/YYYY
+# NZ format: DD/MM/YYYY
 as.Date("20/01/2017", format = "%d/%m/%Y")
 ```
 
@@ -488,24 +488,24 @@ ceiling_date(t2, unit = "day")
 ### 4.1 ts 객체 생성
 
 ```r
-# 시계열 객체 생성
+# Create a time series object
 ts_data <- ts(data_vector, start = c(1960, 1), frequency = 4)
-# start: 시작 시점 (연도, 기간)
-# frequency: 단위 시간당 관측 수 (4 = 분기별, 12 = 월별)
+# start: starting time (year, period)
+# frequency: observations per unit time (4 = quarterly, 12 = monthly)
 ```
 
 ### 4.2 자주 사용되는 시계열 데이터셋
 
 ```r
-# Johnson & Johnson 분기별 수익
+# Johnson & Johnson quarterly earnings
 data(JohnsonJohnson)
 plot(JohnsonJohnson)
 
-# AirPassengers: 월별 항공기 승객 수
+# AirPassengers: monthly airline passengers
 data(AirPassengers)
 plot(AirPassengers)
 
-# 미국 경제 데이터
+# US economic data
 library(ggplot2)
 data(economics)
 str(economics)
@@ -659,8 +659,8 @@ ACF는 시계열과 그 시차값 사이의 상관관계를 측정한다. 정상
 > **[확률및통계]** 두 확률 변수의 공분산 $Cov(X, Y) = E[(X - \mu_X)(Y - \mu_Y)]$는 두 변수가 각자의 평균에서 함께 벗어나는 정도이고, 이를 두 표준편차의 곱으로 나눈 상관계수는 -1과 1 사이의 값을 갖는다. 자기상관은 같은 계열의 두 시점 $X_t$와 $X_{t+h}$를 두 확률 변수로 보고 구한 상관계수이며, 정상 시계열에서는 $Var(X_t) = Var(X_{t+h})$이므로 두 표준편차의 곱이 위 식의 분모 $Var(X_t)$가 된다.
 
 ```r
-acf(ts_data)         # ACF 그래프
-acf(ts_data, plot = FALSE)  # 수치값 확인
+acf(ts_data)         # Plot ACF
+acf(ts_data, plot = FALSE)  # Get numeric values
 ```
 
 ### 5.3 편자기상관 함수(PACF)
@@ -668,7 +668,7 @@ acf(ts_data, plot = FALSE)  # 수치값 확인
 PACF는 중간 시차의 효과를 제거한 후 $X_t$와 $X_{t+h}$ 사이의 상관관계를 측정한다:
 
 ```r
-pacf(ts_data)        # PACF 그래프
+pacf(ts_data)        # Plot PACF
 ```
 
 > **핵심:** ACF와 PACF 그래프는 적절한 ARIMA 모형 차수를 식별하기 위한 필수적인 진단 도구이다. ACF는 MA 차수 식별에, PACF는 AR 차수 식별에 도움이 된다. MA(q) 과정의 ACF는 시차 q 이후 0으로 끊기고, AR(p) 과정의 PACF는 시차 p 이후 0으로 끊긴다.
@@ -767,11 +767,11 @@ round(acf(lh, lag.max = 3, plot = FALSE)$acf[2:4], 6)
 여기서 $T_t$는 추세, $S_t$는 계절 성분, $R_t$는 잔차이다.
 
 ```r
-# 시계열 분해
+# Decompose a time series
 decomp <- decompose(AirPassengers, type = "multiplicative")
 plot(decomp)
 
-# STL 분해 (더 강건함)
+# STL decomposition (more robust)
 stl_result <- stl(AirPassengers, s.window = "periodic")
 plot(stl_result)
 ```
@@ -856,14 +856,14 @@ flowchart LR
 ```r
 library(forecast)
 
-# 자동 ARIMA 모형 선택
+# Automatic ARIMA model selection
 auto_model <- auto.arima(ts_data)
 summary(auto_model)
 
-# 수동 ARIMA 지정
+# Manual ARIMA specification
 manual_model <- arima(ts_data, order = c(1, 1, 1))
 
-# 잔차 검사
+# Check residuals
 checkresiduals(auto_model)
 ```
 
@@ -1103,11 +1103,11 @@ c(Q = Q, p = pchisq(Q, df = 10 - 3, lower.tail = FALSE))
 ```r
 library(forecast)
 
-# 미래 값 예측
-fc <- forecast(auto_model, h = 12)  # 12기간 선행 예측
+# Forecast future values
+fc <- forecast(auto_model, h = 12)  # 12 periods ahead
 plot(fc)
 
-# Autoplot (ggplot2 스타일)
+# Autoplot (ggplot2 style)
 autoplot(fc) +
   labs(title = "Time Series Forecast",
        x = "Time", y = "Value")
@@ -1118,7 +1118,7 @@ autoplot(fc) +
 ### 8.2 예측 정확도
 
 ```r
-# 평가를 위한 훈련/테스트 분할
+# Train/test split for evaluation
 train <- window(ts_data, end = c(2010, 12))
 test <- window(ts_data, start = c(2011, 1))
 

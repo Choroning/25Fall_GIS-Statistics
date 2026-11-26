@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-26
+> **최종 수정일:** 2026-11-27
 >
 > 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 5
 
@@ -89,16 +89,16 @@
 library(tidyverse)
 library(nycflights13)
 
-# 1월 1일 항공편 필터링
+# Filter flights on January 1st
 filter(flights, month == 1, day == 1)
 
-# 결과를 변수에 할당
+# Assign result to variable
 jan1 <- filter(flights, month == 1, day == 1)
 
-# 괄호로 감싸서 필터링과 출력을 동시에 수행
+# Filter and print in one step (wrapping with parentheses)
 (dec25 <- filter(flights, month == 12, day == 25))
 
-# 복수 조건으로 필터링
+# Filter with multiple conditions
 filter(mtcars, cyl == 4)
 filter(mtcars, cyl >= 6 & mpg > 20)
 ```
@@ -110,11 +110,11 @@ filter(mtcars, cyl >= 6 & mpg > 20)
 `arrange()`에 여러 열을 주면 앞의 열로 먼저 정렬하고, 값이 같은 행끼리는 다음 열로 정렬한다. `desc()`는 그 열을 내림차순으로 바꾸며, 결측값은 정렬 방향과 관계없이 끝에 놓인다.
 
 ```r
-arrange(flights, year, month, day)         # 오름차순 정렬
-arrange(flights, desc(dep_delay))          # 내림차순 정렬
+arrange(flights, year, month, day)         # Ascending order
+arrange(flights, desc(dep_delay))          # Descending order
 
-head(arrange(mtcars, wt))                  # 무게(wt) 기준 오름차순 정렬
-head(arrange(mtcars, mpg, desc(wt)))       # mpg 기준 정렬 후 무게 내림차순
+head(arrange(mtcars, wt))                  # Sort by weight (ascending)
+head(arrange(mtcars, mpg, desc(wt)))       # Sort by mpg, then desc weight
 ```
 
 `arrange(flights, desc(dep_delay))`의 첫 행은 1월 9일에 1,301분(약 21.7시간) 늦게 출발한 항공편이다. `arrange(mtcars, wt)`는 가장 가벼운 Lotus Europa(1.513, 곧 1,513파운드)부터 나열한다. `arrange(mtcars, mpg, desc(wt))`에서는 연비가 10.4로 같은 Lincoln Continental(5.424)과 Cadillac Fleetwood(5.250) 가운데 더 무거운 Lincoln Continental이 앞에 온다.
@@ -124,12 +124,12 @@ head(arrange(mtcars, mpg, desc(wt)))       # mpg 기준 정렬 후 무게 내림
 `year:day`는 `year`부터 `day`까지 연속된 열을, `-(year:day)`는 그 열들을 뺀 나머지 열을 뜻한다. `ends_with()` 외에도 `starts_with()`, `contains()` 같은 도우미 함수가 있다.
 
 ```r
-select(flights, year, month, day)          # 특정 열 선택
-select(flights, year:day)                  # 열 범위 선택
-select(flights, -(year:day))               # 열 범위 제외
+select(flights, year, month, day)          # Select specific columns
+select(flights, year:day)                  # Select range of columns
+select(flights, -(year:day))               # Exclude range of columns
 
-# 도우미 함수
-select(flights, ends_with("delay"))        # "delay"로 끝나는 열
+# Helper functions
+select(flights, ends_with("delay"))        # Columns ending with "delay"
 ```
 
 열이 수백, 수천 개인 데이터에서 관심 있는 변수만 남기면 출력을 읽기 쉽고 계산도 가벼워진다. `flights`는 19개 열이므로 `select(flights, -(year:day))`의 결과는 16개 열이다.
@@ -148,7 +148,7 @@ mutate(flights_sml,
   speed = distance / air_time * 60
 )
 
-# 새 열은 다른 새 열을 참조할 수 있다
+# New columns can reference other new columns
 mutate(flights_sml,
   gain = dep_delay - arr_delay,
   hours = air_time / 60,
@@ -165,17 +165,17 @@ mutate(flights_sml,
 `group_by()`는 데이터를 그룹으로 나누고, 그 뒤의 `summarise()`는 그룹마다 한 행씩 요약 결과를 만든다. `n()`은 그룹의 행 수를 센다. `na.rm = TRUE`는 결측값을 빼고 평균을 구하며, 이를 지정하지 않으면 결측값이 하나라도 있을 때 결과가 `NA`가 된다.
 
 ```r
-# 단순 요약
+# Simple summary
 summarise(flights, delay = mean(dep_delay, na.rm = TRUE))
 
-# 그룹별 요약
+# Grouped summary
 by_day <- group_by(flights, year, month, day)
 summarise(by_day, delay = mean(dep_delay, na.rm = TRUE))
 
-# 파이프 연산자 (%>%) 사용
+# Using pipe operator (%>%)
 group_by(mtcars, cyl) %>% summarise(n())
 
-# 다중 요약 통계
+# Multiple summary statistics
 summarise(mtcars,
   cyl_mean = mean(cyl),
   cyl_min = min(cyl),
@@ -212,8 +212,8 @@ flights
 #>  8  2013     1     1      557            600        -3      709            723
 #>  9  2013     1     1      557            600        -3      838            846
 #> 10  2013     1     1      558            600        -2      753            745
-#> # ℹ 336,766 more rows
-#> # ℹ 11 more variables: arr_delay <dbl>, carrier <chr>, flight <int>,
+#> # i 336,766 more rows
+#> # i 11 more variables: arr_delay <dbl>, carrier <chr>, flight <int>,
 #> #   tailnum <chr>, origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>,
 #> #   hour <dbl>, minute <dbl>, time_hour <dttm>
 ```
@@ -261,8 +261,8 @@ nrow(filter(flights, arr_delay <= 120, dep_delay <= 120))
 filter(flights, month = 1)
 #> Error in `filter()`:
 #> ! We detected a named input.
-#> ℹ This usually means that you've used `=` instead of `==`.
-#> ℹ Did you mean `month == 1`?
+#> i This usually means that you've used `=` instead of `==`.
+#> i Did you mean `month == 1`?
 ```
 
 실수의 비교에는 1장 3절의 부동소수점 문제가 그대로 적용되므로, `==` 대신 오차를 허용하는 `near()`를 쓴다.
@@ -531,7 +531,7 @@ daily
 #>  8  2013     1     8  2.55
 #>  9  2013     1     9  2.28
 #> 10  2013     1    10  2.84
-#> # ℹ 355 more rows
+#> # i 355 more rows
 monthly <- summarise(daily, delay = mean(delay))
 #> `summarise()` has grouped output by 'year'. You can override using the
 #> `.groups` argument.
@@ -799,7 +799,7 @@ flowchart LR
 ```r
 airlines |> count(carrier) |> filter(n > 1)
 #> # A tibble: 0 × 2
-#> # ℹ 2 variables: carrier <chr>, n <int>
+#> # i 2 variables: carrier <chr>, n <int>
 flights |> count(year, month, day, flight) |> filter(n > 1) |> nrow()
 #> [1] 29768
 ```
@@ -858,10 +858,10 @@ full_join(A, B, by = "ID")
 
 ```text
 A (ID: 1 2 3)      B (ID: 1 2 4)
-          left_join  : 1 2 3      (A의 모든 행)
-          inner_join : 1 2        (두 표에 모두 있는 행)
-          right_join : 1 2 4      (B의 모든 행)
-          full_join  : 1 2 3 4    (어느 한 표에라도 있는 행)
+          left_join  : 1 2 3      (all rows of A)
+          inner_join : 1 2        (rows in both tables)
+          right_join : 1 2 4      (all rows of B)
+          full_join  : 1 2 3 4    (rows in either table)
 ```
 
 *그림 4. 네 변경 조인이 남기는 ID*
@@ -955,9 +955,9 @@ x <- tibble(key = c(1, 1, 2), val_x = c("x1", "x2", "x3"))
 y <- tibble(key = c(1, 1, 2), val_y = c("y1", "y2", "y3"))
 left_join(x, y, by = "key")
 #> Warning in left_join(x, y, by = "key"): Detected an unexpected many-to-many relationship between `x` and `y`.
-#> ℹ Row 1 of `x` matches multiple rows in `y`.
-#> ℹ Row 1 of `y` matches multiple rows in `x`.
-#> ℹ If a many-to-many relationship is expected, set `relationship =
+#> i Row 1 of `x` matches multiple rows in `y`.
+#> i Row 1 of `y` matches multiple rows in `x`.
+#> i If a many-to-many relationship is expected, set `relationship =
 #>   "many-to-many"` to silence this warning.
 #> # A tibble: 5 × 3
 #>     key val_x val_y
@@ -1107,12 +1107,12 @@ table4a |>
 `pivot_longer()`에는 세 가지를 알려 준다. `cols`는 값으로 내릴 열이며, 이름이 숫자로 시작해 R의 이름 규칙에 맞지 않으므로 백틱으로 감쌌다. `names_to`는 열 이름들을 담을 새 변수의 이름이고, `values_to`는 칸의 값들을 담을 새 변수의 이름이다. 그 결과 3행 2열의 값 6개가 6행이 되었다. 새 `year` 열은 열 이름에서 왔으므로 문자형이며, 수가 필요하면 `names_transform = list(year = as.integer)`를 주거나 이어서 `mutate()`로 바꾼다.
 
 ```text
-넓은 형식 (table4a)                     긴 형식
+Wide format (table4a)                   Long format
 country       1999    2000              country      year   cases
 Afghanistan    745    2666     →        Afghanistan  1999     745
 Brazil       37737   80488              Afghanistan  2000    2666
 China       212258  213766              Brazil       1999   37737
-                                        ... (6행)
+                                        ... (6 rows)
 ```
 
 *그림 5. pivot_longer()가 열 이름을 변수의 값으로 내리는 과정*
@@ -1127,7 +1127,7 @@ relig_income |> head(3)
 #> 1 Agnostic      27        34        60        81        76       137        122
 #> 2 Atheist       12        27        37        52        35        70         73
 #> 3 Buddhist      27        21        30        34        33        58         62
-#> # ℹ 3 more variables: `$100-150k` <dbl>, `>150k` <dbl>,
+#> # i 3 more variables: `$100-150k` <dbl>, `>150k` <dbl>,
 #> #   `Don't know/refused` <dbl>
 relig_income |> pivot_longer(cols = !religion, names_to = "income", values_to = "count") |> head(4)
 #> # A tibble: 4 × 3

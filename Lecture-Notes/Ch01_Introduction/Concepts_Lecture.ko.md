@@ -182,23 +182,23 @@ R은 RStudio 없이도 동작하지만, RStudio를 쓰면 스크립트, 실행 �
 ### 2.3 기본 R 콘솔 연산
 
 ```r
-# 기본 산술 연산
-2 + 3          # 덧셈
-10 - 4         # 뺄셈
-5 * 6          # 곱셈
-20 / 4         # 나눗셈
-20 %/% 7       # 정수 나눗셈 (몫) -> 2
-20 %% 7        # 나머지 연산 -> 6
-6 ^ 2          # 거듭제곱 -> 36
-6 ** 2         # 거듭제곱 (대체 표기) -> 36
+# Basic arithmetic
+2 + 3          # Addition
+10 - 4         # Subtraction
+5 * 6          # Multiplication
+20 / 4         # Division
+20 %/% 7       # Integer division (quotient) -> 2
+20 %% 7        # Modulo (remainder) -> 6
+6 ^ 2          # Exponentiation -> 36
+6 ** 2         # Exponentiation (alternative) -> 36
 ```
 
 ### 2.4 도움말 사용
 
 ```r
-help(mean)       # mean() 함수의 도움말 페이지 열기
-?mean            # help()의 단축 표기
-help(data.frame) # data.frame 함수의 도움말
+help(mean)       # Open help page for mean()
+?mean            # Shortcut for help()
+help(data.frame) # Help for data.frame function
 ```
 
 > **핵심:** `help()`로 연 도움말 페이지는 해당 함수가 어느 패키지에 속해 있는지 보여 준다. 예를 들어 `mean {base}`는 `mean()`이 `base` 패키지에 있음을 의미한다.
@@ -324,8 +324,8 @@ RStudio의 설정은 Tools 메뉴의 Global Options에서 바꾼다. 처음 설�
 R은 변수 할당에 `<-` 연산자(권장) 또는 `=`를 사용한다.
 
 ```r
-a <- 4       # 변수 a에 4를 할당
-b <- 20      # 변수 b에 20을 할당
+a <- 4       # Assign 4 to variable a
+b <- 20      # Assign 20 to variable b
 c <- a + b   # c = 24
 ```
 
@@ -350,14 +350,14 @@ c <- a + b   # c = 24
 ### 3.2 할당 연산자 상세
 
 ```r
-A <- 2       # <-를 사용한 할당
-B = 10       # =를 사용한 할당 (작동하지만 <-가 권장됨)
-C = D <- 5   # C와 D 모두 5가 됨
+A <- 2       # Assign using <-
+B = 10       # Assign using = (works but <- is preferred)
+C = D <- 5   # Both C and D become 5
 
-# 중요한 차이: <-는 =보다 우선순위가 높다
-# 함수 인수 내에서는 명명된 매개변수에 =를 사용해야 한다
-sum(x <- 1)  # x가 전역 환경에 1로 할당됨
-sum(y = 1)   # y는 명명된 인수이며, 전역적으로 할당되지 않음
+# Important difference: <- has higher precedence than =
+# Inside function arguments, = must be used for named parameters
+sum(x <- 1)  # x is assigned 1 in the global environment
+sum(y = 1)   # y is a named argument, NOT assigned globally
 ```
 
 > **핵심:** R에서는 할당에 `=`보다 `<-`를 권장한다. `<-`는 연산자 우선순위가 더 높고, `=`는 함수 인수를 지정하는 데에도 쓰여 할당과 혼동될 수 있기 때문이다.
@@ -382,7 +382,7 @@ R에는 여러 가지 기본 데이터 유형이 있다.
 *표 5. R의 기본 데이터 유형*
 
 ```r
-# 유형 확인
+# Check types
 class(42)           # "numeric"
 class(TRUE)         # "logical"
 class("Hello")      # "character"
@@ -666,15 +666,15 @@ GIS는 현실의 지리 현상을 두 가지 방식으로 표현한다.
 래스터 모형은 기온, 고도, 강수량처럼 공간 전체에 연속적으로 퍼져 있는 현상에 알맞다. 위성 영상과 수치 표고 모형이 대표적인 래스터 데이터이다. 칸의 크기, 곧 **해상도(resolution)** 가 작을수록 세밀하지만 저장해야 할 칸의 수가 늘어난다. 한 변이 30 m인 칸으로 가로세로 30 km 지역을 덮으면 1,000 × 1,000 = 100만 칸이 필요하다.
 
 ```text
-벡터 모형                         래스터 모형
+Vector model                     Raster model
                                  ┌──┬──┬──┬──┬──┐
-  ●  정류장 (점)                  │12│13│15│16│18│
+  ●  bus stop (point)            │12│13│15│16│18│
                                  ├──┼──┼──┼──┼──┤
-  ●───●───●  도로 (선)           │11│12│14│17│19│
+  ●───●───●  road (line)         │11│12│14│17│19│
                                  ├──┼──┼──┼──┼──┤
   ┌───────┐                      │10│11│13│15│17│
-  │ 구역  │  행정 구역 (다각형)    └──┴──┴──┴──┴──┘
-  └───────┘                        칸마다 값 하나 (예: 기온)
+  │ zone  │  district (polygon)  └──┴──┴──┴──┴──┘
+  └───────┘                        one value per cell (e.g., temperature)
 ```
 
 *그림 2. 벡터 모형의 점, 선, 다각형과 래스터 모형의 격자*

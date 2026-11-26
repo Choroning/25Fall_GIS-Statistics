@@ -663,7 +663,7 @@ country_choropleth(plotdata, num_colors = 9) +
 > **참고:** **국가 이름 맞추기.** gapminder의 국가 이름 가운데 `"united states"`, `"korea, rep."`처럼 choroplethr의 지역 이름과 표기가 다른 국가는 짝을 찾지 못해 지도에서 빈칸으로 남고, 그 목록이 콘솔에 출력된다. 아래 코드는 `recode()`로 이름을 맞추는 단계를 더한 수정 버전이며, 그 뒤의 `country_choropleth()` 호출은 위와 같다. 바레인, 싱가포르처럼 지도에 지역이 없는 작은 국가는 이름을 맞추어도 칠해지지 않는다.
 
 ```r
-data(country.map, package = "choroplethrMaps")   # 지역 이름 확인용
+data(country.map, package = "choroplethrMaps")   # for checking region names
 
 plotdata <- gapminder %>%
   filter(year == 2007) %>%
@@ -855,12 +855,12 @@ newggslopegraph(df, year, lifeExp, country) +
 `geom_area()`는 선 아래를 칠해 값의 크기를 면적으로 보인다. stream graph는 여러 그룹의 영역을 가운데 축을 중심으로 위아래로 쌓아 흐름처럼 보이게 한다. `uspopage`는 1900~2002년 미국 인구를 연령대별로 천 명 단위로 담은 자료이며, `Thousands/1000`은 백만 명 단위로 바꾼 값이다. `fct_rev()`는 연령대의 순서를 뒤집어 쌓는 순서와 범례 순서를 바꾼다.
 
 ```r
-# 영역 차트
+# Area chart
 ggplot(economics, aes(x = date, y = psavert)) +
   geom_area(fill = "lightblue", color = "black") +
   labs(title = "Personal Savings Rate", x = "Date", y = "Personal Savings Rate")
 
-# stream graph
+# Stream graph
 library(ggstream)
 data(uspopage, package = "gcookbook")
 

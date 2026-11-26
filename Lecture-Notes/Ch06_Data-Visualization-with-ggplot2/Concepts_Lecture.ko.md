@@ -95,7 +95,7 @@
 library(ggplot2)
 
 ggplot(data, aes(x = variable1, y = variable2)) +
-  geom_point()   # 기하 레이어 추가
+  geom_point()   # Add a geometry layer
 ```
 
 > **핵심:** ggplot2는 `+` 연산자를 사용하여 레이어별로 그래프를 구축한다. `ggplot()` 호출이 캔버스를 생성하고, `geom_*()` 함수가 시각적 요소를 추가한다.
@@ -146,7 +146,7 @@ ggplot(data = <DATA>) +
 ```r
 p <- ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, color = class))
-p                                   # 그래프 출력
+p                                   # Print the plot
 ggsave("mpg_scatter.png", p, width = 7, height = 4.2, dpi = 150)
 ```
 
@@ -171,7 +171,7 @@ mpg
 #>  8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…
 #>  9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…
 #> 10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…
-#> # ℹ 224 more rows
+#> # i 224 more rows
 ```
 
 `mpg`는 234행 11열의 티블이다. `displ`은 엔진 배기량(리터)이고, `hwy`는 고속도로 연비(갤런당 마일)이며 값이 클수록 연료를 적게 쓴다. `cty`는 도시 연비, `drv`는 구동 방식(`f` 전륜, `r` 후륜, `4` 사륜), `class`는 차종이다. 열이 화면보다 넓으므로 `trans`와 `class`의 값은 줄임표 `…`로 잘려 보인다. `displ`을 x축, `hwy`를 y축에 놓고 `class`를 색에 매핑하면 그림 1이 그려진다.
@@ -193,14 +193,14 @@ mpg
 `airquality`는 1973년 5\~9월 뉴욕의 일별 대기 질 측정값이다. `Day`는 그 달의 날짜(1\~31)이고 `Temp`는 일 최고 기온(화씨)이므로, 아래 그래프에서 각 날짜에는 다섯 달의 점이 함께 찍힌다.
 
 ```r
-# 기본 산점도
+# Basic scatter plot
 ggplot(airquality, aes(x = Day, y = Temp)) +
   geom_point()
 
-# 크기와 색상을 사용자 정의한 산점도
+# Scatter plot with custom size and color
 ggplot(airquality, aes(x = Day, y = Temp)) +
   geom_point(size = 3, color = "red")
-# 기본 점 크기는 1.5
+# Default point size is 1.5
 ```
 
 첫 그래프는 각 날짜에 다섯 점이 세로로 늘어선 모양이며 날짜에 따른 뚜렷한 경향이 보이지 않는다. 실제로 두 변수의 상관계수는 `cor(airquality$Day, airquality$Temp)` = -0.131로 0에 가깝다. 날짜(1\~31)는 그 달 안의 위치일 뿐 계절을 나타내지 않으므로, 기온의 변화를 보려면 `Month`를 함께 쓰거나 날짜를 연속된 시간 축으로 바꾸어야 한다. 둘째 그래프의 `size = 3`과 `color = "red"`는 `aes()` 밖에 쓴 고정값이므로 모든 점이 같은 크기와 색으로 그려지고 범례가 생기지 않는다(3.3절).
@@ -219,15 +219,15 @@ ggplot(airquality, aes(x = Day, y = Temp)) +
 `geom_bar()`는 x의 값마다 행의 수를 세어 막대 높이로 쓴다. `mtcars`(5장 1.2절)의 숫자형 `cyl`을 그대로 x에 주면 x축이 연속형이 되어 4, 6, 8 사이에 5와 7 같은 빈 눈금이 생기고, `factor()`로 범주형으로 바꾸면 실제 값 4, 6, 8만 막대로 나타난다. `fill = factor(gear)`는 막대를 기어 수별로 나누어 색을 칠한다.
 
 ```r
-# 단순 막대 그래프 (x축만 필요; y축은 자동으로 개수를 셈)
+# Simple bar chart (only x-axis needed; y counts automatically)
 ggplot(mtcars, aes(x = cyl)) +
   geom_bar(width = 0.5)
 
-# factor()를 사용하여 비어 있는 범주 제외 (예: 5, 7 실린더)
+# Use factor() to exclude empty categories (e.g., 5 and 7 cylinders)
 ggplot(mtcars, aes(x = factor(cyl))) +
   geom_bar(width = 0.5)
 
-# 채움 색상이 있는 누적 막대 그래프
+# Stacked bar chart with fill color
 ggplot(mtcars, aes(x = factor(cyl))) +
   geom_bar(aes(fill = factor(gear)))
 ```
@@ -239,7 +239,7 @@ ggplot(mtcars, aes(x = factor(cyl))) +
 `Day`가 숫자형이므로 `group = Day`를 지정해야 날짜마다 따로 상자가 그려진다. 지정하지 않으면 모든 자료가 하나의 상자로 그려진다.
 
 ```r
-# 그룹화된 상자 그림
+# Box plot with grouping
 ggplot(airquality, aes(x = Day, y = Temp, group = Day)) +
   geom_boxplot()
 ```
@@ -251,12 +251,12 @@ ggplot(airquality, aes(x = Day, y = Temp, group = Day)) +
 ### 2.5 sunburst chart (극좌표)
 
 ```r
-# 누적 막대 그래프를 coord_polar()로 sunburst chart로 변환
+# Stacked bar chart converted to sunburst using coord_polar()
 ggplot(mtcars, aes(x = factor(cyl))) +
   geom_bar(aes(fill = factor(gear))) +
   coord_polar()
 
-# 도넛 형태의 sunburst chart
+# Donut-shaped sunburst chart
 ggplot(mtcars, aes(x = factor(cyl))) +
   geom_bar(aes(fill = factor(gear))) +
   coord_polar(theta = "y")
@@ -366,7 +366,7 @@ count(mpg, drv)
 ### 3.1 색상 매핑
 
 ```r
-# class를 색상에 매핑: 각 class가 다른 색상을 갖는다
+# Map class to color: each class gets a different color
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, color = class))
 ```
@@ -378,7 +378,7 @@ ggplot(data = mpg) +
 투명도는 정도의 크고 작음을 나타내는 속성이므로, 순서가 없는 범주형 변수에 매핑하면 ggplot2가 권장하지 않는다는 경고를 출력한다.
 
 ```r
-# class를 투명도에 매핑
+# Map class to transparency
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
 ```
@@ -390,7 +390,7 @@ ggplot(data = mpg) +
 기본 모양 팔레트는 범주를 최대 6개까지만 구분한다. 범주가 7개인 `class`를 모양에 매핑하면 일곱 번째 범주인 `suv`의 점 62개는 경고와 함께 그려지지 않는다.
 
 ```r
-# class를 점 모양에 매핑
+# Map class to point shape
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, shape = class))
 ```
@@ -487,17 +487,17 @@ table(mpg$drv, mpg$cyl)
 ```r
 library(ggplot2)
 
-# 절편과 기울기를 가진 대각선
+# Diagonal line with intercept and slope
 ggplot(economics, aes(x = date, y = psavert)) +
   geom_line() +
   geom_abline(intercept = 12.18671, slope = -0.0005444)
 
-# 평균값에 수평 기준선
+# Horizontal reference line at the mean
 ggplot(economics, aes(x = date, y = psavert)) +
   geom_line() +
   geom_hline(yintercept = mean(economics$psavert))
 
-# 특정 날짜에 수직 기준선
+# Vertical reference line at a specific date
 ggplot(economics, aes(x = date, y = psavert)) +
   geom_line() +
   geom_vline(xintercept = as.Date("2005-07-01"))

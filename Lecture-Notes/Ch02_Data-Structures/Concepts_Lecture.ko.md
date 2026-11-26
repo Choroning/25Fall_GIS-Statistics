@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-26
+> **최종 수정일:** 2026-11-27
 >
 > 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 2
 
@@ -88,21 +88,21 @@
 다음은 벡터를 만드는 예이다.
 
 ```r
-# c() 함수를 사용하여 벡터 생성
-ex_vector1 <- c(-1, 0, 1)          # 수치형 벡터
-ex_vector2 <- c("Hello", "Hi~!")   # 문자형 벡터
-a <- c(1, 2, 9)                    # 수치형 벡터
+# Create vectors using c() function
+ex_vector1 <- c(-1, 0, 1)          # Numeric vector
+ex_vector2 <- c("Hello", "Hi~!")   # Character vector
+a <- c(1, 2, 9)                    # Numeric vector
 
-# 수열 생성
-1:10                               # 1부터 10까지의 정수 수열
-seq(1, 9, by = 2)                  # 수열: 1, 3, 5, 7, 9
+# Sequence generation
+1:10                               # Integer sequence 1 to 10
+seq(1, 9, by = 2)                  # Sequence: 1, 3, 5, 7, 9
 ```
 
 ### 1.2 벡터 속성
 
 ```r
-mode(ex_vector1)    # "numeric"   - 저장 모드
-mode(ex_vector2)    # "character" - 저장 모드
+mode(ex_vector1)    # "numeric"   - storage mode
+mode(ex_vector2)    # "character" - storage mode
 
 str(ex_vector1)     # num [1:3] -1 0 1
 str(ex_vector2)     # chr [1:2] "Hello" "Hi~!"
@@ -135,12 +135,12 @@ mode(ex_vector11); str(ex_vector11)
 
 ```r
 a <- c(1, 2, 9)
-mean(a)             # 4 (산술 평균)
+mean(a)             # 4 (arithmetic mean)
 
-# 벡터화 연산
+# Vectorized operations
 x <- c(1, 2, 3)
-x + 2               # 3, 4, 5 (원소별 덧셈)
-x * 3               # 3, 6, 9 (원소별 곱셈)
+x + 2               # 3, 4, 5 (element-wise addition)
+x * 3               # 3, 6, 9 (element-wise multiplication)
 ```
 
 > **용어 정의:** **벡터화 연산(vectorized operation)** 은 명시적인 반복문 없이 벡터의 모든 원소에 한꺼번에 적용되는 연산으로, R의 벡터 연산은 이렇게 벡터화되어 있다.
@@ -397,13 +397,13 @@ c(2, 7) %in% w
 ```r
 x <- c(1, 2, 3, 4, 5, 6)
 
-# 기본값: 열 기준으로 채움 (열 우선 순서)
+# Default: fills by column (column-major order)
 matrix(x, nrow = 2, ncol = 3)
 #      [,1] [,2] [,3]
 # [1,]    1    3    5
 # [2,]    2    4    6
 
-# 행 기준으로 채우기
+# Fill by row
 matrix(x, nrow = 2, ncol = 3, byrow = TRUE)
 #      [,1] [,2] [,3]
 # [1,]    1    2    3
@@ -414,9 +414,9 @@ matrix(x, nrow = 2, ncol = 3, byrow = TRUE)
 
 ```r
 a <- matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
-a[1, 2]     # 1행 2열의 원소 -> 3
-a[1, ]      # 첫 번째 행 전체
-a[, 2]      # 두 번째 열 전체
+a[1, 2]     # Element at row 1, column 2 -> 3
+a[1, ]      # Entire first row
+a[, 2]      # Entire second column
 ```
 
 행렬의 색인은 `[행, 열]`의 두 자리로 쓰며, 한 자리를 비우면 그 방향 전체를 뜻한다. `a`는 첫 열이 1, 2, 둘째 열이 3, 4, 셋째 열이 5, 6인 2행 3열 행렬이므로 `a[1, ]`은 1, 3, 5이고 `a[, 2]`는 3, 4이다. 행 하나나 열 하나를 고르면 결과는 행렬이 아니라 벡터로 바뀐다. 행렬 모양을 유지하려면 `a[1, , drop = FALSE]`처럼 `drop = FALSE`를 준다. 각 자리에는 1.5절의 음의 정수, 논리 벡터, 이름을 그대로 쓸 수 있어 `a[, -1]`은 첫 열을 뺀 2행 2열 행렬이다.
@@ -425,7 +425,7 @@ a[, 2]      # 두 번째 열 전체
 
 ```r
 a1 <- 1:10
-is.matrix(a1)              # FALSE (벡터임)
+is.matrix(a1)              # FALSE (it is a vector)
 
 a2 <- as.matrix(1:10)
 is.matrix(a2)              # TRUE
@@ -534,7 +534,7 @@ matrix(c(1, "a", 2, "b"), nrow = 2)
 ```r
 y <- c(1, 2, 3, 4, 5, 6)
 
-# 3차원 배열 생성: 2행 x 2열 x 3층
+# Create a 3D array: 2 rows x 2 cols x 3 layers
 array(y, dim = c(2, 2, 3))
 ```
 
@@ -560,9 +560,9 @@ array(y, dim = c(2, 2, 3))
 ### 3.2 배열 vs. 행렬
 
 ```r
-# 배열은 다차원이며, 행렬은 2차원 배열이다
-is.array(matrix(1:6, 2, 3))  # TRUE (행렬은 2차원 배열이다)
-is.matrix(array(1:6, c(2,3))) # TRUE (2차원 배열은 행렬이다)
+# Arrays are multi-dimensional; matrices are 2D arrays
+is.array(matrix(1:6, 2, 3))  # TRUE (matrices are 2D arrays)
+is.matrix(array(1:6, c(2,3))) # TRUE (2D arrays are matrices)
 ```
 
 ### 3.3 배열의 인덱싱
@@ -634,9 +634,9 @@ is.array(pts)   # FALSE
 ### 4.3 혼합 유형 저장
 
 ```r
-# 리스트만이 서로 다른 유형과 길이의 데이터를 묶을 수 있다
+# Only lists can bundle data of different types and lengths
 x <- list("a", "b", 1:10)
-length(x)  # 3 (리스트에 3개의 원소)
+length(x)  # 3 (three elements in the list)
 ```
 
 > **핵심:** 리스트는 R에서 서로 다른 유형과 길이의 원소를 담을 수 있는 **유일한** 데이터 구조이다. 따라서 복잡하고 이질적인 데이터를 저장하는 데 필수적이다.
@@ -650,7 +650,7 @@ x3 <- array(1:20, dim = c(2, 5, 2))
 
 x4 <- list(f1 = x1, f2 = x1, f3 = x2, f4 = x3)
 class(x4)   # "list"
-x4$f1       # 이름으로 첫 번째 원소에 접근
+x4$f1       # Access the first element by name
 ```
 
 `x4`는 데이터 프레임 두 개, 행렬 하나, 배열 하나를 원소로 가진 리스트이다. 리스트의 원소는 어떤 객체여도 되므로 이렇게 서로 다른 구조를 한데 묶을 수 있으며, `class(x4)`는 원소의 종류와 관계없이 `"list"`이다. 꺼낸 원소에는 그 구조의 색인을 이어 붙인다. `x4$f3[2, ]`는 행렬 `x2`의 둘째 행 2, 8이고, `x4$f4[1, 1, 2]`는 배열 `x3`의 2층 1행 1열인 11이다. 통계 함수의 결과(예: 10장의 회귀 모형 객체)도 이처럼 여러 구성 요소를 이름으로 담은 리스트인 경우가 많다.
@@ -733,11 +733,11 @@ dataframe_ex <- data.frame(ID, GENDER, AGE, AREA)
 ### 5.2 데이터 프레임 확인
 
 ```r
-dataframe_ex            # 데이터 프레임 출력
-str(dataframe_ex)       # 구조: 유형, 차원
-View(dataframe_ex)      # 스프레드시트 뷰어에서 열기
-nrow(dataframe_ex)      # 행의 수
-ncol(dataframe_ex)      # 열의 수
+dataframe_ex            # Print the data frame
+str(dataframe_ex)       # Structure: types, dimensions
+View(dataframe_ex)      # Open in spreadsheet viewer
+nrow(dataframe_ex)      # Number of rows
+ncol(dataframe_ex)      # Number of columns
 ```
 
 `dataframe_ex`를 출력하면 1장 2절의 예와 같이 5행 4열의 표가 나오고, `nrow()`와 `ncol()`은 각각 5와 4를 돌려준다. `str()`의 결과 `'data.frame':	5 obs. of  4 variables:`에서 obs.는 관측치(행), variables는 변수(열)를 뜻하며, 그 아래 줄마다 열 이름, 유형(`num`, `chr`), 앞부분 값이 나온다. `View()`는 RStudio에서 표를 스프레드시트처럼 보여 주는 함수이므로, 스크립트를 RStudio 밖에서 실행할 때는 쓰지 않는다.
@@ -745,14 +745,14 @@ ncol(dataframe_ex)      # 열의 수
 ### 5.3 열 접근
 
 ```r
-# $ 연산자 사용
-dataframe_ex$AGE        # AGE 열을 벡터로 반환
-mean(dataframe_ex$AGE)  # AGE 열의 평균 계산
+# Using $ operator
+dataframe_ex$AGE        # Returns the AGE column as a vector
+mean(dataframe_ex$AGE)  # Calculate mean of AGE column
 
-# 대괄호 표기법 사용
-dataframe_ex[, 3]       # 세 번째 열 (AGE)
-dataframe_ex[1, ]       # 첫 번째 행
-dataframe_ex[2, 3]      # 2행 3열의 원소
+# Using bracket notation
+dataframe_ex[, 3]       # Third column (AGE)
+dataframe_ex[1, ]       # First row
+dataframe_ex[2, 3]      # Element at row 2, column 3
 ```
 
 ### 5.4 대안: data.frame() 인라인 생성
@@ -784,14 +784,14 @@ class(x1)  # "data.frame"
 데이터 프레임의 각 열에는 반드시 변수 이름이 있어야 하며, 이 구조는 엑셀의 표와 매우 비슷하다. 5.1절의 `dataframe_ex`는 n = 5, p = 4인 데이터이고, 둘째 행의 `AGE` 열에 든 40은 2번 사람의 나이를 나타내는 값 하나이다.
 
 ```text
-              변수 (열)
-         ┌────┬────────┬─────┬──────────┐
-         │ ID │ GENDER │ AGE │ AREA     │
-         ├────┼────────┼─────┼──────────┤
-관측치 → │  1 │ F      │  50 │ Seoul    │
-(행)     │  2 │ M      │  40 │ Gyeonggi │ ← 값 40: 2번 관측치의 AGE
-         │  3 │ F      │  28 │ Jeju     │
-         └────┴────────┴─────┴──────────┘
+              Variables (columns)
+              ┌────┬────────┬─────┬──────────┐
+              │ ID │ GENDER │ AGE │ AREA     │
+              ├────┼────────┼─────┼──────────┤
+Observation → │  1 │ F      │  50 │ Seoul    │
+(row)         │  2 │ M      │  40 │ Gyeonggi │ ← value 40: AGE of observation 2
+              │  3 │ F      │  28 │ Jeju     │
+              └────┴────────┴─────┴──────────┘
 ```
 
 *그림 4. 데이터 프레임의 관측치, 변수, 값*
@@ -854,7 +854,7 @@ iris_tibble
 #>  8          5           3.4          1.5         0.2 setosa 
 #>  9          4.4         2.9          1.4         0.2 setosa 
 #> 10          4.9         3.1          1.5         0.1 setosa 
-#> # ℹ 140 more rows
+#> # i 140 more rows
 ```
 
 `iris`는 붓꽃 150송이의 꽃받침(sepal)과 꽃잎(petal)의 길이와 너비를 세 품종(`Species`)에 걸쳐 측정한 내장 데이터이다. 데이터 프레임 `iris`를 그대로 출력하면 150행이 모두 화면에 쏟아지지만, 티블은 첫 줄에 크기 `150 × 5`를 밝히고 처음 10행만 보여 준 뒤 남은 행의 수를 알려 준다. 열 이름 아래의 `<dbl>`은 실수형, `<fct>`는 팩터를 뜻하며, 정수는 `<int>`, 문자형은 `<chr>`, 논리형은 `<lgl>`로 표시된다. 화면 너비보다 열이 많으면 들어가지 않는 열의 이름만 아래에 나열한다.
@@ -941,7 +941,7 @@ blood.type <- factor(
 )
 class(blood.type)  # "factor"
 str(blood.type)    # Factor w/ 4 levels "A","B","AB","O": 1 2 3 4 4
-table(blood.type)  # 빈도표
+table(blood.type)  # Frequency table
 # A  B AB  O
 # 1  1  1  2
 ```
@@ -953,7 +953,7 @@ table(blood.type)  # 빈도표
 ```r
 blood2 <- c("A", "B", "AB", "O", "O")
 class(blood2)   # "character"
-table(blood2)   # 빈도표가 생성되지만 고정된 수준이 없음
+table(blood2)   # Also creates frequency table, but no fixed levels
 ```
 
 많은 경우 팩터 구조임을 명시할 필요는 없다. 특별히 팩터로 지정하지 않은 문자열 벡터에 `table()`처럼 팩터를 위한 함수를 적용하면, R이 내부에서 그 벡터를 팩터로 바꾸어 처리하기 때문이다. 이때 수준은 알파벳 순서로 정해지므로 위 `table(blood2)`의 열은 A, AB, B, O 순서가 된다. 수준의 순서를 직접 정해야 하거나, 관측되지 않은 범주도 빈도 0으로 표시해야 할 때 `factor()`로 명시한다(6.6절).
@@ -964,15 +964,15 @@ table(blood2)   # 빈도표가 생성되지만 고정된 수준이 없음
 var1 <- c(1, 2, 3, 1, 2)
 var2 <- factor(c(1, 2, 3, 1, 2))
 
-var1 + 2    # 작동함: 3, 4, 5, 3, 4
-var2 + 2    # 경고! 팩터는 수치형이 아님
+var1 + 2    # Works: 3, 4, 5, 3, 4
+var2 + 2    # Warning! Factors are NOT numeric
 
 mean(var1)  # 1.8
-mean(var2)  # NA (경고 발생)
+mean(var2)  # NA with warning
 
-# 팩터를 수치형으로 변환
+# Convert factor to numeric
 var2_num <- as.numeric(var2)
-mean(var2_num)   # 내부 코드(1, 2, 3, 1, 2)의 평균을 반환
+mean(var2_num)   # Gives mean of internal codes (1, 2, 3, 1, 2)
 ```
 
 `var2 + 2`는 경고 `'+' not meaningful for factors`와 함께 `NA NA NA NA NA`를 돌려주고, `mean(var2)`는 경고 `argument is not numeric or logical: returning NA`와 함께 `NA`를 돌려준다. 두 변수의 차이는 `levels()`로도 확인할 수 있다.
@@ -996,7 +996,7 @@ blood <- factor(
 table(blood)
 # A  B AB  O
 # 1  1  1  1
-# 참고: "a"와 "o"는 어떤 수준과도 일치하지 않으므로 제외됨
+# Note: "a" and "o" are excluded because they do not match any level
 ```
 
 수준 목록에 없는 값은 `NA`가 되고, `table()`은 기본적으로 `NA`를 세지 않으므로 빈도표에서 빠진다.
@@ -1125,11 +1125,11 @@ class(factor("A"))         # "factor"
 R에는 연습용으로 많은 내장 데이터셋이 포함되어 있다.
 
 ```r
-data()         # 사용 가능한 모든 데이터셋 목록
-cars           # 자동차의 속도와 제동 거리
-mtcars         # 자동차 데이터 (32대, 11개 변수)
-airquality     # 뉴욕의 대기질 측정 데이터
-economics      # 미국 경제 시계열 데이터
+data()         # List all available datasets
+cars           # Speed and stopping distance of cars
+mtcars         # Motor car data (32 cars, 11 variables)
+airquality     # Air quality measurements in New York
+economics      # US economic time series data
 ```
 
 ```r

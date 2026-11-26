@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-26
+> **Last Updated:** 2026-11-27
 >
 > 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 5
 
@@ -212,8 +212,8 @@ flights
 #>  8  2013     1     1      557            600        -3      709            723
 #>  9  2013     1     1      557            600        -3      838            846
 #> 10  2013     1     1      558            600        -2      753            745
-#> # ℹ 336,766 more rows
-#> # ℹ 11 more variables: arr_delay <dbl>, carrier <chr>, flight <int>,
+#> # i 336,766 more rows
+#> # i 11 more variables: arr_delay <dbl>, carrier <chr>, flight <int>,
 #> #   tailnum <chr>, origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>,
 #> #   hour <dbl>, minute <dbl>, time_hour <dttm>
 ```
@@ -261,8 +261,8 @@ Writing `=` instead of `==` in a condition makes dplyr point out the mistake.
 filter(flights, month = 1)
 #> Error in `filter()`:
 #> ! We detected a named input.
-#> ℹ This usually means that you've used `=` instead of `==`.
-#> ℹ Did you mean `month == 1`?
+#> i This usually means that you've used `=` instead of `==`.
+#> i Did you mean `month == 1`?
 ```
 
 The floating-point problem of Section 3 of Chapter 1 applies directly to comparisons of doubles, so use `near()`, which allows a tolerance, instead of `==`.
@@ -531,7 +531,7 @@ daily
 #>  8  2013     1     8  2.55
 #>  9  2013     1     9  2.28
 #> 10  2013     1    10  2.84
-#> # ℹ 355 more rows
+#> # i 355 more rows
 monthly <- summarise(daily, delay = mean(delay))
 #> `summarise()` has grouped output by 'year'. You can override using the
 #> `.groups` argument.
@@ -799,7 +799,7 @@ There are two kinds of keys. One is the primary key of Section 2.2; `planes$tail
 ```r
 airlines |> count(carrier) |> filter(n > 1)
 #> # A tibble: 0 × 2
-#> # ℹ 2 variables: carrier <chr>, n <int>
+#> # i 2 variables: carrier <chr>, n <int>
 flights |> count(year, month, day, flight) |> filter(n > 1) |> nrow()
 #> [1] 29768
 ```
@@ -955,9 +955,9 @@ x <- tibble(key = c(1, 1, 2), val_x = c("x1", "x2", "x3"))
 y <- tibble(key = c(1, 1, 2), val_y = c("y1", "y2", "y3"))
 left_join(x, y, by = "key")
 #> Warning in left_join(x, y, by = "key"): Detected an unexpected many-to-many relationship between `x` and `y`.
-#> ℹ Row 1 of `x` matches multiple rows in `y`.
-#> ℹ Row 1 of `y` matches multiple rows in `x`.
-#> ℹ If a many-to-many relationship is expected, set `relationship =
+#> i Row 1 of `x` matches multiple rows in `y`.
+#> i Row 1 of `y` matches multiple rows in `x`.
+#> i If a many-to-many relationship is expected, set `relationship =
 #>   "many-to-many"` to silence this warning.
 #> # A tibble: 5 × 3
 #>     key val_x val_y
@@ -1127,7 +1127,7 @@ relig_income |> head(3)
 #> 1 Agnostic      27        34        60        81        76       137        122
 #> 2 Atheist       12        27        37        52        35        70         73
 #> 3 Buddhist      27        21        30        34        33        58         62
-#> # ℹ 3 more variables: `$100-150k` <dbl>, `>150k` <dbl>,
+#> # i 3 more variables: `$100-150k` <dbl>, `>150k` <dbl>,
 #> #   `Don't know/refused` <dbl>
 relig_income |> pivot_longer(cols = !religion, names_to = "income", values_to = "count") |> head(4)
 #> # A tibble: 4 × 3

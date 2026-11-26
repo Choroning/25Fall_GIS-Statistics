@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-26
+> **Last Updated:** 2026-11-27
 >
 > 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 6
 
@@ -171,7 +171,7 @@ mpg
 #>  8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…
 #>  9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…
 #> 10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…
-#> # ℹ 224 more rows
+#> # i 224 more rows
 ```
 
 `mpg` is a tibble of 234 rows and 11 columns. `displ` is the engine displacement (liters), and `hwy` is the highway fuel efficiency (miles per gallon), where larger values mean less fuel used. `cty` is the city fuel efficiency, `drv` the drive type (`f` front, `r` rear, `4` four-wheel), and `class` the car type. The columns are wider than the screen, so the values of `trans` and `class` are cut off with the ellipsis `…`. Putting `displ` on the x-axis and `hwy` on the y-axis and mapping `class` to color draws Figure 1.

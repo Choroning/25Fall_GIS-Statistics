@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-26
+> **Last Updated:** 2026-11-27
 >
 > 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 2
 
@@ -854,7 +854,7 @@ iris_tibble
 #>  8          5           3.4          1.5         0.2 setosa 
 #>  9          4.4         2.9          1.4         0.2 setosa 
 #> 10          4.9         3.1          1.5         0.1 setosa 
-#> # ℹ 140 more rows
+#> # i 140 more rows
 ```
 
 `iris` is built-in data measuring the length and width of the sepals and petals of 150 iris flowers across three species (`Species`). Printing the data frame `iris` as is pours all 150 rows onto the screen, but a tibble states its size, `150 × 5`, on the first line, shows only the first 10 rows, and then reports the number of remaining rows. Under the column names, `<dbl>` means double and `<fct>` means factor; integers are shown as `<int>`, characters as `<chr>`, and logicals as `<lgl>`. When there are more columns than fit the screen width, only the names of the columns that do not fit are listed below.

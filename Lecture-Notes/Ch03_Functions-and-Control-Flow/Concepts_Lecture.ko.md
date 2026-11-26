@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-26
+> **최종 수정일:** 2026-11-27
 >
 > 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 3
 
@@ -83,8 +83,8 @@
 ### 1.1 기본 변수 할당
 
 ```r
-x <- 10        # 수치형 값 할당
-y <- "HI"      # 문자형 값 할당
+x <- 10        # Assign numeric value
+y <- "HI"      # Assign character value
 ```
 
 변수 이름의 규칙은 1장 3절과 같다. 첫 글자는 영문자나 마침표여야 하고, 숫자와 밑줄로 시작할 수 없으며, 마침표와 밑줄을 뺀 특수 문자와 공백은 쓸 수 없고, 대문자와 소문자를 구분한다. 따라서 `exam`, `.exam`, `e1axm`, `e_xam`, `e1_am`, `Exam`은 쓸 수 있지만 `1exam`, `_exam`, `$exam`, `ex a`는 쓸 수 없다.
@@ -94,9 +94,9 @@ y <- "HI"      # 문자형 값 할당
 R은 일반적인 연산을 위한 많은 내장 함수를 제공한다.
 
 ```r
-print("Hello World")   # 콘솔에 값 출력
-sum(1:100)              # 1부터 100까지 정수의 합 -> 5050
-Sys.Date()              # 현재 시스템 날짜 반환
+print("Hello World")   # Output a value to the console
+sum(1:100)              # Sum of integers from 1 to 100 -> 5050
+Sys.Date()              # Get current system date
 ```
 
 > **핵심:** `sum()`, `mean()`, `min()`, `max()` 등의 함수는 R의 `base` 패키지에 포함되어 있어 별도의 라이브러리를 로드하지 않아도 항상 사용할 수 있다.
@@ -153,14 +153,14 @@ seq(by = 3, 1, 10)
 x <- c(1, 2, 3)
 y <- "a"
 
-# print()는 한 번에 하나의 객체만 처리 가능
+# print() can only handle one object at a time
 print(x)              # [1] 1 2 3
-# print(x, y)         # 오류: invalid printing digits
-print(x); print(y)    # 작동: 각각 별도로 출력
+# print(x, y)         # ERROR: invalid printing digits
+print(x); print(y)    # Works: prints separately
 
-# cat()은 여러 객체를 연결하여 출력
-cat(x, y)             # 1 2 3 a (서식 없는 일반 텍스트)
-cat("Value:", x, "\n") # 줄바꿈 문자 지원
+# cat() concatenates multiple objects
+cat(x, y)             # 1 2 3 a (plain text, no formatting)
+cat("Value:", x, "\n") # Supports newline characters
 ```
 
 `print(x, y)`가 오류를 내는 것은 `print()`의 두 번째 인수가 출력 대상이 아니라 유효 숫자 자릿수(`digits`)로 해석되기 때문이다.
@@ -223,9 +223,9 @@ message("This is a message")
 4. **반환 값:** 함수가 생성하는 결과이다.
 
 ```r
-# 일반 문법
+# General syntax
 function_name <- function(param1, param2, ...) {
-  # 함수 본문
+  # Function body
   ...
   return(result)
 }
@@ -243,7 +243,7 @@ multi_f <- function(x, y, z) {
   return(res)
 }
 
-multi_f(3, 5, 6)   # 90을 반환
+multi_f(3, 5, 6)   # Returns 90
 
 a <- multi_f(3, 5, 6)
 a                    # 90
@@ -430,13 +430,13 @@ quad3(0, 0, 0)
 ### 4.1 패키지 설치 및 로드
 
 ```r
-# CRAN에서 패키지 설치
+# Install a package from CRAN
 install.packages("tibble")
 
-# 현재 세션에 패키지 로드
+# Load a package into the current session
 library(tibble)
 
-# 대안: require() 사용 (패키지를 찾지 못하면 오류 대신 FALSE 반환)
+# Alternative: use require() (returns FALSE instead of error if not found)
 require(graphics)
 ```
 
@@ -500,7 +500,7 @@ search()[1:3]
 **티블(tibble)** 은 `tibble` 패키지에서 제공하는 데이터 프레임의 현대적 재해석이며, `tidyverse` 생태계의 일부이다.
 
 ```r
-# 정규분포 난수 데이터로 티블 생성
+# Create a tibble with random normal data
 df <- tibble::tibble(
   a = rnorm(10),
   b = rnorm(10),
@@ -519,12 +519,12 @@ df
 함수의 필요성을 보여 주는 반복적인 코드는 다음과 같다.
 
 ```r
-# 각 열을 [0, 1] 범위로 정규화 (장황한 접근 방식)
+# Normalize each column to [0, 1] range (verbose approach)
 df$a <- (df$a - min(df$a, na.rm = TRUE)) /
   (max(df$a, na.rm = TRUE) - min(df$a, na.rm = TRUE))
 df$b <- (df$b - min(df$b, na.rm = TRUE)) /
   (max(df$b, na.rm = TRUE) - min(df$b, na.rm = TRUE))
-# ... 각 열에 대해 반복
+# ... repeated for each column
 ```
 
 이러한 반복적인 패턴이 바로 `rescale()` 함수를 만들어야 하는 이유이다.
@@ -532,10 +532,10 @@ df$b <- (df$b - min(df$b, na.rm = TRUE)) /
 ### 5.3 NA 값 처리
 
 ```r
-# NA는 R에서 결측값을 나타냄
+# NA represents missing values in R
 a2 <- c(5, 2, 100, 25, NA, 6)
-min(a2)                   # NA (NA와의 모든 연산은 NA를 반환)
-min(a2, na.rm = TRUE)     # 2 (na.rm = TRUE는 NA 값을 무시)
+min(a2)                   # NA (any operation with NA returns NA)
+min(a2, na.rm = TRUE)     # 2 (na.rm = TRUE ignores NA values)
 ```
 
 `NA`가 섞인 연산은 대부분 `NA`를 반환하지만, `NA^0`(결과 1)이나 `TRUE | NA`(결과 `TRUE`)처럼 `NA`의 실제 값과 무관하게 결과가 정해지는 연산은 예외이다.
@@ -633,15 +633,15 @@ NA | TRUE
 x <- 1:3
 y <- 3:1
 
-(x > 0) & (y > 1)   # 원소별 AND: TRUE TRUE FALSE
-(x > 0) | (y > 1)   # 원소별 OR:  TRUE TRUE TRUE
+(x > 0) & (y > 1)   # Element-wise AND: TRUE TRUE FALSE
+(x > 0) | (y > 1)   # Element-wise OR:  TRUE TRUE TRUE
 ```
 
 ### 6.4 벡터화된 비교
 
 ```r
 a <- c(1, 5, 10)
-a > 3    # FALSE TRUE TRUE (원소별 비교)
+a > 3    # FALSE TRUE TRUE (element-wise comparison)
 ```
 
 ### 6.5 &&와 ||의 차이
@@ -704,27 +704,27 @@ isTRUE(c(TRUE, TRUE))
 
 ```r
 if (condition) {
-  # 조건이 TRUE일 때 실행되는 코드
+  # Code executed when condition is TRUE
 } else {
-  # 조건이 FALSE일 때 실행되는 코드
+  # Code executed when condition is FALSE
 }
 ```
 
 ### 7.2 예제: 이차방정식 풀이
 
 ```r
-# a2*x^2 + a1*x + a0 = 0의 근 구하기
+# Find the zeros of a2*x^2 + a1*x + a0 = 0
 rm(list = ls())
 
-# 계수 입력
+# Input coefficients
 a2 <- 1
 a1 <- 4
 a0 <- 0
 
-# 판별식 계산
+# Calculate the discriminant
 discrim <- a1^2 - 4 * a2 * a0
 
-# 판별식 값에 따라 근 계산
+# Calculate roots based on discriminant value
 if (discrim > 0) {
   roots <- c(
     (-a1 + sqrt(a1^2 - 4*a2*a0)) / (2*a2),
@@ -733,7 +733,7 @@ if (discrim > 0) {
 } else if (discrim == 0) {
   roots <- -a1 / (2 * a2)
 } else {
-  roots <- c()   # 실근 없음
+  roots <- c()   # No real roots
 }
 show(roots)
 ```

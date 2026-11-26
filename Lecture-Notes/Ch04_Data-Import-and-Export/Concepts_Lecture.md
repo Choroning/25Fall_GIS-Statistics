@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-26
+> **Last Updated:** 2026-11-27
 >
 > 혼자 공부하는 R 데이터 분석, 강전희와 엄동란, Ch 4
 
@@ -264,7 +264,7 @@ read.table(text = txt2, header = TRUE)
 
 English letters and digits are stored as the same numbers in most encodings, but Korean is stored differently by each encoding. UTF-8, the standard today, and CP949 (an extension of EUC-KR), long used by Korean Windows, are typical. If the encoding used when a file was created differs from the encoding assumed when reading it, Korean text breaks into unreadable characters.
 
-```r
+```r wide-ok
 kor <- c("name,city", "Kim,서울", "Lee,부산")
 con <- file("kor_cp949.csv", encoding = "CP949")
 writeLines(kor, con)
@@ -360,8 +360,8 @@ cars_tb <- read_csv(path)
 #> Delimiter: ","
 #> dbl (11): mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb
 #> 
-#> ℹ Use `spec()` to retrieve the full column specification for this data.
-#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> i Use `spec()` to retrieve the full column specification for this data.
+#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 cars_tb
 #> # A tibble: 32 × 11
 #>      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
@@ -376,7 +376,7 @@ cars_tb
 #>  8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
 #>  9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
 #> 10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
-#> # ℹ 22 more rows
+#> # i 22 more rows
 ```
 
 > **Definition:** The **column specification** is the list of data types that `read_csv()` set or guessed for each column.

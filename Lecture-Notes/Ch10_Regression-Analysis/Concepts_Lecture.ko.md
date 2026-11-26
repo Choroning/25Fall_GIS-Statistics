@@ -171,7 +171,7 @@ RSS = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
 ### 2.3 R에서의 구현
 
 ```r
-# 단순 선형 회귀 적합
+# Fit a simple linear regression
 model <- lm(y ~ x, data = mydata)
 summary(model)
 ```
@@ -417,7 +417,7 @@ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_p X_p + \epsilon
 모형을 적합하기 전에 데이터를 **훈련** 세트와 **검증** 세트로 분할한다:
 
 ```r
-# 데이터 분할: 60% 훈련, 40% 검증
+# Partition data: 60% training, 40% validation
 set.seed(1)
 train.index <- sample(c(1:1000), 600)
 train.df <- car.df[train.index, selected.var]
@@ -441,9 +441,9 @@ flowchart LR
 ### 3.4 R에서의 적합
 
 ```r
-# 나머지 모든 열을 예측 변수로 사용 (.은 "나머지 모든 변수"를 의미)
+# Use all remaining columns as predictors (. means "all other variables")
 car.lm <- lm(Price ~ ., data = train.df)
-options(scipen = 999)   # 과학적 표기법 비활성화
+options(scipen = 999)   # Disable scientific notation
 summary(car.lm)
 ```
 
@@ -765,10 +765,10 @@ anova(lm(sales ~ TV + radio, data = adv), fit_all)
 ### 5.1 예측 및 잔차
 
 ```r
-# 검증 세트에 대한 예측
+# Make predictions on validation set
 car.lm.pred <- predict(car.lm, valid.df)
 
-# 잔차 계산
+# Calculate residuals
 some.residuals <- valid.df$Price[1:20] - car.lm.pred[1:20]
 data.frame("Predicted" = car.lm.pred[1:20],
            "Actual" = valid.df$Price[1:20],
@@ -807,7 +807,7 @@ RMSE는 훈련 세트에서 계산한 RSE와 모양이 같지만, 모형을 만�
 계수의 t 검정과 신뢰 구간은 오차항에 대한 가정 위에서 성립하므로, 모형을 적합한 뒤에는 잔차로 가정을 점검한다. 주요 가정은 선형성, 오차의 독립성, **등분산성**(오차의 분산이 일정함), 오차의 정규성이다.
 
 ```r
-# 진단 그래프 네 개를 2x2 격자에 그리기
+# Draw the four diagnostic plots in a 2x2 grid
 par(mfrow = c(2, 2))
 plot(car.lm)
 par(mfrow = c(1, 1))
@@ -1002,13 +1002,13 @@ sum(d > 4 / n)
 ### 6.3 R에서의 구현
 
 ```r
-# AIC 기준을 사용한 단계적 회귀
+# Stepwise regression using AIC criterion
 step(car.lm, direction = "both")
 
-# 후진 제거
+# Backward elimination
 step(car.lm, direction = "backward")
 
-# 전진 선택
+# Forward selection
 step(lm(Price ~ 1, data = train.df),
      scope = formula(car.lm),
      direction = "forward")
@@ -1101,19 +1101,19 @@ step(fit_all, direction = "backward")
 library(tidyverse)
 library(sf)
 
-# 미국 주 셰이프파일 로드
+# Load US state shapefile
 USMap <- st_read("data/cb_2024_us_state_5m.shp")
 
-# 문해율 데이터 로드
+# Load literacy rate data
 litRates <- read.csv("data/us_literacy_rates_by_state_2025.csv")
 
-# 공간 데이터와 속성 데이터 결합
+# Join spatial and attribute data
 continentalUS <- USMap %>%
   left_join(litRates, by = c("NAME" = "State")) %>%
   filter(NAME != "Hawaii" & NAME != "Alaska" &
          NAME != "Puerto Rico" & !is.na(Rate))
 
-# 단계구분도 생성
+# Create choropleth map
 ggplot(continentalUS, aes(geometry = geometry, fill = Rate)) +
   geom_sf() +
   coord_sf()

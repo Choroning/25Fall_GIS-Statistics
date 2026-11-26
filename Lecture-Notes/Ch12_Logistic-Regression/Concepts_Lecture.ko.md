@@ -344,7 +344,7 @@ L(\beta) = \prod_{i=1}^{n} P(Y_i = y_i \mid X_i) = \prod_{i=1}^{n} p_i^{y_i}(1 -
 ### 4.4 R에서의 구현
 
 ```r
-# 최대 우도를 사용한 로지스틱 회귀 적합
+# Fit logistic regression using maximum likelihood
 model <- glm(y ~ x1 + x2, data = mydata, family = binomial)
 summary(model)
 ```
@@ -533,7 +533,7 @@ sqrt(diag(solve(t(X) %*% (W * X))))
 ### 5.3 R에서의 오즈비 계산
 
 ```r
-# 95% 신뢰 구간과 함께 오즈비 구하기
+# Get odds ratios with 95% confidence intervals
 exp(coef(model))
 exp(confint(model))
 ```
@@ -829,7 +829,7 @@ library(nnet)
 multi_model <- multinom(Species ~ ., data = iris)
 summary(multi_model)
 
-# 예측 확률
+# Predicted probabilities
 predict(multi_model, newdata = iris[1:5, ], type = "probs")
 ```
 

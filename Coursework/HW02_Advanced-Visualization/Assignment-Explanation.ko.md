@@ -55,13 +55,13 @@ Coursework/HW02_Advanced-Visualization/
 ├── Code-Walkthrough.ko.md
 ├── Code-Walkthrough.md
 ├── Original/
-│   ├── Assignment.ko.md                    # 과제 안내문
+│   ├── Assignment.ko.md                    # assignment handout
 │   └── Assignment.md
 ├── Solution/
-│   └── HW_AdvancedVisualization.R          # 그림 25개의 R 코드
+│   └── HW_AdvancedVisualization.R          # R code of the 25 figures
 └── data/
-    ├── cb_2024_us_state_5m.*               # 미국 주 경계 shapefile (파일 5개)
-    └── us_literacy_rates_by_state_2025.csv # 주별 문해율 자료
+    ├── cb_2024_us_state_5m.*               # US state boundary shapefile (5 files)
+    └── us_literacy_rates_by_state_2025.csv # literacy rate data by state
 ```
 
 *그림 1. HW2 과제의 디렉토리 구성*
